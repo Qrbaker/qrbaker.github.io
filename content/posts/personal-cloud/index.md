@@ -1,8 +1,8 @@
 ---
 title: "OYD Chapter 1: Personal Cloud"
-date: 2021-10-05T23:14:34-04:00
+date: 2021-10-06T16:33:39-0400
 tags: [own-data-series, cloud, syncthing]
-draft: true
+draft: false
 ---
 *This is part of my owngoing series on Owning Your Data. [Check out the Prolog here](/posts/own-data-intro/)!*
 
