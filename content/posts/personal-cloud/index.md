@@ -76,7 +76,7 @@ steps that are easy to take, require minimum maintenance, and set you up to take
 ad-supported cloud when or if you feel ready.
 
 I will be tagging all the posts relating to this with the
-"[own-data-series](https://www.quentb.com/tags/own-data-series)" tag, so you can find it all in one place.
+"[own-data-series](/tags/own-data-series)" tag, so you can find it all in one place.
 
 So long for now,
 
