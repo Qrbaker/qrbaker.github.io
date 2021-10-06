@@ -1,4 +1,4 @@
-baseURL = 'https://www.quentb.com'
+baseURL = 'https://www.quentb.com/'
 languageCode = 'en-us'
 title = 'Quentin Baker'
 theme = 'archie'
