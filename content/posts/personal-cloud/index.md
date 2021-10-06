@@ -4,7 +4,7 @@ date: 2021-10-06T16:33:39-0400
 tags: [own-data-series, cloud, syncthing]
 draft: false
 ---
-*This is part of my owngoing series on Owning Your Data. [Check out the Prolog here](/posts/own-data-intro/)!*
+*This is part of my ongoing series on Owning Your Data. [Check out the prologue here](/posts/own-data-intro/)!*
 
 ---
 
@@ -12,7 +12,7 @@ Clouds can be light and fluffy. They can also be... not.
 
 ![A Picture of a Hurricane, taken by NASA](hurricane.webp)
 
-One massive convience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its
+One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its
 (relatively) easy to set up, has predictable costs, and produces lots of *recurring* revenue.
 
 In this first dive into personal data ownership, I'm going to walk through setting up and using an open-source
@@ -20,22 +20,22 @@ alternative to offerings like DropBox and iCloud: [SyncThing](https://syncthing.
 
 ## Moving stuff around
 
-In the beginning was the punchcard. This primitve source of "non-volatile" storage (just don't light it on fire)
-actually predates the popular concept of a computer by over 100 years: in 1801, the textile indusry began using punched
+In the beginning was the punch card. This primitive source of "non-volatile" storage (just don't light it on fire)
+actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
 "number cards" to automate complex weaving patterns in looms.
 
 ![An automatic Loom](loom.webp)
 
-The punchcard was pretty much the go-to for transportable digital storage (minus specialty, bespoke solutions like [Magnetic-core
+The punch card was pretty much the go-to for transportable digital storage (minus specialty, bespoke solutions like [Magnetic-core
 memory](https://en.wikipedia.org/wiki/Magnetic-core_memory)) until magnetic storage in the form of tape and floppy
-drives finally superceded it.
+drives finally superseded it.
 
 From there, we moved briefly to optical storage (CDs, DVDs), but that fell out of favor as solid-state storage
-(essentially, specialized portable computers), offering much smaller size, resilliance, and performance took over with
+(essentially, specialized portable computers), offering much smaller size, resilience, and performance took over with
 the help of Moore's law.
 
 And now, in 2021, even flash drives and SD cards are beginning to feel... quaint. Plugging in a thumb drive, manually
-copying folders, physically travelling or sending the drive to the other device, manually pulling it from the drive; it
+copying folders, physically traveling or sending the drive to the other device, manually pulling it from the drive; it
 just cannot compete with the magical concept of installing a program, dropping the file into a special folder on your
 computer and **bam**, it is everywhere you have an internet connection -- and if SpaceX has anything to say about it,
 that means pretty much the entire planet.
@@ -58,7 +58,7 @@ process?
 
 ## My first try: Nextcloud
 
-If you really want the whole 9 yards of collabrative document mangement, editing, sharing, etc., that a fully-featured
+If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
 online productivity suite can offer (think Google Drive), the main name in the do-it-yourself space has got to be
 [Nextcloud](https://nextcloud.com/).
 
@@ -72,7 +72,7 @@ and reconsidered what I really *needed*, and got this:
 1. I need to be able to easily move an arbitrary file or set of files from computer A to computer B
 1. I need to be able to occasionally share moderately large files with friends and family; not *huge*, but enough that
    an email attachment is pushing it.
-1. I want my data to persist in a way that even if all my computers simultaneously became unusable or unaccessable, I
+1. I want my data to persist in a way that even if all my computers simultaneously became unusable or inaccessible, I
    could recover my files
 1. I want all this to happen without requiring upkeep or getting in my way
 
@@ -82,7 +82,7 @@ And the forth item? Forget it! I have had to learn way too much about nginx conf
 caching, databases... This is something that is really only worth doing if you have an organization that wants its own
 private cloud.
 
-Nextcloud does point you toward [pre-existing free providers](https://nextcloud.com/signup/), and I guess I'm a bit more
+Nextcloud does point you toward [preexisting free providers](https://nextcloud.com/signup/), and I guess I'm a bit more
 comfortable knowing that if I really, *really* wanted to I could look at their source code, but this seems like going
 back to Google Drive with a nice coat of paint.
 
@@ -100,7 +100,7 @@ that. There are some more tweaks you can do if you want to get in the weeds, but
 
 SyncThing by itself is just a light program running in the background, configurable by going to a special "localhost"
 address in your browser (essentially, you are going to a website that you are running inside your own computer).
-SyncThing's official documentation reccomends instead choosing one of the community tools that offers native desktop
+SyncThing's official documentation recommends instead choosing one of the community tools that offers native desktop
 support:
 
 * For Windows, there is [SyncTrayzor](https://github.com/canton7/SyncTrayzor/releases/latest)
@@ -111,7 +111,7 @@ support:
 There are others as well, including for iPhone and Android, listed in the SyncThing documentation: https://docs.syncthing.net/users/contrib.html#contributions
 
 Using SyncThing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
-copy of SyncThing on the computers I want to distrubte files amonst. Then, to get the party started you exhange each
+copy of SyncThing on the computers I want to distribute files among. Then, to get the party started you exchange each
 device's ID to each other device you want. It seems like a pain at first, but once you realize this is legitimately a
 one-time thing it isn't much different than logging in manually to DropBox. Plus, once you've trusted one machine you
 can mark it as a trusted "introducer", and it can *automagically*, well,
@@ -122,21 +122,21 @@ You can then go to any of the connected devices and select a folder, then share 
 continuously ensure anything you change, anywhere, is made the same *everywhere*.
 
 There are plenty more awesome tweaks you can do from here. If, like me, you are a [massive geek and have a dedicated
-computer](reddit.com/r/homelab) for storage and other miscellany, you can tell that machine to only recieve changes from
+computer](reddit.com/r/homelab) for storage and other miscellany, you can tell that machine to only receive changes from
 other devices and *not* to broadcast its changes otherwise. As noted in the docs, "This mode is useful for replication
 mirrors, backup destinations, or other cases where no local modifications are expected or allowed", which is exactly
 what I've done with my own setup.
 
 On the other hand, if you have a primary computer that you do most of your work on, and you just want to be able to
-reference but not nessessary change the files on other devices, you can choose to mark *that* computer to only send
+reference but not necessary change the files on other devices, you can choose to mark *that* computer to only send
 changes, ignoring changes on other devices.
 
-Each device can choose to keep a certain number of local versions of files, too: if you accidentaly delete or modify a
+Each device can choose to keep a certain number of local versions of files, too: if you accidentally delete or modify a
 file and want to undo it, this setting will let you restore an older version.
 
-This is all extra, though. The default "send & recieve" setup is going to be just fine for 95% of people.
+This is all extra, though. The default "send & receive" setup is going to be just fine for 95% of people.
 
-The best way, ultimately, to find out if you're comfortable making this sort ot change is to try it in a safe and
+The best way, ultimately, to find out if you're comfortable making this sort of change is to try it in a safe and
 limited manner. You can install it on two devices, and make a new folder somewhere (really, it can be _anywhere_) called
 "synced files", then share it. Just try dropping something in the folder and looking on the other device.
 
@@ -149,9 +149,9 @@ If you go back to my short list of needed things, I feel I can comfortably cross
 possible as well, but if I don't want to deal with setting up a folder for a single transfer, my favorite option is
 [Bitwarden Send](https://bitwarden.com/products/send/). I get the full features for free by running my own instance, but
 this is legitimately one tool I'm more okay using the hosted version of: by its nature, these files are meant to be
-emphemeral and auto-delete after a preset number of days of your choosing. That is more comfortable to me than letting
+ephemeral and auto-delete after a preset number of days of your choosing. That is more comfortable to me than letting
 years of random stuff (including tax returns at one point, yikes!) just accumulate in someone else's computer, which is
-what the cloud ultimatly is.
+what the cloud ultimately is.
 
 The 3rd point has a few potential solutions, from the super-manual (every month, copy the files to a USB SSD, stick that
 SSD in a safe deposit box) to the completely hands-off (pay for an encrypted backup service).
