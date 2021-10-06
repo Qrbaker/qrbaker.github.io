@@ -9,6 +9,7 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 [params]
+	customcss = ['css/tweakedImg.css']
 	mode = 'toggle' # color-mode → light,dark,toggle or auto
 	useCDN = false # don't use CDNs for fonts and icons, instead serve them locally.
 	subtitle = '*Typing Noises*'
