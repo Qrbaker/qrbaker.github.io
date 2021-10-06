@@ -1,8 +1,8 @@
 ---
-title: "Personal Cloud"
-date: 2021-10-05T20:03:19-04:00
-tags: [privacy, cloud, google]
-draft: true
+title: "Owning Your Data: Prolog"
+date: 2021-10-05T22:23:56-04:00
+tags: [privacy, cloud, google, own-data-series]
+draft: 
 ---
 I used to be a huge fan of Google's product offering. I started using Google Chrome around version 2, in 2009 -- before
 it had added support for extensions, themes, or syncing between devices through your Google Account. It wasn't a
@@ -31,7 +31,6 @@ couple years.
 
 Something changed. If I as a user were a frog, I guess I finally decided the water is too hot. But now, stepping out of
 these massive ecosystems is proving to be much harder than it was diving in.
-
 
 ## Winning Back your Data
 
@@ -63,4 +62,23 @@ I don't blame the average user for not wanting to wade into it.
 If we want to change the direction things are headed, it requires more than individual action. We ultimately may need
 the State to step in and fix things, and that opens up a big can of worms that is out of scope for this essay.
 
-Right here, right now, I'm talking to *you*, dear reader. As in, you, the person reading this.
+Right here, right now, I'm talking to *you*, dear reader. As in, you, the person reading this. Perhaps you, like me,
+have felt increasingly uncomfortable about the stuff you have heard or seen from large tech companies. If you have
+Google Maps on your phone and signed in, maybe you came across the [Google Maps
+Timeline](https://www.google.com/maps/timeline) and after erasing it as fast as you could, started looking for at least
+a way to get *some* of your life and data in your own hands.
+
+### A Series
+
+I feel a sense of obligation. I am a software engineer; I see the sausage get made and I can credit my livelyhood in
+part to the work and profit of this industy. What I can offer is not a complete "hermetic seal" solution, but rather
+steps that are easy to take, require minimum maintenance, and set you up to take additional steps away from the public,
+ad-supported cloud when or if you feel ready.
+
+I will be tagging all the posts relating to this with the
+"[own-data-series](https://www.quentb.com/tags/own-data-series)" tag, so you can find it all in one place.
+
+So long for now,
+
+Quentin
+
