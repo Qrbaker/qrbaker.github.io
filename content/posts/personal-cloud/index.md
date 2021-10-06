@@ -1,8 +1,13 @@
 ---
 title: "OYD Chapter 1: Personal Cloud"
 date: 2021-10-05T23:14:34-04:00
+tags: [own-data-series, cloud, syncthing]
 draft: true
 ---
+*This is part of my owngoing series on Owning Your Data. [Check out the Prolog here](/posts/own-data-intro/)!*
+
+---
+
 Clouds can be light and fluffy. They can also be... not.
 
 ![A Picture of a Hurricane, taken by NASA](hurricane.webp)
@@ -18,6 +23,8 @@ alternative to offerings like DropBox and iCloud: [SyncThing](https://syncthing.
 In the beginning was the punchcard. This primitve source of "non-volatile" storage (just don't light it on fire)
 actually predates the popular concept of a computer by over 100 years: in 1801, the textile indusry began using punched
 "number cards" to automate complex weaving patterns in looms.
+
+![An automatic Loom](loom.webp)
 
 The punchcard was pretty much the go-to for transportable digital storage (minus specialty, bespoke solutions like [Magnetic-core
 memory](https://en.wikipedia.org/wiki/Magnetic-core_memory)) until magnetic storage in the form of tape and floppy
@@ -129,8 +136,6 @@ file and want to undo it, this setting will let you restore an older version.
 
 This is all extra, though. The default "send & recieve" setup is going to be just fine for 95% of people.
 
-<br>
-
 The best way, ultimately, to find out if you're comfortable making this sort ot change is to try it in a safe and
 limited manner. You can install it on two devices, and make a new folder somewhere (really, it can be _anywhere_) called
 "synced files", then share it. Just try dropping something in the folder and looking on the other device.
@@ -155,6 +160,6 @@ This has a few potential solutions, and I will cover those in the next post, alo
 
 Until then, be well, be safe, and be wise with your data.
 
-<br>
 All the best,
+
 Quentin
