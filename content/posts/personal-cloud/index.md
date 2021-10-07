@@ -2,6 +2,7 @@
 title: "OYD Chapter 1: Personal Cloud"
 date: 2021-10-06T16:33:39-0400
 tags: [own-data-series, cloud, syncthing]
+series: 'Own Your Data'
 description: 'Part one of the "Own Your Data" series; comparing alternative cloud solutions -- and explaining my current choice.'
 draft: false
 ---
