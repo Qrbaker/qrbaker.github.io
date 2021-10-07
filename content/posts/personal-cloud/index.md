@@ -17,7 +17,7 @@ One massive convenience (and source of lock in) offered by major tech players is
 (relatively) easy to set up, has predictable costs, and produces lots of *recurring* revenue.
 
 In this first dive into personal data ownership, I'm going to walk through setting up and using an open-source
-alternative to offerings like DropBox and iCloud: [SyncThing](https://syncthing.net/).
+alternative to offerings like Dropbox and iCloud: [Syncthing](https://syncthing.net/).
 
 ## Moving stuff around
 
@@ -89,19 +89,19 @@ back to Google Drive with a nice coat of paint.
 
 ## The Current Setup
 
-Luckily, I found [SyncThing](https://syncthing.net). On the surface, this tool offers a much smaller set of features.
+Luckily, I found [Syncthing](https://syncthing.net). On the surface, this tool offers a much smaller set of features.
 However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
 I won't mind. What I stand to gain is much better.
 
-SyncThing seeks to replicate the original promise of a tool like DropBox: you have a folder or folders that you want to
+Syncthing seeks to replicate the original promise of a tool like Dropbox: you have a folder or folders that you want to
 exist on more than one device. When you modify, add, or remove a file in one place, the other places update to reflect
 that. There are some more tweaks you can do if you want to get in the weeds, but this is the out of the box experience.
 
-![The SyncThing Logo](syncthing-logo.svg)
+![The Syncthing Logo](syncthing-logo.svg)
 
-SyncThing by itself is just a light program running in the background, configurable by going to a special "localhost"
+Syncthing by itself is just a light program running in the background, configurable by going to a special "localhost"
 address in your browser (essentially, you are going to a website that you are running inside your own computer).
-SyncThing's official documentation recommends instead choosing one of the community tools that offers native desktop
+Syncthing's official documentation recommends instead choosing one of the community tools that offers native desktop
 support:
 
 * For Windows, there is [SyncTrayzor](https://github.com/canton7/SyncTrayzor/releases/latest)
@@ -109,12 +109,12 @@ support:
 * And Linux as always has a plethora of options. The most popular seems to be the cross-platform
   [syncthingtray](https://github.com/Martchus/syncthingtray)
 
-There are others as well, including for iPhone and Android, listed in the SyncThing documentation: https://docs.syncthing.net/users/contrib.html#contributions
+There are others as well, including for iPhone and Android, listed in the Syncthing documentation: https://docs.syncthing.net/users/contrib.html#contributions
 
-Using SyncThing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
-copy of SyncThing on the computers I want to distribute files among. Then, to get the party started you exchange each
+Using Syncthing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
+copy of Syncthing on the computers I want to distribute files among. Then, to get the party started you exchange each
 device's ID to each other device you want. It seems like a pain at first, but once you realize this is legitimately a
-one-time thing it isn't much different than logging in manually to DropBox. Plus, once you've trusted one machine you
+one-time thing it isn't much different than logging in manually to Dropbox. Plus, once you've trusted one machine you
 can mark it as a trusted "introducer", and it can *automagically*, well,
 "[introduce](https://docs.syncthing.net/users/introducer.html)" your machine to the other machines
 it knows, allowing zero-configuration propagation of a file through a connected mesh of machines.
@@ -141,12 +141,12 @@ The best way, ultimately, to find out if you're comfortable making this sort of 
 limited manner. You can install it on two devices, and make a new folder somewhere (really, it can be _anywhere_) called
 "synced files", then share it. Just try dropping something in the folder and looking on the other device.
 
-Keep that going for a while (maybe copy everything from your DropBox or iCloud folder into it), then adjust and add as
+Keep that going for a while (maybe copy everything from your Dropbox or iCloud folder into it), then adjust and add as
 you feel comfortable.
 
 ---
 
-If you go back to my short list of needed things, I feel I can comfortably cross off item 1 with SyncThing. Item 2 is
+If you go back to my short list of needed things, I feel I can comfortably cross off item 1 with Syncthing. Item 2 is
 possible as well, but if I don't want to deal with setting up a folder for a single transfer, my favorite option is
 [Bitwarden Send](https://bitwarden.com/products/send/). I get the full features for free by running my own instance, but
 this is legitimately one tool I'm more okay using the hosted version of: by its nature, these files are meant to be
