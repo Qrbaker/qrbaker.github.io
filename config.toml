@@ -9,6 +9,7 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 [params]
+	mainSections = ['posts']
 	customcss = ['css/tweakedImg.css']
 	mode = 'toggle' # color-mode → light,dark,toggle or auto
 	useCDN = false # don't use CDNs for fonts and icons, instead serve them locally.
@@ -43,3 +44,9 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
+
+[[menu.main]]
+name = "Old Blog Posts"
+url = "/old_blog"
+weight = 999
+
