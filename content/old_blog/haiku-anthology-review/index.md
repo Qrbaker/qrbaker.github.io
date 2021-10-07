@@ -20,7 +20,9 @@ population?) to the evolution and accomplishments of Haiku over the past 100 yea
 First, that the authors are not listed in alphabetical order, but rather loosely chronologically. The editors also
 purposefully start with more traditional examples of a haiku, for example, a selection from Richard Wright:
 
-> The sudden thunder  Startles the Magnolias  To a deeper white.
+> The sudden thunder  
+> Startles the Magnolias   
+> To a deeper white.  
 
 But then quickly move to more abstract, loosely haiku-form poems, or even “eye-kus”, visually short poems that seek to
 achieve the same result as a standard three-line version. I personally found the following from Shawn McMurtagh to be a
@@ -31,11 +33,15 @@ good example:
 The poems range from serious to silly; deeply distilled to seemingly spur-of-the moment. Jack Kerouac has an almost
 irreverent contribution:
 
-> Missing a kick  at the icebox door  It closed anyway
+> Missing a kick  
+> at the icebox door  
+> It closed anyway
 
 And Nick Virgilio has a real gut-punch:
 
-> the sack of kittens  sinking in the icy creek  increases the cold
+> the sack of kittens  
+> sinking in the icy creek  
+> increases the cold
 
 The poems can jump from one of these states to the other, giving the reader mental whiplash. Then again, perhaps that’s
 the point.
@@ -52,7 +58,9 @@ Japanese poems, meaning the West’s first exposure to Haikus was not at the han
 and scholars started by attempting to bring the original structure and flow of the Japanese poems to English, with
 varying success. Finally, Yone Noguchi wrote the first confirmed original English haiku in 1902:
 
-> Tell me the street to Heaven.  This? Or that? Oh, which?  What webs of streets!
+> Tell me the street to Heaven.  
+> This? Or that? Oh, which?  
+> What webs of streets!
 
 The rest of the history is legitimately interesting and varied, and notes the fingerprints of several generations on the
 decidedly different form of the modern English haiku from its Japanese ancestor. Each new group of authors and poets
@@ -66,7 +74,9 @@ changed opinion. The poems are genuinely interesting, often thought-provoking, a
 emotion. Jim Kacian, Philip Rowland, and Allan Burns have produced a wonderful and elegant foray into a world of poetry
 I expect most English readers don’t know exist. To sum up:
 
-> Haiku in English  Brought from Eastern History  Now in Western Clothes.
+> Haiku in English  
+> Brought from Eastern History  
+> Now in Western Clothes.
 
 _\-Quentin Baker_
 
