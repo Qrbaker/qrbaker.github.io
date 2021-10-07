@@ -1,26 +1,17 @@
 <!doctype html><html><head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge"><title>OYD Chapter 1: Personal Cloud - Quentin Baker</title><meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="This is part of my ongoing series on Owning Your Data. Check out the prologue here!
- Clouds can be light and fluffy. They can also be&mldr; not.
-One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its (relatively) easy to set up, has predictable costs, and produces lots of recurring revenue.
-In this first dive into personal data ownership, I&rsquo;m going to walk through setting up and using an open-source alternative to offerings like DropBox and iCloud: SyncThing.">
+<meta name=description content="Part one of the &#34;Own Your Data&#34; series; comparing alternative cloud solutions -- and explaining my current choice.">
 <meta property="og:image" content>
 <meta property="og:title" content="OYD Chapter 1: Personal Cloud">
-<meta property="og:description" content="This is part of my ongoing series on Owning Your Data. Check out the prologue here!
- Clouds can be light and fluffy. They can also be&mldr; not.
-One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its (relatively) easy to set up, has predictable costs, and produces lots of recurring revenue.
-In this first dive into personal data ownership, I&rsquo;m going to walk through setting up and using an open-source alternative to offerings like DropBox and iCloud: SyncThing.">
+<meta property="og:description" content="Part one of the &#34;Own Your Data&#34; series; comparing alternative cloud solutions -- and explaining my current choice.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.quentb.com/posts/personal-cloud/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-10-06T16:33:39-04:00">
 <meta property="article:modified_time" content="2021-10-06T16:33:39-04:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="OYD Chapter 1: Personal Cloud">
-<meta name=twitter:description content="This is part of my ongoing series on Owning Your Data. Check out the prologue here!
- Clouds can be light and fluffy. They can also be&mldr; not.
-One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its (relatively) easy to set up, has predictable costs, and produces lots of recurring revenue.
-In this first dive into personal data ownership, I&rsquo;m going to walk through setting up and using an open-source alternative to offerings like DropBox and iCloud: SyncThing.">
+<meta name=twitter:description content="Part one of the &#34;Own Your Data&#34; series; comparing alternative cloud solutions -- and explaining my current choice.">
 <script src=https://www.quentb.com/js/feather.min.js></script>
 <link href=https://www.quentb.com/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css rel=stylesheet>
 <link rel=stylesheet type=text/css media=screen href=https://www.quentb.com/css/main.2f9b5946627215dc1ae7fa5f82bfc9cfcab000329136befeea5733f21e77d68f.css>
@@ -55,7 +46,7 @@ In this first dive into personal data ownership, I&rsquo;m going to walk through
 <p>One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its
 (relatively) easy to set up, has predictable costs, and produces lots of <em>recurring</em> revenue.</p>
 <p>In this first dive into personal data ownership, I&rsquo;m going to walk through setting up and using an open-source
-alternative to offerings like DropBox and iCloud: <a href=https://syncthing.net/>SyncThing</a>.</p>
+alternative to offerings like Dropbox and iCloud: <a href=https://syncthing.net/>Syncthing</a>.</p>
 <h2 id=moving-stuff-around>Moving stuff around</h2>
 <p>In the beginning was the punch card. This primitive source of &ldquo;non-volatile&rdquo; storage (just don&rsquo;t light it on fire)
 actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
@@ -111,16 +102,16 @@ private cloud.</p>
 comfortable knowing that if I really, <em>really</em> wanted to I could look at their source code, but this seems like going
 back to Google Drive with a nice coat of paint.</p>
 <h2 id=the-current-setup>The Current Setup</h2>
-<p>Luckily, I found <a href=https://syncthing.net>SyncThing</a>. On the surface, this tool offers a much smaller set of features.
+<p>Luckily, I found <a href=https://syncthing.net>Syncthing</a>. On the surface, this tool offers a much smaller set of features.
 However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
 I won&rsquo;t mind. What I stand to gain is much better.</p>
-<p>SyncThing seeks to replicate the original promise of a tool like DropBox: you have a folder or folders that you want to
+<p>Syncthing seeks to replicate the original promise of a tool like Dropbox: you have a folder or folders that you want to
 exist on more than one device. When you modify, add, or remove a file in one place, the other places update to reflect
 that. There are some more tweaks you can do if you want to get in the weeds, but this is the out of the box experience.</p>
-<p><img src=syncthing-logo.svg alt="The SyncThing Logo"></p>
-<p>SyncThing by itself is just a light program running in the background, configurable by going to a special &ldquo;localhost&rdquo;
+<p><img src=syncthing-logo.svg alt="The Syncthing Logo"></p>
+<p>Syncthing by itself is just a light program running in the background, configurable by going to a special &ldquo;localhost&rdquo;
 address in your browser (essentially, you are going to a website that you are running inside your own computer).
-SyncThing&rsquo;s official documentation recommends instead choosing one of the community tools that offers native desktop
+Syncthing&rsquo;s official documentation recommends instead choosing one of the community tools that offers native desktop
 support:</p>
 <ul>
 <li>For Windows, there is <a href=https://github.com/canton7/SyncTrayzor/releases/latest>SyncTrayzor</a></li>
@@ -128,11 +119,11 @@ support:</p>
 <li>And Linux as always has a plethora of options. The most popular seems to be the cross-platform
 <a href=https://github.com/Martchus/syncthingtray>syncthingtray</a></li>
 </ul>
-<p>There are others as well, including for iPhone and Android, listed in the SyncThing documentation: <a href=https://docs.syncthing.net/users/contrib.html#contributions>https://docs.syncthing.net/users/contrib.html#contributions</a></p>
-<p>Using SyncThing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
-copy of SyncThing on the computers I want to distribute files among. Then, to get the party started you exchange each
+<p>There are others as well, including for iPhone and Android, listed in the Syncthing documentation: <a href=https://docs.syncthing.net/users/contrib.html#contributions>https://docs.syncthing.net/users/contrib.html#contributions</a></p>
+<p>Using Syncthing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
+copy of Syncthing on the computers I want to distribute files among. Then, to get the party started you exchange each
 device&rsquo;s ID to each other device you want. It seems like a pain at first, but once you realize this is legitimately a
-one-time thing it isn&rsquo;t much different than logging in manually to DropBox. Plus, once you&rsquo;ve trusted one machine you
+one-time thing it isn&rsquo;t much different than logging in manually to Dropbox. Plus, once you&rsquo;ve trusted one machine you
 can mark it as a trusted &ldquo;introducer&rdquo;, and it can <em>automagically</em>, well,
 &ldquo;<a href=https://docs.syncthing.net/users/introducer.html>introduce</a>&rdquo; your machine to the other machines
 it knows, allowing zero-configuration propagation of a file through a connected mesh of machines.</p>
@@ -152,10 +143,10 @@ file and want to undo it, this setting will let you restore an older version.</p
 <p>The best way, ultimately, to find out if you&rsquo;re comfortable making this sort of change is to try it in a safe and
 limited manner. You can install it on two devices, and make a new folder somewhere (really, it can be <em>anywhere</em>) called
 &ldquo;synced files&rdquo;, then share it. Just try dropping something in the folder and looking on the other device.</p>
-<p>Keep that going for a while (maybe copy everything from your DropBox or iCloud folder into it), then adjust and add as
+<p>Keep that going for a while (maybe copy everything from your Dropbox or iCloud folder into it), then adjust and add as
 you feel comfortable.</p>
 <hr>
-<p>If you go back to my short list of needed things, I feel I can comfortably cross off item 1 with SyncThing. Item 2 is
+<p>If you go back to my short list of needed things, I feel I can comfortably cross off item 1 with Syncthing. Item 2 is
 possible as well, but if I don&rsquo;t want to deal with setting up a folder for a single transfer, my favorite option is
 <a href=https://bitwarden.com/products/send/>Bitwarden Send</a>. I get the full features for free by running my own instance, but
 this is legitimately one tool I&rsquo;m more okay using the hosted version of: by its nature, these files are meant to be
