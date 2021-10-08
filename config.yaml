@@ -7,16 +7,17 @@ enableRobotsTXT: false
 
 menu:
   main:
-  - identifier: archive
-    name: Archive
-    title: Archive
-    url: /posts/
-    weight: 1
 
   - identifier: about
     name: About Me
     title: About Me
     url: /about
+    weight: 1
+
+  - identifier: archive
+    name: Archive
+    title: Archive
+    url: /posts/
     weight: 2
 
   - identifier: tags
