@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    if: "!startsWith(github.event.head_commit.message, 'minor:')"
+    if: "!startsWith(github.event.head_commit.message, 'minor:')" # Ignore minor commits (anthing that starts with "minor:")
     steps:
       - uses: actions/checkout@v2
         with:
