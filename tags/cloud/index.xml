@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cloud on Quentin Baker</title><link>https://www.quentb.com/tags/cloud/</link><description>Recent content in cloud on Quentin Baker</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Quentin Baker</copyright><lastBuildDate>Wed, 06 Oct 2021 16:33:39 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>OYD Chapter 1: Personal Cloud</title><link>https://www.quentb.com/posts/personal-cloud/</link><pubDate>Wed, 06 Oct 2021 16:33:39 -0400</pubDate><guid>https://www.quentb.com/posts/personal-cloud/</guid><description>This is part of my ongoing series on Owning Your Data. Check out the prologue here!
-Clouds can be light and fluffy. They can also be&amp;hellip; not.
-One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its (relatively) easy to set up, has predictable costs, and produces lots of recurring revenue.
-In this first dive into personal data ownership, I&amp;rsquo;m going to walk through setting up and using an open-source alternative to offerings like Dropbox and iCloud: Syncthing.</description></item><item><title>Owning Your Data: Prolog</title><link>https://www.quentb.com/posts/own-data-intro/</link><pubDate>Tue, 05 Oct 2021 22:23:56 -0400</pubDate><guid>https://www.quentb.com/posts/own-data-intro/</guid><description>I used to be a huge fan of Google&amp;rsquo;s product offering. I started using Google Chrome around version 2, in 2009 &amp;ndash; before it had added support for extensions, themes, or syncing between devices through your Google Account. It wasn&amp;rsquo;t a juggernaut on the verge of becoming the internet browser; instead it was introduced via a cute interactive digital comic book, had bright blue colors and an icon that imparted a sense of futuristic alien tech, as if it had fallen from the sky into the office of a bunch of Google hackers, who gifted it to the world.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cloud on Quentin Baker</title><link>/tags/cloud/</link><description>Quentin Baker (cloud)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Oct 2021 16:33:39 -0400</lastBuildDate><atom:link href="/tags/cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>OYD Chapter 1: Personal Cloud</title><link>/posts/personal-cloud/</link><pubDate>Wed, 06 Oct 2021 16:33:39 -0400</pubDate><guid>/posts/personal-cloud/</guid><description>&lt;p>&lt;em>This is part of my ongoing series on Owning Your Data. &lt;a href="/posts/own-data-intro/">Check out the prologue here&lt;/a>!&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Clouds can be light and fluffy. They can also be&amp;hellip; not.&lt;/p>
+&lt;p>&lt;img src="hurricane.webp" alt="A Picture of a Hurricane, taken by NASA">&lt;/p>
+&lt;p>One massive convenience (and source of lock in) offered by major tech players is Cloud Storage. Its a big deal because its
+(relatively) easy to set up, has predictable costs, and produces lots of &lt;em>recurring&lt;/em> revenue.&lt;/p>
+&lt;p>In this first dive into personal data ownership, I&amp;rsquo;m going to walk through setting up and using an open-source
+alternative to offerings like Dropbox and iCloud: &lt;a href="https://syncthing.net/">Syncthing&lt;/a>.&lt;/p>
+&lt;h2 id="moving-stuff-around">Moving stuff around&lt;/h2>
+&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
+actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
+&amp;ldquo;number cards&amp;rdquo; to automate complex weaving patterns in looms.&lt;/p>
+&lt;p>&lt;img src="loom.webp" alt="An automatic Loom">&lt;/p>
+&lt;p>The punch card was pretty much the go-to for transportable digital storage (minus specialty, bespoke solutions like &lt;a href="https://en.wikipedia.org/wiki/Magnetic-core_memory">Magnetic-core
+memory&lt;/a>) until magnetic storage in the form of tape and floppy
+drives finally superseded it.&lt;/p>
+&lt;p>From there, we moved briefly to optical storage (CDs, DVDs), but that fell out of favor as solid-state storage
+(essentially, specialized portable computers), offering much smaller size, resilience, and performance took over with
+the help of Moore&amp;rsquo;s law.&lt;/p>
+&lt;p>And now, in 2021, even flash drives and SD cards are beginning to feel&amp;hellip; quaint. Plugging in a thumb drive, manually
+copying folders, physically traveling or sending the drive to the other device, manually pulling it from the drive; it
+just cannot compete with the magical concept of installing a program, dropping the file into a special folder on your
+computer and &lt;strong>bam&lt;/strong>, it is everywhere you have an internet connection &amp;ndash; and if SpaceX has anything to say about it,
+that means pretty much the entire planet.&lt;/p>
+&lt;p>But all this magic takes a lot of behind-the-scenes work. Its easy to forget that, under all the abstraction, ultimately
+matter or energy is getting moved all the way from point A to point B, in a path that you could trace if you were
+inclined to.&lt;/p>
+&lt;p>Along the way, that data often sits on someone else&amp;rsquo;s server. And increasingly, modern culture is discovering all that
+implies, both good and bad. As it turns out, a lot of big cloud providers, while saying niceties like &amp;ldquo;encryption at
+rest&amp;rdquo;, &amp;ldquo;industry-leading security&amp;rdquo; and more, reading the privacy policies reveals all the major free services are not
+only able to see your data, they are methodically combing through it at the behest of advertisers, governments, and in
+some really bad cases, curious employees.&lt;/p>
+&lt;p>There are a lot of really great tools to limit this. I would comfortably say that any major provider is &lt;em>probably&lt;/em> not
+snooping (beyond some &lt;a href="https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf">creative ways&lt;/a>ᵖᵈᶠ
+of &amp;ldquo;checking without looking&amp;rdquo; for stuff like illegal material). But do we really have to just stop at mights and maybes?
+What if we could short-circuit this whole thing and make the magical transfers happen without the ugly in-between
+process?&lt;/p>
+&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud&lt;/h2>
+&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
+online productivity suite can offer (think Google Drive), the main name in the do-it-yourself space has got to be
+&lt;a href="https://nextcloud.com/">Nextcloud&lt;/a>.&lt;/p>
+&lt;p>I ran my own Nextcloud server on a home computer, and then a purpose-built NAS, for a few years. But I need to worry
+about sharing files only once in a blue moon, and I was using a lot of resources to run this thing. It is also brittle;
+you cannot set-and-forget this sort of thing.&lt;/p>
+&lt;p>I could manage it with only an hour here or there of work, but getting computers to do stuff is my day job. I sat down
+and reconsidered what I really &lt;em>needed&lt;/em>, and got this:&lt;/p>
+&lt;ol>
+&lt;li>I need to be able to easily move an arbitrary file or set of files from computer A to computer B&lt;/li>
+&lt;li>I need to be able to occasionally share moderately large files with friends and family; not &lt;em>huge&lt;/em>, but enough that
+an email attachment is pushing it.&lt;/li>
+&lt;li>I want my data to persist in a way that even if all my computers simultaneously became unusable or inaccessible, I
+could recover my files&lt;/li>
+&lt;li>I want all this to happen without requiring upkeep or getting in my way&lt;/li>
+&lt;/ol>
+&lt;p>Nextcloud is pretty good at the first and second items; it is pretty darn close in feature parity and usage to Google
+Drive. The third item is a problem, since it is running on a computer in my house, that is a single point of failure.
+And the forth item? Forget it! I have had to learn way too much about nginx configuration, php-fpm sockets, in-memory
+caching, databases&amp;hellip; This is something that is really only worth doing if you have an organization that wants its own
+private cloud.&lt;/p>
+&lt;p>Nextcloud does point you toward &lt;a href="https://nextcloud.com/signup/">preexisting free providers&lt;/a>, and I guess I&amp;rsquo;m a bit more
+comfortable knowing that if I really, &lt;em>really&lt;/em> wanted to I could look at their source code, but this seems like going
+back to Google Drive with a nice coat of paint.&lt;/p>
+&lt;h2 id="the-current-setup">The Current Setup&lt;/h2>
+&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
+However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
+I won&amp;rsquo;t mind. What I stand to gain is much better.&lt;/p>
+&lt;p>Syncthing seeks to replicate the original promise of a tool like Dropbox: you have a folder or folders that you want to
+exist on more than one device. When you modify, add, or remove a file in one place, the other places update to reflect
+that. There are some more tweaks you can do if you want to get in the weeds, but this is the out of the box experience.&lt;/p>
+&lt;p>&lt;img src="syncthing-logo.svg" alt="The Syncthing Logo">&lt;/p>
+&lt;p>Syncthing by itself is just a light program running in the background, configurable by going to a special &amp;ldquo;localhost&amp;rdquo;
+address in your browser (essentially, you are going to a website that you are running inside your own computer).
+Syncthing&amp;rsquo;s official documentation recommends instead choosing one of the community tools that offers native desktop
+support:&lt;/p>
+&lt;ul>
+&lt;li>For Windows, there is &lt;a href="https://github.com/canton7/SyncTrayzor/releases/latest">SyncTrayzor&lt;/a>&lt;/li>
+&lt;li>For macOS; &lt;a href="https://github.com/syncthing/syncthing-macos/releases/latest">syncthing-macos&lt;/a>&lt;/li>
+&lt;li>And Linux as always has a plethora of options. The most popular seems to be the cross-platform
+&lt;a href="https://github.com/Martchus/syncthingtray">syncthingtray&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>There are others as well, including for iPhone and Android, listed in the Syncthing documentation: &lt;a href="https://docs.syncthing.net/users/contrib.html#contributions">https://docs.syncthing.net/users/contrib.html#contributions&lt;/a>&lt;/p>
+&lt;p>Using Syncthing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
+copy of Syncthing on the computers I want to distribute files among. Then, to get the party started you exchange each
+device&amp;rsquo;s ID to each other device you want. It seems like a pain at first, but once you realize this is legitimately a
+one-time thing it isn&amp;rsquo;t much different than logging in manually to Dropbox. Plus, once you&amp;rsquo;ve trusted one machine you
+can mark it as a trusted &amp;ldquo;introducer&amp;rdquo;, and it can &lt;em>automagically&lt;/em>, well,
+&amp;ldquo;&lt;a href="https://docs.syncthing.net/users/introducer.html">introduce&lt;/a>&amp;rdquo; your machine to the other machines
+it knows, allowing zero-configuration propagation of a file through a connected mesh of machines.&lt;/p>
+&lt;p>You can then go to any of the connected devices and select a folder, then share it with a few clicks. It will now
+continuously ensure anything you change, anywhere, is made the same &lt;em>everywhere&lt;/em>.&lt;/p>
+&lt;p>There are plenty more awesome tweaks you can do from here. If, like me, you are a &lt;a href="reddit.com/r/homelab">massive geek and have a dedicated
+computer&lt;/a> for storage and other miscellany, you can tell that machine to only receive changes from
+other devices and &lt;em>not&lt;/em> to broadcast its changes otherwise. As noted in the docs, &amp;ldquo;This mode is useful for replication
+mirrors, backup destinations, or other cases where no local modifications are expected or allowed&amp;rdquo;, which is exactly
+what I&amp;rsquo;ve done with my own setup.&lt;/p>
+&lt;p>On the other hand, if you have a primary computer that you do most of your work on, and you just want to be able to
+reference but not necessary change the files on other devices, you can choose to mark &lt;em>that&lt;/em> computer to only send
+changes, ignoring changes on other devices.&lt;/p>
+&lt;p>Each device can choose to keep a certain number of local versions of files, too: if you accidentally delete or modify a
+file and want to undo it, this setting will let you restore an older version.&lt;/p>
+&lt;p>This is all extra, though. The default &amp;ldquo;send &amp;amp; receive&amp;rdquo; setup is going to be just fine for 95% of people.&lt;/p>
+&lt;p>The best way, ultimately, to find out if you&amp;rsquo;re comfortable making this sort of change is to try it in a safe and
+limited manner. You can install it on two devices, and make a new folder somewhere (really, it can be &lt;em>anywhere&lt;/em>) called
+&amp;ldquo;synced files&amp;rdquo;, then share it. Just try dropping something in the folder and looking on the other device.&lt;/p>
+&lt;p>Keep that going for a while (maybe copy everything from your Dropbox or iCloud folder into it), then adjust and add as
+you feel comfortable.&lt;/p>
+&lt;hr>
+&lt;p>If you go back to my short list of needed things, I feel I can comfortably cross off item 1 with Syncthing. Item 2 is
+possible as well, but if I don&amp;rsquo;t want to deal with setting up a folder for a single transfer, my favorite option is
+&lt;a href="https://bitwarden.com/products/send/">Bitwarden Send&lt;/a>. I get the full features for free by running my own instance, but
+this is legitimately one tool I&amp;rsquo;m more okay using the hosted version of: by its nature, these files are meant to be
+ephemeral and auto-delete after a preset number of days of your choosing. That is more comfortable to me than letting
+years of random stuff (including tax returns at one point, yikes!) just accumulate in someone else&amp;rsquo;s computer, which is
+what the cloud ultimately is.&lt;/p>
+&lt;p>The 3rd point has a few potential solutions, from the super-manual (every month, copy the files to a USB SSD, stick that
+SSD in a safe deposit box) to the completely hands-off (pay for an encrypted backup service).&lt;/p>
+&lt;p>This has a few potential solutions, and I will cover those in the next post, along with my personal solution.&lt;/p>
+&lt;p>Until then, be well, be safe, and be wise with your data.&lt;/p>
+&lt;p>All the best,&lt;/p>
+&lt;p>Quentin&lt;/p></description></item><item><title>Owning Your Data: Prolog</title><link>/posts/own-data-intro/</link><pubDate>Tue, 05 Oct 2021 22:23:56 -0400</pubDate><guid>/posts/own-data-intro/</guid><description>&lt;p>I used to be a huge fan of Google&amp;rsquo;s product offering. I started using Google Chrome around version 2, in 2009 &amp;ndash; before
+it had added support for extensions, themes, or syncing between devices through your Google Account. It wasn&amp;rsquo;t a
+juggernaut on the verge of becoming &lt;em>the&lt;/em> internet browser; instead it was introduced via a cute &lt;a href="https://www.google.com/googlebooks/chrome/index.html">interactive digital
+comic book&lt;/a>, had bright blue colors and an icon that imparted a sense of futuristic alien tech, as if it had fallen from
+the sky into the office of a bunch of Google hackers, who gifted it to the world.&lt;/p>
+&lt;p>&lt;img src="old_chrome_icon_small.webp" alt="The original Google Chrome icon" title="Gotta Catch 'em All?">&lt;/p>
+&lt;p>Around the same time, my sisters migrated off their MySpace accounts, following their friends to a hot new site that had
+finally opened the doors to non-college students called &amp;ldquo;Facebook&amp;rdquo;.&lt;/p>
+&lt;p>I remember when google launched this crazy idea of a word processor that you could use inside a browser. I remember
+excitedly looking for an excuse to upload and share stuff on Google Drive, sure that it was an interesting experiment
+that would fade fast.&lt;/p>
+&lt;p>My close friend in high school got accepted into a crazy beta where Google was handing out &lt;a href="https://en.wikipedia.org/wiki/Chromebook#Cr-48">free
+laptops&lt;/a> and merely asking for feedback in return. He showed it running this
+exciting new Linux-based OS that Google was working on.&lt;/p>
+&lt;hr>
+&lt;p>It is hard to pinpoint the moment Facebook went from curious to creepy; Google from serendipitous to impersonal and
+monolithic. I wish I could look back and see the last time I had used Google Chrome as my browser, but I know its been a
+couple years.&lt;/p>
+&lt;p>Something changed. If I as a user were a frog, I guess I finally decided the water is too hot. But now, stepping out of
+these massive ecosystems is proving to be much harder than it was diving in.&lt;/p>
+&lt;h2 id="winning-back-your-data">Winning Back your Data&lt;/h2>
+&lt;p>The modern privacy landscape is a &lt;em>wreck&lt;/em>. This is not exactly a controversial statement. In fact, I&amp;rsquo;d wager the general
+response to that sentence is not disagreement, but a tired shrug. Yeah, Facebook, Google et. al. own our lives &amp;ndash; that
+is just the choice we made as a society in exchange for all the cool free stuff, including:&lt;/p>
+&lt;ul>
+&lt;li>Spam emails from &amp;ldquo;Nigerian Princes&amp;rdquo;&lt;/li>
+&lt;li>The latest hoaxes, fresh off the press and on top of our feed thanks to Carol, that one girl we kinda knew well enough
+in high school that we begrudgingly accepted her friend request&lt;/li>
+&lt;li>Shockingly accurate ads&amp;hellip; for the slippers we already bought yesterday&lt;/li>
+&lt;/ul>
+&lt;p>You may get the impression that I feel we got a raw deal. Cards on the table: yes, I think we did. The internet
+advertising behemoth is a result of us taking a miraculously transformative technology that can deliver any
+information from anywhere to anyone at the speed of light, kludging a quick solution to make it work for modern
+capitalism, and then refusing to move on from the kludge.&lt;/p>
+&lt;p>I do think that the era of advertising-funded free services is approaching a fork in the road, where it will either
+effectively end for anything but the most trivial of services, or morph into something even darker.&lt;/p>
+&lt;h2 id="fighting-the-fatigue">Fighting the Fatigue&lt;/h2>
+&lt;p>Be it Climate Change, Polarization of Society, or Electronic Privacy, it is easy to get decision fatigue and give up.
+Sure, there are many, many ways to opt out of the circus; lots of weird geeks on the internet have produced guides on
+how to do so that are simultaneously uncomfortably complex and yet full of unaddressed questions or assumed knowledge.&lt;/p>
+&lt;p>I don&amp;rsquo;t blame the average user for not wanting to wade into it.&lt;/p>
+&lt;p>If we want to change the direction things are headed, it requires more than individual action. We ultimately may need
+the State to step in and fix things, and that opens up a big can of worms that is out of scope for this essay.&lt;/p>
+&lt;p>Right here, right now, I&amp;rsquo;m talking to &lt;em>you&lt;/em>, dear reader. As in, you, the person reading this. Perhaps you, like me,
+have felt increasingly uncomfortable about the stuff you have heard or seen from large tech companies. If you have
+Google Maps on your phone and signed in, maybe you came across the &lt;a href="https://www.google.com/maps/timeline">Google Maps
+Timeline&lt;/a> and after erasing it as fast as you could, started looking for at least
+a way to get &lt;em>some&lt;/em> of your life and data in your own hands.&lt;/p>
+&lt;h3 id="a-series">A Series&lt;/h3>
+&lt;p>I feel a sense of obligation. I am a software engineer; I see the sausage get made and I can credit my livelihood in
+part to the work and profit of this industry. What I can offer is not a complete &amp;ldquo;hermetic seal&amp;rdquo; solution, but rather
+steps that are easy to take, require minimum maintenance, and set you up to take additional steps away from the public,
+ad-supported cloud when or if you feel ready.&lt;/p>
+&lt;p>I will be tagging all the posts relating to this with the
+&amp;ldquo;&lt;a href="/tags/own-data-series">own-data-series&lt;/a>&amp;rdquo; tag, so you can find it all in one place.&lt;/p>
+&lt;p>So long for now,&lt;/p>
+&lt;p>Quentin&lt;/p></description></item></channel></rss>
