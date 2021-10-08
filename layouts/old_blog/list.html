@@ -1,13 +1,19 @@
 {{ define "main" }}
-<h1 class="page-title">Old Blog Content</h1>
-{{ .Content }}
-<ul class="posts">
-	{{- range .Data.Pages -}}
-		{{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-		<li class="post">
-			<a href="{{ .RelPermalink }}">{{.Title}}</a> <span class="meta">{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span>
-		</li>
-		{{- end -}}
-	{{- end -}}
-</ul>
+<div class="index-content">
+    {{ .Content }}
+</div>
+
+<div class="articles h-feed">
+    <h1 class="post-title">{{ i18n .Title }}</h1>
+    {{ $pages := where .Pages "Type" "in" "/old_blog" }} {{ range $pages }}
+    <div class="post-short-list h-entry">
+        <header class="post-header">
+            <h2 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}"><a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " }}</a></h2>
+            {{ partial "post-language-switcher.html" . }}
+        </header>
+        {{ partial "post-info.html" . }}
+    </div>
+    {{ end }}
+</div>
+
 {{ end }}
