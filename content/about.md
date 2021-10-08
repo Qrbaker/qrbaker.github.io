@@ -6,7 +6,7 @@ Hello there!
 
 I'm a Software Engineer and writer. In my free time, I like to experiment with cooking, ponder life's many mysteries, and hang out with my Rabbits.
 
-([Check out my Resume](/resume.html))
+([Check out my Resume](/resume))
 ## See Also
 
 * [Dotbun](https://dotbun.com) - A fun test of AWS serverless, CDNs, and modern web standards. 🐰
