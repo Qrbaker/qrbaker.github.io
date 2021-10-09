@@ -5,8 +5,12 @@ tags: [rambling, life, old-blog]
 description: Reflections on how much it SUCKS to lose keys.
 draft: false
 ---
+
 *Nota bene: This is a post manually carried forward from an older iteration of my blog. It may not match the tone or
 topic of my more recent posts.*
+
+---
+![A lonely set of keys](keys.webp)
 
 Have you ever stopped to consider how much we put behind locks? The past 48 hours has been nothing but that thought
 running through my mind.

@@ -5,9 +5,11 @@ tags: [review, architecture, old-blog]
 description: I read and wrote a review of an introductory book for an Art History class, titled The Architecture of Happiness. I decided to share my review, similar to my earlier review about 1 year previous. The full text (slightly edited for blog format) is here for your consideration and enjoyment. 
 draft: false
 ---
+
 *Nota bene: This is a post manually carried forward from an older iteration of my blog. It may not match the tone or
 topic of my more recent posts.*
 
+---
 
 #### Remembering Who We Are: A Review of The Architecture of Happiness
 

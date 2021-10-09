@@ -5,8 +5,11 @@ tags: [review,haiku,writing,old-blog]
 description: 'A review of a Haiku Anthology -- definitely gripping reading.'
 draft: false
 ---
+
 *Nota bene: This is a post manually carried forward from an older iteration of my blog. It may not match the tone or
 topic of my more recent posts.*
+
+---
 
 I don’t know if anyone in the history of written language has ever, on their own volition, gone out to a bookstore and
 bought themselves a book of Haikus. I know I haven’t. In my case, I received [_Haiku in English: The first Hundred
