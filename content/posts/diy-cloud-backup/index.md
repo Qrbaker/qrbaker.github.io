@@ -77,8 +77,14 @@ Here is the steps I'd go through for doing it on Windows, assuming I'm running S
 
 This, I admit, is still pretty technical, but it is at least approachable for a Windows user. If you absolutely don't want to deal with your own configuration, which I totally understand, then at least use a *paid-up-front* provider, none of the freemium nonsense. Backblaze, who I use with my manual config, offers an [easy solution](https://www.backblaze.com/cloud-backup.html) with **unlimited** storage for $7 a month (not a sponsor, btw). Its more than pocket change, but you can just use a GUI and forget about it. And they aren't the only option. They primarily focus on small business customers, but [crashplan](https://www.crashplan.com/en-us/pricing/) will happily offer you backup services for $10 a month -- my work uses them and I've found it a pretty nice setup.
 
+Otherwise, I have heard good things about [Rebel Backup](https://www.svsware.com/rebelbackup), but I have not used it myself. It is essentially a user-friendly version of rclone crypt; it encrypts your backups before sending it to Dropbox or Google Drive. Since it sits on top of public cloud providers, my earlier caveat about spontaneous data deletion applies -- though it ameliorates it to a degree by allowing replication on multiple providers (i.e. a copy is sent to both Google Drive *and* Dropbox). This product requires a $40 one-time purchase. If you use it long enough, that would potentially be a cheaper amortized cost than even my homebrew solution on Backblaze.
+
+## Closing Thoughts
+
+### You can always be more paranoid
 If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the "cloud", its going to be on someone else's computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren't for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.
 
+### The 411
 But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:
 
 1. Use a tool like rclone to automatically encrypt and upload your data to a cloud provider.
