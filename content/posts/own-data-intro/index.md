@@ -2,7 +2,7 @@
 title: "Owning Your Data: Prolog"
 date: 2021-10-05T22:23:56-04:00
 tags: [privacy, cloud, google, own-data-series]
-description: 'Introducing the "Owning Your Data" Series, aimed at simple suggestions for moving off of third-party cloud
+summary: 'Introducing the "Owning Your Data" Series, aimed at simple suggestions for moving off of third-party cloud
 providers.'
 draft: 
 ---

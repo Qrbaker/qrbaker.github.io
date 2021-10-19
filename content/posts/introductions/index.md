@@ -2,7 +2,7 @@
 title: "Introductions"
 date: 2021-10-05T21:57:27-04:00
 tags: [meta]
-description: 'In which a very foolish man embarks upon an ill-advised journey...'
+summary: 'In which a very foolish man embarks upon an ill-advised journey...'
 draft: false 
 ---
 

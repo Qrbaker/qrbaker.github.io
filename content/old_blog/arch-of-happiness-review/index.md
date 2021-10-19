@@ -2,7 +2,7 @@
 title: "Review: Architecture of Happiness"
 date: 2018-11-26
 tags: [review, architecture, old-blog]
-description: I read and wrote a review of an introductory book for an Art History class, titled The Architecture of Happiness. I decided to share my review, similar to my earlier review about 1 year previous. The full text (slightly edited for blog format) is here for your consideration and enjoyment. 
+summary: I read and wrote a review of an introductory book for an Art History class, titled The Architecture of Happiness. I decided to share my review, similar to my earlier review about 1 year previous. The full text (slightly edited for blog format) is here for your consideration and enjoyment. 
 draft: false
 ---
 

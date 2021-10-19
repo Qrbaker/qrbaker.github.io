@@ -2,7 +2,7 @@
 title: "Moving out and Losing Keys"
 date: 2019-07-03
 tags: [rambling, life, old-blog]
-description: Reflections on how much it SUCKS to lose keys.
+summary: Reflections on how much it SUCKS to lose keys.
 draft: false
 ---
 
