@@ -6,7 +6,7 @@ draft: false
 ---
 
 ## Money Traps
-At the heart of the popular cloud solutions is that they are *free*. Well, free at first (we will get into that later).
+At the heart of the popular cloud solution allure is that they are *free*. Well, free at first (we will get into that later).
 
 There is a now oft-quoted statement first popularized by security expert Bruch Schneier. In 2010, [he quite presciently said at a security conference](https://www.information-age.com/facebook-is-deliberately-killing-privacy-says-schneier-1290603/), "Don’t make the mistake of thinking you’re Facebook’s customer, you’re not – you’re the product. Its customers are the advertisers."
 
