@@ -1,5 +1,5 @@
 ---
-title: "DIY Cloud Backup"
+title: "OYD Chapter 2: DIY Cloud Backup"
 date: 2021-10-19T13:55:24-04:00
 summary: I walk through how I automated a cloud solution with rclone for less than a dollar a month.
 tags: [privacy, cloud, google, dropbox, iCloud, own-data-series]
