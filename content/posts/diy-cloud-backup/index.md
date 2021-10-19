@@ -16,7 +16,7 @@ I mean, even if you don't immediately think of some embarrassing document, are y
 
 You good with Google selling you ads based on that?
 
-Here are the privacy ratings of the Terms of Service for Google, Dropbox, and iCloud, courtesy of the [ToS;DR Project](https://tosdr.org/en/about) (Click on the badges for the full breakdowns):
+Here are the privacy ratings of the Terms of Service for Google Drive, Dropbox, iCloud, and OneDrive (Microsoft) courtesy of the [ToS;DR Project](https://tosdr.org/en/about) (Click on the badges for the full breakdowns):
 
 [![](https://shields.tosdr.org/en_270.svg)](https://tosdr.org/en/service/270)
 
@@ -43,7 +43,7 @@ And at that point, with 5+ GB of data synced and the cloud provider deeply ingra
 
 But, gosh, if we are all going to be sucked into paying for data storage, why are we okay with providers "double-dipping"? At that point, I would recommend looking at a provider that doesn't play the freemium, ad-supported games: find a provider that charges *up-front, right away*.
 
-If you are technically inclined, I cannot reccomend [rclone](https://rclone.org/) enough. This command line program (with a [GUI](https://rclone.org/gui/) in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don't have to trust your data or metadata to these hosts, because you can configure rclone to [encrypt](https://rclone.org/crypt/) the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it. 
+If you are technically inclined, I cannot reccomend [rclone](https://rclone.org/) enough. This command https://github.com/mitrichius/hugo-theme-anubisline program (with a [GUI](https://rclone.org/gui/) in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don't have to trust your data or metadata to these hosts, because you can configure rclone to [encrypt](https://rclone.org/crypt/) the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it. 
 
 In this case, you could even look at using a public cloud provider -- all they would see is a bunch of random binary blobs -- but I'd still caution against it because providers like Google have been known to flex their "we can delete your data at any time for any reason muscles" and nuke binary blobs (ostensibly for "anti-piracy" reasons, as they argue "if a customer is hiding their data from us, that *must* mean its illegal, right?").
 
