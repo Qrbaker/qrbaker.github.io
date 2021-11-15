@@ -1,0 +1,59 @@
+languageCode: "en-us"
+baseUrl: "https://www.quentb.com/"
+title: "Quentin Baker"
+theme: "anubis"
+paginate: 10
+enableRobotsTXT: false
+
+menu:
+  main:
+
+  - identifier: about
+    name: About Me
+    title: About Me
+    url: /about
+    weight: 1
+
+  - identifier: archive
+    name: Archive
+    title: Archive
+    url: /posts
+    weight: 2
+
+  - identifier: tags
+    name: Tags
+    title: Tags
+    url: /tags
+    weight: 3
+
+  - identifier: old blog
+    name: Old Blog
+    title: Old Blog
+    url: /old_blog
+    weight: 999
+
+  footer:
+  - identifier: github
+    name: Source Code
+    title: Source Code
+    url: https://github.com/Qrbaker/qrbaker.github.io
+    weight: 0
+
+params:
+  mainSections: /posts
+  author: "Quentin Baker"
+  description: ""
+  # customCSS:
+  #   - css/tweakedImg.css # relative path to "assets" directory (don't use main.css filename)
+  # customJS:
+  #   - js/main.js # relative path to "assets" directory
+  dateFormat: "2006-01-02"
+  paginationSinglePost: true
+  style: auto
+  readMore: false
+  disableSummary: false
+  social:
+  - id: github
+    name: Qrbaker
+  - id: linkedin
+    name: quentin-baker
