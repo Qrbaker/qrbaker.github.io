@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>xfce on Quentin Baker</title><link>https://www.quentb.com/tags/xfce/</link><description>Quentin Baker (xfce)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 12 Nov 2021 20:22:14 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/xfce/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting FreeBSD + xfce4 up and running on Hyper-V</title><link>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</link><pubDate>Fri, 12 Nov 2021 20:22:14 -0400</pubDate><guid>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</guid><description>&lt;p>&lt;img src="freebsd_3.gif" alt="A FreeBSD Banner">
+&lt;img src="hyperv.png" alt="Windows Hyper-V">&lt;/p>
+&lt;p>This document began as a checklist for myself, as I tried and failed repeatedly to get a desktop environment working in FreeBSD inside Hyper-V on Windows. I used to use VMWare Player for hosting BSD, but it is locked down and an extra program to run. A Microsoft employee and personal friend pointed me to Hyper-V Manager, a tool built-in to Windows 10+11 Pro/Enterprise that allows for the easy creation and management of VMs. Did I mention its built-in?&lt;/p>
+&lt;p>FreeBSD has had Hyper-V virtualization support for some time, and is mostly out-of-the-box&amp;hellip; if you are sticking to a virtual terminal. Command line is fine for most users running BSD on Hyper-V, I&amp;rsquo;m sure, but I need a desktop environment to maintain a few BSD desktop packages.&lt;/p>
+&lt;p>After several days of scrounging around, I had managed to cobble together the process. There are a couple &amp;ldquo;gotchas&amp;rdquo; that aren&amp;rsquo;t well-known, so for posterity I have written this guide in the hope that it might save others down the road the frustrations I went through.&lt;/p>
+&lt;p>Indeed, this is going on my blog so I myself can reference it in the future!&lt;/p>
+&lt;p>Before we get into things, I would like to thank the authors of two incredible resources. The first is the many contributors that have built the &lt;a href="https://docs.freebsd.org/en/books/handbook">FreeBSD Handbook&lt;/a>. I reference it later on, but this is to BSD what &lt;a href="https://wiki.archlinux.org/">ArchWiki&lt;/a> is to Linux.&lt;/p>
+&lt;p>Second is the author of &lt;a href="https://unixsheikh.com/index.html">unixsheikh.com&lt;/a>. This site first &lt;a href="https://unixsheikh.com/articles/freebsd-is-an-amazing-operating-system.html">introduced me to BSD&lt;/a>, &lt;a href="https://unixsheikh.com/articles/why-you-should-migrate-everything-from-linux-to-bsd.html">persuaded me to try it&lt;/a>, and walked me through getting it set up. Many parts of this tutorial are based on a similar tutorial series from here (linked to in the Epilogue). I still use Linux quite a lot, but it isn&amp;rsquo;t the sole OS in my stack, thanks to this site.&lt;/p>
+&lt;p>Anyway, to the good stuff!&lt;/p>
+&lt;hr>
+&lt;h2 id="getting-started">Getting Started&lt;/h2>
+&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its tempation! The .vhd file is setup with a hilariously small size, and resizing paritions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;h3 id="hyper-v-setup">Hyper-V Setup&lt;/h3>
+&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
+&lt;p>Once you&amp;rsquo;ve set up your VM and pointed it to your ISO, go ahead and follow the standard install prompts. If you want a well-written walkthrough of this process, &lt;a href="https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-start">the FreeBSD Handbook has you covered&lt;/a>. In fact, I &lt;strong>highly recommend&lt;/strong> keeping the handbook open in a browser whenever you&amp;rsquo;re trying something new-ish. I like the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/">version with the whole text on one page&lt;/a>: It makes it easy to &lt;code>ctrl&lt;/code>+&lt;code>F&lt;/code> for a term I need clarification on. Fair warning though, it takes a second to load.&lt;/p>
+&lt;p>Anyway, once set up, log in as root (or as your user and then use &lt;code>su&lt;/code>). Going forward, I will denote commands executed as root with a hash symbol (#) and user commands with a dollar sign ($).&lt;/p>
+&lt;h2 id="building-the-base">Building the Base&lt;/h2>
+&lt;p>Once logged in, setup &lt;code>pkg&lt;/code> by running the command &lt;code>pkg&lt;/code> and following the first-time setup prompts.&lt;/p>
+&lt;p>If you intend to do ports development (like I am) you should switch from the default (quarterly) branch to the &amp;ldquo;latest&amp;rdquo; branch for packages.&lt;/p>
+&lt;ol>
+&lt;li>Create a configuration file:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># mkdir -p /usr/local/etc/pkg/repos
+# vi /usr/local/etc/pkg/repos/FreeBSD.conf
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Insert the following:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">FreeBSD: {
+url: &amp;#34;pkg+https://pkg.FreeBSD.org/${ABI}/latest&amp;#34;
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>Update the package database:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg update
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>Verify &lt;code>pkg&lt;/code> is now on the &amp;ldquo;latest&amp;rdquo; repository:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg -vv
+...
+Repositories:
+FreeBSD: {
+url : &amp;#34;pkg+https://pkg.FreeBSD.org/FreeBSD:13:amd64/latest&amp;#34;,
+enabled : yes,
+priority : 0,
+mirror_type : &amp;#34;SRV&amp;#34;,
+signature_type : &amp;#34;FINGERPRINTS&amp;#34;,
+fingerprints : &amp;#34;/usr/share/keys/pkg&amp;#34;
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The important part here is the &lt;code>url&lt;/code> field. If you aren&amp;rsquo;t on a 64-bit PC chip, the &lt;code>amd64&lt;/code> may be different (e.g. x86, aarch64, etc.)&lt;/p>
+&lt;p>If &lt;code>vt&lt;/code> is not the default virtual console set it as such by adding this line to &lt;code>/boot/loader.conf&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">kern.vty&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;vt&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you aren&amp;rsquo;t comfortable using the pre-installed &lt;code>vi&lt;/code>, go ahead and install your editor of choice with &lt;code>pkg&lt;/code> at this point, i.e. &lt;code>pkg install nano&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>(Optional) speed up boot process by lowering the pause at the boot screen by adding this below the line we just added in &lt;code>loader.conf&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">autoboot_delay&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;2&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h2 id="some-other-useful-tools">Some other useful tools&lt;/h2>
+&lt;p>I do most of my text editing in neovim. I still like to use the &lt;code>vim&lt;/code> command though, and I don&amp;rsquo;t like setting up aliases in every single shell/user combo.
+So instead I install neovim, and symlink the &lt;code>nvim&lt;/code> binary file to &lt;code>vim&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg install neovim
+# ln -s /usr/local/bin/nvim /usr/local/bin/vim
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>I also install a couple other utilities at this time:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg install git curl doas
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-doas">Setting up &lt;code>doas&lt;/code>&lt;/h2>
+&lt;p>&lt;code>doas&lt;/code> is basically an alternative tool to &lt;code>sudo&lt;/code> from Linux land. There is also a port of &lt;code>sudo&lt;/code> to the BSDs, but &lt;code>doas&lt;/code> is &lt;a href="https://www.reddit.com/r/freebsd/comments/klqt7k/why_are_people_sold_on_doas/ghgk1rn/">preferred for several reasons&lt;/a>, chief among them safety and ease of configuration&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>.&lt;/p>
+&lt;p>I configure &lt;code>doas&lt;/code> to allow &lt;code>pkg&lt;/code> and shutdown/reboot commands without a password, and other commands with verification. You do this by adding the following to &lt;code>/usr/local/etc/doas.conf&lt;/code>:&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">permit :wheel
+permit nopass :wheel cmd shutdown
+permit nopass :wheel cmd pkg
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>:wheel&lt;/code> in this case means &amp;ldquo;any user in the group &lt;code>wheel&lt;/code>&amp;rdquo;. If you wanted to only permit a specific user (i.e. user &amp;lsquo;jane&amp;rsquo;) you would so so like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">permit jane
+permit nopass jane cmd shutdown
+permit nopass jane cmd pkg
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(Note that jane has no &amp;ldquo;:&amp;rdquo; before it.)&lt;/p>
+&lt;p>Some versions of BSD (and Linux ports of &lt;code>doas&lt;/code>) also support a &lt;code>persist&lt;/code> keyword, which allows subsequent uses of &lt;code>doas&lt;/code> to not require another password auth for a time, similar to &lt;code>sudo&lt;/code>. FreeBSD does not support this; adding this keyword will do nothing. If you need to do a bunch of commands as root in a row, it is &lt;a href="https://github.com/slicer69/doas/issues/37">recommended&lt;/a> to use &lt;code>doas -s&lt;/code>, run the commands, then &lt;code>exit&lt;/code>.&lt;/p>
+&lt;h2 id="getting-or-giting-ports">Getting (or &lt;code>Git&lt;/code>ing) ports&lt;/h2>
+&lt;p>FreeBSD &lt;em>used&lt;/em> to be distributed on a code management system called subversion, or &lt;code>svn&lt;/code>. There is still some legacy support for this, but all the main code repositories have switched over to using &lt;code>git&lt;/code>. Because of this, I recommend &lt;code>git clone&lt;/code>-ing the Ports tree instead of the old &lt;code>portsnap&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># git clone https://git.FreeBSD.org/ports.git /usr/ports
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that this downloads the HEAD of the tree, which will be the bleeding edge latest packages. If for some reason, you want to switch to a different quarterly branch (i.e. for stability) you can simply checkout the relevant branch:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># git -C /usr/ports switch 2020Q4
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Where &lt;code>2020Q4&lt;/code> can be the year and quarter of your preference.&lt;/p>
+&lt;p>This may take a minute. As of writing the Ports tree is just under 1GB in size. This isn&amp;rsquo;t downloading all the code for every package, mind you: the Ports tree is just a bunch of directories that &lt;em>point&lt;/em> to where the code exists on the internet for any given software. It will download and compile the software as you &lt;code>make&lt;/code> a given folder. Still, there are enough packages to make hefty even in this minimal state.&lt;/p>
+&lt;p>At this point, feel free to switch off from root to your user account. We can do everything else with &lt;code>doas&lt;/code> if needed.&lt;/p>
+&lt;h2 id="shell-setup">Shell setup&lt;/h2>
+&lt;p>I like zshell (zsh) with ohmyzsh and the powerlevel10k theme. To add zsh, install the packages:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ pkg install zsh zsh-completions ohmyzsh
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and switch the root session to zsh by typing &lt;code>zsh&lt;/code>. Then change your normal user&amp;rsquo;s shell to use it by default:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Create a new zsh config file for ohmyzsh:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cp /usr/local/share/ohmyzsh/templates/zshrc.zsh-template /home/&amp;lt;user&amp;gt;/.zshrc
+$ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zshrc
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now you can clone your theme of choice (mine is p10k):&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ git clone --depth&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span style="color:#e6db74">${&lt;/span>ZSH_CUSTOM&lt;span style="color:#66d9ef">:-&lt;/span>$HOME/.oh-my-zsh/custom&lt;span style="color:#e6db74">}&lt;/span>/themes/powerlevel10k
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And finally, set the theme in your user&amp;rsquo;s &lt;code>.zshrc&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">ZSH_THEME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;powerlevel10k/powerlevel10k&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The next time you log in as your non-root user, p10k will drop you into a configuration wizard.&lt;/p>
+&lt;h2 id="pretty-chrome---installing-the-de">Pretty Chrome - Installing the DE&lt;/h2>
+&lt;p>I like xfce. You can use whatever you prefer, of course, but you&amp;rsquo;ll have to look elsewhere at this point, because this guide is going to go forward with the xfce4 desktop environment. I am also still using &lt;code>xorg&lt;/code> as my display manager, wayland isn&amp;rsquo;t &lt;em>quite&lt;/em> ready for my workflow yet.&lt;/p>
+&lt;p>Start by installing the &lt;code>xfce&lt;/code> package (and optional goodies), plug the X-org server:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pkg install xfce xfce4-goodies xorg
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>At this point, things may be wildly different depending on the hardware you have. Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#x-config-video-cards">FreeBSD Handbook&lt;/a> for information best suited to your video hardware.&lt;/p>
+&lt;p>I have an nVidia card (I know, boo), so I install the nvidia driver from Ports&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cd /usr/ports/x11/nvidia-driver
+$ doas make -DBATCH install clean
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Its also recommended to enable &lt;code>dbus&lt;/code> at this point, by adding the following lines to &lt;code>/etc/rc.conf&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">dbus_enable&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;YES&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Add the user(s) that you expect to be using a GUI to the group &lt;code>video&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pw groupmod video -M &amp;lt;user&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work">Getting the Keyboard to work&lt;/h2>
+&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
+&lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code> /etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">sysctl kern.evdev.rcpt_mask&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and do a reboot.&lt;/p>
+&lt;h2 id="getting-to-the-desktop">Getting to the Desktop&lt;/h2>
+&lt;p>Log in as your user, and create a file in your home directory called &lt;code>.xinitrc&lt;/code>. This file tells the Xorg server what to try and launch when you call &lt;code>startx&lt;/code> (or use a Desktop Manager to log in).&lt;/p>
+&lt;p>For xfce, we add the following line:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">exec startxfce4
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now for the fun part. Type &lt;code>startx&lt;/code>, sit back, and wait for things to load. If everything has gone right, you will now be in a default XFCE desktop. Click on the screen area to capture the mouse (&lt;code>ctrl&lt;/code>+&lt;code>alt&lt;/code>+&lt;code>left arrow&lt;/code> releases the mouse again). Try typing in a terminal.&lt;/p>
+&lt;p>At this point, you will be at a basic starting point to experiment with BSD, do some dev work, etc.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;h3 id="extra-credit">Extra Credit&lt;/h3>
+&lt;p>If you want to see some more tips and tricks, and try really getting a nice desktop setup, I cannot recommend the &lt;a href="https://unixsheikh.com/tutorials/how-to-setup-freebsd-with-a-riced-desktop-part-1-basic-setup.html">unixsheikh.com how to setup FreeBSD with a riced desktop&lt;/a> series&lt;sup id="fnref:6">&lt;a href="#fn:6" class="footnote-ref" role="doc-noteref">6&lt;/a>&lt;/sup>. If you notice it looks similar to this guide, that isn&amp;rsquo;t a coincidence. I used this guide myself to install FreeBSD and eventually port my first desktop program from Linux.&lt;/p>
+&lt;h3 id="why-bsd-reason-0-the-ports-collection">Why BSD? Reason 0: The Ports Collection&lt;/h3>
+&lt;p>There are a ton of cool features of all the BSDs, each worth considering and exploring. One that we very briefly touched on is the Ports collection. If you followed these steps, you will have already downloaded the Ports tree. The step where I installed the nvidia drivers is a high-level walkthrough of installing a port in itself, but if you want the brief steps:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Find the name of your desired app and its category. &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#ports-finding-applications">There are multiple ways to find a package&lt;/a>, but I like to use the &lt;code>pkg search -o&lt;/code> command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ pkg search -o xfce4-docklike
+...
+x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9ef">for&lt;/span> Xfce
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Go to the path listed in the output&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Type &lt;code>make config&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Type &lt;code>make install clean&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>That&amp;rsquo;s pretty much it. This is a super powerful tool that allows extreme customizability with ease, because you are with these three simple steps actually downloading and compiling from source!&lt;/p>
+&lt;p>The BSD Ports system has been replicated in a couple other places, most notably in Gentoo Linux.&lt;/p>
+&lt;hr>
+&lt;p>At the end of the day, use the tools that best suit you. BSD is worth a look, though!&lt;/p>
+&lt;p>Join me for part 2 (coming soon), where I show you the best way to work with Graphical interfaces in BSD on Hyper-V (Hint: its RDP).
+&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;p>-Quentin &lt;br>
+&lt;br>
+&lt;br>
+&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>Okay its not too terrible; the official Hyper-V docs explain how to do it in &lt;a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-freebsd-virtual-machines-on-hyper-v#BKMK_notes">the notes&lt;/a>. They &lt;em>say&lt;/em> its fixed in FreeBSD 11.0+ but I was having issues unless I did a &lt;code>gpart recover&lt;/code> in FreeBSD 13.0, so ehhh&amp;hellip; &lt;!-- raw HTML omitted -->Anyways, its not really any faster to use the pre-made image when you factor in expanding the &lt;code>.vhd&lt;/code> in Hyper-V, then booting into single-user, resizing the partition, and getting the FS inflated. Additionally, the pre-made image uses UFS instead of the newer and generally better ZFS.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://flak.tedunangst.com/post/doas">https://flak.tedunangst.com/post/doas&lt;/a> is a great writeup on the creation of this tool by its author.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>&lt;strong>Note&lt;/strong>: &lt;code>doas&lt;/code> works by following the preferences of the &lt;em>last matching line&lt;/em>. That means if you put line 1 (&lt;code>permit :wheel&lt;/code>) at the end, then everything will require a password. Start with the most general, and progressively get more specific.&amp;#160;&lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>The &lt;code>-DBATCH&lt;/code> flag tells the package and any dependencies to compile with defaults without asking. Normally its recommended to do a &lt;code>make config-recursive&lt;/code> and ensuring everything is as you like it. In this case, since this is a development VM that I don&amp;rsquo;t have to worry about uptime/stability/data loss, I don&amp;rsquo;t mind skipping this.&amp;#160;&lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:5" role="doc-endnote">
+&lt;p>Full disclosure: I know that this is modifying a scan setting for device discovery, but I have &lt;em>no idea&lt;/em> why this makes the keyboard work. Its been recommended in a couple places (bugs.freebsd.org, reddit, FreeBSD forums) and works, but it is never explained &lt;strong>why&lt;/strong>. If anyone has an answer or can point me to the documentation, I&amp;rsquo;ll definitely write a post as a follow-up.&amp;#160;&lt;a href="#fnref:5" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:6" role="doc-endnote">
+&lt;p>Parts 1 and 2 will cover getting set up in general, installing xfce, and doing some quality of life tweaks. Part 3 is for those who prefer a &lt;a href="https://en.wikipedia.org/wiki/Tiling_window_manager">tiling window manager&lt;/a> and is not required if you don&amp;rsquo;t want to install one of those.&amp;#160;&lt;a href="#fnref:6" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item></channel></rss>
