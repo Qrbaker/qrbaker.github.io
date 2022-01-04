@@ -17,7 +17,7 @@ a----b----c----d----e----f
         g----h----i----j----k----l
 ```
 
-doing something like `git rebase -i` "g" will try and rewrite these pulls (a/b/c and d/e/f), even if you leave 
+doing something like `git rebase -i g` will try and rewrite these pulls (a/b/c and d/e/f), even if you leave 
 them as "picked" commits, and you only mark your commits (g/h/i/j/k/l) as "squash". I really, really hate the 
 idea of effectively changing/rewriting other developer's commits; it can screw up stuff like git logs and git 
 blames.
