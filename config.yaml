@@ -43,7 +43,8 @@ params:
   mainSections: /posts
   author: "Quentin Baker"
   description: ""
-  # customCSS:
+  customCSS:
+      - css/codeColorFix.css
   #   - css/tweakedImg.css # relative path to "assets" directory (don't use main.css filename)
   # customJS:
   #   - js/main.js # relative path to "assets" directory
