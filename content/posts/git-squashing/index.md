@@ -8,6 +8,8 @@ draft: false
 
 *Editor's Note: I don't* like *having to squash or rebase commits into a linear history. I am just operating in an environment where this is a dictated requirement. The rest of the post continues with the assumption that this preference is non-negotiable.*
 
+---
+
 I have a sort of "git philosophy" discussion to pose. Recently, I had a massive headache doing an interactive 
 rebase because I have a habit of periodically merging upstream master/dev/main/whatever branch commits into my 
 working branch to keep the work of resolving merge conflicts to a minimum.  
