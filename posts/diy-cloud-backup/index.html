@@ -9,7 +9,7 @@
 <link rel=icon type=image/svg+xml href=https://www.quentb.com/favicon.svg>
 <link rel=icon type=image/png href=https://www.quentb.com/favicon.png>
 <link rel=apple-touch-icon-precomposed href=https://www.quentb.com/favicon.png>
-<link rel=stylesheet href=https://www.quentb.com/css/style.min.5dbcfe20b7a5085f11e6fb4d507471e8241c34a3b4ec3a1d59e5e382c6dd6630.css integrity="sha256-Xbz+ILelCF8R5vtNUHRx6CQcNKO07DodWeXjgsbdZjA=">
+<link rel=stylesheet href=https://www.quentb.com/css/style.min.753bb35679428613ae9ef51ec25416c9228d620474abe202b7680bd50049c3c4.css integrity="sha256-dTuzVnlChhOunvUewlQWySKNYgR0q+ICt2gL1QBJw8Q=">
 <meta property="og:title" content="OYD Chapter 2: DIY Cloud Backup">
 <meta property="og:description" content="I walk through how I automated a cloud solution with rclone for less than a dollar a month.">
 <meta property="og:type" content="article">
@@ -53,14 +53,17 @@
 </header>
 <main id=main tabindex=-1>
 <article class="post h-entry">
-<header class=post-header>
+<div class=post-header>
+<header>
 <h1 class="p-name post-title">OYD Chapter 2: DIY Cloud Backup</h1>
 </header>
+</div>
 <div class="content e-content">
 <p><em>This is part of my ongoing series on Owning Your Data. <a href=/posts/own-data-intro/>Check out the prologue here</a>!</em></p>
 <hr>
-<h2 id=money-traps>Money Traps</h2>
-<p>At the heart of the popular cloud solution allure is that they are <em>free</em>. Well, free at first (we will get into that later).</p>
+<h2 id=money-traps>Money Traps
+<span><a href=#money-traps>#</a></span>
+</h2><p>At the heart of the popular cloud solution allure is that they are <em>free</em>. Well, free at first (we will get into that later).</p>
 <p>There is a now oft-quoted statement first popularized by security expert Bruch Schneier. In 2010, <a href=https://www.information-age.com/facebook-is-deliberately-killing-privacy-says-schneier-1290603/>he quite presciently said at a security conference</a>, &ldquo;Don’t make the mistake of thinking you’re Facebook’s customer, you’re not – you’re the product. Its customers are the advertisers.&rdquo;</p>
 <p>While I admit this has been overused and abused, it sticks because for a lot of free internet offerings, its right. Cloud is a bit of a conundrum for this model, though. While social media may have slipped the wool over the eyes of society and somehow convinced the majority of the public that its somehow okay, even normal to just give away all your info for free in a social context, people are at least suspicious of the technique when applied to their hard drive contents.</p>
 <p>I mean, even if you don&rsquo;t immediately think of some embarrassing document, are you 100% certain that there <em>isn&rsquo;t</em> a textfile buried 5 folders deep somewhere containing your <a href=https://xkcd.com/1360/>middle school love poetry</a>?</p>
@@ -75,8 +78,9 @@
 <li>iCloud (Apple), Microsoft and Google reserve the right to delete any of your data, with <em>no notice</em>, and for <em>no reason</em>.</li>
 <li>All of these providers track your location and other &ldquo;metadata&rdquo;, and share it with third parties.</li>
 </ul>
-<h2 id=meta->Meta-</h2>
-<p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &ldquo;data about the data&rdquo;: how big the file is, when it was created and last modified, the type of file, the <em>name</em> of the file&mldr; Basically, think about the data you see when looking in your &ldquo;My Documents&rdquo; folder &ndash; everything except the file preview would be considered metadata. Here&rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &ldquo;third parties&rdquo; seeing it?</p>
+<h2 id=meta->Meta-
+<span><a href=#meta->#</a></span>
+</h2><p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &ldquo;data about the data&rdquo;: how big the file is, when it was created and last modified, the type of file, the <em>name</em> of the file&mldr; Basically, think about the data you see when looking in your &ldquo;My Documents&rdquo; folder &ndash; everything except the file preview would be considered metadata. Here&rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &ldquo;third parties&rdquo; seeing it?</p>
 <p><img src=mydocumentsexample.png alt></p>
 <p>But that isn&rsquo;t enough. Since, as far as I know, all major cloud providers are for-profit companies, they are compelled to increase both the amount of users, and the amount of value extracted from each user. That means in addition to the unsavory data brokering, cloud providers have taken a page out of the drug dealer&rsquo;s playbook: offer a taste of free cloud storage as a loss-leader. Once you&rsquo;ve gotten the handy synchronization set up, files gradually accumulate until the quota is hit sometime down the line, and then you get hit with the desktop pop-ups, emails, etc. warning you that <em>you are in danger</em>, your precious files won&rsquo;t be synced unless you pay us to upgrade!</p>
 <p>And at that point, with 5+ GB of data synced and the cloud provider deeply ingrained into your workflow&mldr; what the heck, throw them a few bucks. You&rsquo;re all set now, with up to 2 Terabytes of data storage! Woohoo!</p>
@@ -84,8 +88,9 @@
 <p>If you are technically inclined, I cannot reccomend <a href=https://rclone.org/>rclone</a> enough. This command <a href=https://github.com/mitrichius/hugo-theme-anubisline>https://github.com/mitrichius/hugo-theme-anubisline</a> program (with a <a href=https://rclone.org/gui/>GUI</a> in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don&rsquo;t have to trust your data or metadata to these hosts, because you can configure rclone to <a href=https://rclone.org/crypt/>encrypt</a> the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.</p>
 <p>In this case, you could even look at using a public cloud provider &ndash; all they would see is a bunch of random binary blobs &ndash; but I&rsquo;d still caution against it because providers like Google have been known to flex their &ldquo;we can delete your data at any time for any reason muscles&rdquo; and nuke binary blobs (ostensibly for &ldquo;anti-piracy&rdquo; reasons, as they argue &ldquo;if a customer is hiding their data from us, that <em>must</em> mean its illegal, right?").</p>
 <hr>
-<h2 id=how-to-do-it>How to Do it</h2>
-<p>My personal setup for keeping all of my files across all my devices synced and backed up is this:</p>
+<h2 id=how-to-do-it>How to Do it
+<span><a href=#how-to-do-it>#</a></span>
+</h2><p>My personal setup for keeping all of my files across all my devices synced and backed up is this:</p>
 <ol>
 <li>Each device I have data I want saved is running an instance of Syncthing (see my <a href=/posts/personal-cloud/>last post</a> for more), usually the &ldquo;My Documents&rdquo;, &ldquo;My Pictures&rdquo;, etc folders (or Mac/Linux Equivalents)</li>
 <li>One of the syncthing nodes in my replication network is on my home &ldquo;server&rdquo; (basically a low-end PC with extra hard drives). I have a very small script that I wrote that uploads an encrypted copy of all this syncthing data to <a href=https://www.backblaze.com/>Backblaze</a> on a weekly basis.</li>
@@ -105,11 +110,14 @@
 </ol>
 <p>This, I admit, is still pretty technical, but it is at least approachable for a Windows user. If you absolutely don&rsquo;t want to deal with your own configuration, which I totally understand, then at least use a <em>paid-up-front</em> provider, none of the freemium nonsense. Backblaze, who I use with my manual config, offers an <a href=https://www.backblaze.com/cloud-backup.html>easy solution</a> with <strong>unlimited</strong> storage for $7 a month (not a sponsor, btw). Its more than pocket change, but you can just use a GUI and forget about it. And they aren&rsquo;t the only option. They primarily focus on small business customers, but <a href=https://www.crashplan.com/en-us/pricing/>crashplan</a> will happily offer you backup services for $10 a month &ndash; my work uses them and I&rsquo;ve found it a pretty nice setup.</p>
 <p>Otherwise, I have heard good things about <a href=https://www.svsware.com/rebelbackup>Rebel Backup</a>, but I have not used it myself. It is essentially a user-friendly version of rclone crypt; it encrypts your backups before sending it to Dropbox or Google Drive. Since it sits on top of public cloud providers, my earlier caveat about spontaneous data deletion applies &ndash; though it ameliorates it to a degree by allowing replication on multiple providers (i.e. a copy is sent to both Google Drive <em>and</em> Dropbox). This product requires a $40 one-time purchase. If you use it long enough, that would potentially be a cheaper amortized cost than even my homebrew solution on Backblaze.</p>
-<h2 id=closing-thoughts>Closing Thoughts</h2>
-<h3 id=you-can-always-be-more-paranoid>You can always be more paranoid</h3>
-<p>If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the &ldquo;cloud&rdquo;, its going to be on someone else&rsquo;s computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren&rsquo;t for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.</p>
-<h3 id=the-411>The 411</h3>
-<p>But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:</p>
+<h2 id=closing-thoughts>Closing Thoughts
+<span><a href=#closing-thoughts>#</a></span>
+</h2><h3 id=you-can-always-be-more-paranoid>You can always be more paranoid
+<span><a href=#you-can-always-be-more-paranoid>#</a></span>
+</h3><p>If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the &ldquo;cloud&rdquo;, its going to be on someone else&rsquo;s computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren&rsquo;t for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.</p>
+<h3 id=the-411>The 411
+<span><a href=#the-411>#</a></span>
+</h3><p>But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:</p>
 <ol>
 <li>Use a tool like rclone to automatically encrypt and upload your data to a cloud provider.</li>
 <li>If you don&rsquo;t want to deal with that, use a <em>paid</em> backup tool.</li>
@@ -124,12 +132,12 @@
 <a href=https://www.quentb.com/ class="p-name p-author post-hidden-author h-card" rel=me>Quentin Baker</a>
 <div class=post-taxonomies>
 <ul class=post-tags>
-<li><a href=https://www.quentb.com/tags/privacy>#privacy</a></li>
-<li><a href=https://www.quentb.com/tags/cloud>#cloud</a></li>
-<li><a href=https://www.quentb.com/tags/google>#google</a></li>
-<li><a href=https://www.quentb.com/tags/dropbox>#dropbox</a></li>
-<li><a href=https://www.quentb.com/tags/icloud>#iCloud</a></li>
-<li><a href=https://www.quentb.com/tags/own-data-series>#own-data-series</a></li>
+<li><a href=https://www.quentb.com/tags/privacy/>#privacy</a></li>
+<li><a href=https://www.quentb.com/tags/cloud/>#cloud</a></li>
+<li><a href=https://www.quentb.com/tags/google/>#google</a></li>
+<li><a href=https://www.quentb.com/tags/dropbox/>#dropbox</a></li>
+<li><a href=https://www.quentb.com/tags/icloud/>#iCloud</a></li>
+<li><a href=https://www.quentb.com/tags/own-data-series/>#own-data-series</a></li>
 </ul>
 </div>
 </div>
@@ -149,7 +157,7 @@
 <li><a href=https://github.com/Qrbaker/qrbaker.github.io title="Source Code">Source Code</a></li>
 </ul>
 <div class=copyright>
-<p>© Quentin Baker, 2021<br>
+<p>© Quentin Baker, 2022<br>
 Powered by <a target=_blank rel="noopener noreferrer" href=https://gohugo.io/>Hugo</a>, theme <a target=_blank rel="noopener noreferrer" href=https://github.com/mitrichius/hugo-theme-anubis>Anubis</a>.<br>
 </p>
 </div>

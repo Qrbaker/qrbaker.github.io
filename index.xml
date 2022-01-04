@@ -1,4 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quentin Baker</title><link>https://www.quentb.com/</link><description>Quentin Baker</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 12 Nov 2021 20:22:14 -0400</lastBuildDate><atom:link href="https://www.quentb.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting FreeBSD + xfce4 up and running on Hyper-V</title><link>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</link><pubDate>Fri, 12 Nov 2021 20:22:14 -0400</pubDate><guid>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</guid><description>&lt;p>&lt;img src="freebsd_3.gif" alt="A FreeBSD Banner">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quentin Baker</title><link>https://www.quentb.com/</link><description>Quentin Baker</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 02 Jan 2022 10:24:27 -0400</lastBuildDate><atom:link href="https://www.quentb.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Considering the Philosophy of Squashing</title><link>https://www.quentb.com/posts/git-squashing/</link><pubDate>Sun, 02 Jan 2022 10:24:27 -0400</pubDate><guid>https://www.quentb.com/posts/git-squashing/</guid><description>&lt;p>I have a sort of &amp;ldquo;git philosophy&amp;rdquo; discussion to pose. Recently, I had a massive headache doing an interactive
+rebase because I have a habit of periodically merging upstream master/dev/main/whatever branch commits into my
+working branch to keep the work of resolving merge conflicts to a minimum.&lt;br>
+Unfortunately, when you have the situation of:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\ \
+g----h----i----j----k----l
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i&lt;/code> &amp;ldquo;g&amp;rdquo; will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
+them as &amp;ldquo;picked&amp;rdquo; commits, and you only mark your commits (g/h/i/j/k/l) as &amp;ldquo;squash&amp;rdquo;. I really, really hate the
+idea of effectively changing/rewriting other developer&amp;rsquo;s commits; it can screw up stuff like git logs and git
+blames.&lt;/p>
+&lt;p>My workaround, of sorts, as been to:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>checkout a new branch from the upstream (&lt;code>git checkout -b merge-temp develop&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>do a &amp;ldquo;squash merge&amp;rdquo; to that branch from my working branch (&lt;code>git merge --squash feature/my-branch merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>reset my working branch to the resulting merge commit (&lt;code>git checkout feature/my-branch &amp;amp;&amp;amp; git reset --hard merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Delete the temp branch (&lt;code>git branch -D merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>This basically does the following:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\ \
+g----h----i----j----k----l
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>becomes&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\
+g&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>commits g through l get &amp;ldquo;rolled up&amp;rdquo; into a new commit, g', which can be merged. As a nice side-effect, a
+&lt;code>git merge --squash&lt;/code> produces a very nice &amp;ldquo;squash summary&amp;rdquo; of each commit with its hash, author, and commit
+message in the squash commit message.&lt;/p>
+&lt;hr>
+&lt;p>Now, on doing some more reading about git best practices, this LWN article came to my attention:
+&lt;a href="https://lwn.net/Articles/328436/">https://lwn.net/Articles/328436/&lt;/a>. In it, it talks about how Linus Torvalds handles the Linux kernel merges:&lt;/p>
+&lt;blockquote>
+&lt;p>I want clean history, but that really means (a) clean and (b) history.
+People can (and probably should) rebase their &lt;em>private&lt;/em> trees (their own
+work). That&amp;rsquo;s a &lt;em>cleanup&lt;/em>. But never other peoples code. That&amp;rsquo;s a &amp;ldquo;destroy
+history&amp;rdquo;
+So the history part is fairly easy. There&amp;rsquo;s only one major rule, and one
+minor clarification:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>You must never EVER destroy other peoples history. You must not rebase
+commits other people did. Basically, if it doesn&amp;rsquo;t have your sign-off
+on it, it&amp;rsquo;s off limits: you can&amp;rsquo;t rebase it, because it&amp;rsquo;s not yours.&lt;/p>
+&lt;p>Notice that this really is about other peoples &lt;em>history&lt;/em>, not about
+other peoples &lt;em>code&lt;/em>. If they sent stuff to you as an emailed patch,
+and you applied it with &amp;ldquo;git am -s&amp;rdquo;, then it&amp;rsquo;s their code, but it&amp;rsquo;s
+&lt;em>your&lt;/em> history.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>It seems he feels that (a) people &lt;em>should&lt;/em> squash their local histories before committing upstream,
+and (b) you &lt;strong>should not&lt;/strong> periodically merge from upstream.
+That makes sense when you&amp;rsquo;re dealing with hundreds of commits from dozens of contributors, but what
+about us mere mortal devs, who work with maybe 7 developers
+on a project at a time?&lt;/p>
+&lt;p>I&amp;rsquo;d love to hear other, more experienced devs' thoughts.&lt;/p></description></item><item><title>Getting FreeBSD + xfce4 up and running on Hyper-V</title><link>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</link><pubDate>Fri, 12 Nov 2021 20:22:14 -0400</pubDate><guid>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</guid><description>&lt;p>&lt;img src="freebsd_3.gif" alt="A FreeBSD Banner">
 &lt;img src="hyperv.png" alt="Windows Hyper-V">&lt;/p>
 &lt;p>This document began as a checklist for myself, as I tried and failed repeatedly to get a desktop environment working in FreeBSD inside Hyper-V on Windows. I used to use VMWare Player for hosting BSD, but it is locked down and an extra program to run. A Microsoft employee and personal friend pointed me to Hyper-V Manager, a tool built-in to Windows 10+11 Pro/Enterprise that allows for the easy creation and management of VMs. Did I mention its built-in?&lt;/p>
 &lt;p>FreeBSD has had Hyper-V virtualization support for some time, and is mostly out-of-the-box&amp;hellip; if you are sticking to a virtual terminal. Command line is fine for most users running BSD on Hyper-V, I&amp;rsquo;m sure, but I need a desktop environment to maintain a few BSD desktop packages.&lt;/p>
@@ -8,14 +72,17 @@
 &lt;p>Second is the author of &lt;a href="https://unixsheikh.com/index.html">unixsheikh.com&lt;/a>. This site first &lt;a href="https://unixsheikh.com/articles/freebsd-is-an-amazing-operating-system.html">introduced me to BSD&lt;/a>, &lt;a href="https://unixsheikh.com/articles/why-you-should-migrate-everything-from-linux-to-bsd.html">persuaded me to try it&lt;/a>, and walked me through getting it set up. Many parts of this tutorial are based on a similar tutorial series from here (linked to in the Epilogue). I still use Linux quite a lot, but it isn&amp;rsquo;t the sole OS in my stack, thanks to this site.&lt;/p>
 &lt;p>Anyway, to the good stuff!&lt;/p>
 &lt;hr>
-&lt;h2 id="getting-started">Getting Started&lt;/h2>
-&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its tempation! The .vhd file is setup with a hilariously small size, and resizing paritions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
-&lt;h3 id="hyper-v-setup">Hyper-V Setup&lt;/h3>
-&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
+&lt;h2 id="getting-started">Getting Started
+&lt;span>&lt;a href="#getting-started">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its tempation! The .vhd file is setup with a hilariously small size, and resizing paritions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;h3 id="hyper-v-setup">Hyper-V Setup
+&lt;span>&lt;a href="#hyper-v-setup">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
 &lt;p>Once you&amp;rsquo;ve set up your VM and pointed it to your ISO, go ahead and follow the standard install prompts. If you want a well-written walkthrough of this process, &lt;a href="https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-start">the FreeBSD Handbook has you covered&lt;/a>. In fact, I &lt;strong>highly recommend&lt;/strong> keeping the handbook open in a browser whenever you&amp;rsquo;re trying something new-ish. I like the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/">version with the whole text on one page&lt;/a>: It makes it easy to &lt;code>ctrl&lt;/code>+&lt;code>F&lt;/code> for a term I need clarification on. Fair warning though, it takes a second to load.&lt;/p>
 &lt;p>Anyway, once set up, log in as root (or as your user and then use &lt;code>su&lt;/code>). Going forward, I will denote commands executed as root with a hash symbol (#) and user commands with a dollar sign ($).&lt;/p>
-&lt;h2 id="building-the-base">Building the Base&lt;/h2>
-&lt;p>Once logged in, setup &lt;code>pkg&lt;/code> by running the command &lt;code>pkg&lt;/code> and following the first-time setup prompts.&lt;/p>
+&lt;h2 id="building-the-base">Building the Base
+&lt;span>&lt;a href="#building-the-base">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Once logged in, setup &lt;code>pkg&lt;/code> by running the command &lt;code>pkg&lt;/code> and following the first-time setup prompts.&lt;/p>
 &lt;p>If you intend to do ports development (like I am) you should switch from the default (quarterly) branch to the &amp;ldquo;latest&amp;rdquo; branch for packages.&lt;/p>
 &lt;ol>
 &lt;li>Create a configuration file:&lt;/li>
@@ -56,15 +123,17 @@ fingerprints : &amp;#34;/usr/share/keys/pkg&amp;#34;
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">autoboot_delay&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;2&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;/ul>
-&lt;h2 id="some-other-useful-tools">Some other useful tools&lt;/h2>
-&lt;p>I do most of my text editing in neovim. I still like to use the &lt;code>vim&lt;/code> command though, and I don&amp;rsquo;t like setting up aliases in every single shell/user combo.
+&lt;h2 id="some-other-useful-tools">Some other useful tools
+&lt;span>&lt;a href="#some-other-useful-tools">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>I do most of my text editing in neovim. I still like to use the &lt;code>vim&lt;/code> command though, and I don&amp;rsquo;t like setting up aliases in every single shell/user combo.
 So instead I install neovim, and symlink the &lt;code>nvim&lt;/code> binary file to &lt;code>vim&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg install neovim
 # ln -s /usr/local/bin/nvim /usr/local/bin/vim
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>I also install a couple other utilities at this time:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># pkg install git curl doas
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-doas">Setting up &lt;code>doas&lt;/code>&lt;/h2>
-&lt;p>&lt;code>doas&lt;/code> is basically an alternative tool to &lt;code>sudo&lt;/code> from Linux land. There is also a port of &lt;code>sudo&lt;/code> to the BSDs, but &lt;code>doas&lt;/code> is &lt;a href="https://www.reddit.com/r/freebsd/comments/klqt7k/why_are_people_sold_on_doas/ghgk1rn/">preferred for several reasons&lt;/a>, chief among them safety and ease of configuration&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>.&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setting-up-doas">Setting up &lt;code>doas&lt;/code>
+&lt;span>&lt;a href="#setting-up-doas">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>&lt;code>doas&lt;/code> is basically an alternative tool to &lt;code>sudo&lt;/code> from Linux land. There is also a port of &lt;code>sudo&lt;/code> to the BSDs, but &lt;code>doas&lt;/code> is &lt;a href="https://www.reddit.com/r/freebsd/comments/klqt7k/why_are_people_sold_on_doas/ghgk1rn/">preferred for several reasons&lt;/a>, chief among them safety and ease of configuration&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>.&lt;/p>
 &lt;p>I configure &lt;code>doas&lt;/code> to allow &lt;code>pkg&lt;/code> and shutdown/reboot commands without a password, and other commands with verification. You do this by adding the following to &lt;code>/usr/local/etc/doas.conf&lt;/code>:&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">permit :wheel
 permit nopass :wheel cmd shutdown
@@ -75,16 +144,18 @@ permit nopass jane cmd shutdown
 permit nopass jane cmd pkg
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>(Note that jane has no &amp;ldquo;:&amp;rdquo; before it.)&lt;/p>
 &lt;p>Some versions of BSD (and Linux ports of &lt;code>doas&lt;/code>) also support a &lt;code>persist&lt;/code> keyword, which allows subsequent uses of &lt;code>doas&lt;/code> to not require another password auth for a time, similar to &lt;code>sudo&lt;/code>. FreeBSD does not support this; adding this keyword will do nothing. If you need to do a bunch of commands as root in a row, it is &lt;a href="https://github.com/slicer69/doas/issues/37">recommended&lt;/a> to use &lt;code>doas -s&lt;/code>, run the commands, then &lt;code>exit&lt;/code>.&lt;/p>
-&lt;h2 id="getting-or-giting-ports">Getting (or &lt;code>Git&lt;/code>ing) ports&lt;/h2>
-&lt;p>FreeBSD &lt;em>used&lt;/em> to be distributed on a code management system called subversion, or &lt;code>svn&lt;/code>. There is still some legacy support for this, but all the main code repositories have switched over to using &lt;code>git&lt;/code>. Because of this, I recommend &lt;code>git clone&lt;/code>-ing the Ports tree instead of the old &lt;code>portsnap&lt;/code> method:&lt;/p>
+&lt;h2 id="getting-or-giting-ports">Getting (or &lt;code>Git&lt;/code>ing) ports
+&lt;span>&lt;a href="#getting-or-giting-ports">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>FreeBSD &lt;em>used&lt;/em> to be distributed on a code management system called subversion, or &lt;code>svn&lt;/code>. There is still some legacy support for this, but all the main code repositories have switched over to using &lt;code>git&lt;/code>. Because of this, I recommend &lt;code>git clone&lt;/code>-ing the Ports tree instead of the old &lt;code>portsnap&lt;/code> method:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># git clone https://git.FreeBSD.org/ports.git /usr/ports
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that this downloads the HEAD of the tree, which will be the bleeding edge latest packages. If for some reason, you want to switch to a different quarterly branch (i.e. for stability) you can simply checkout the relevant branch:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"># git -C /usr/ports switch 2020Q4
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Where &lt;code>2020Q4&lt;/code> can be the year and quarter of your preference.&lt;/p>
 &lt;p>This may take a minute. As of writing the Ports tree is just under 1GB in size. This isn&amp;rsquo;t downloading all the code for every package, mind you: the Ports tree is just a bunch of directories that &lt;em>point&lt;/em> to where the code exists on the internet for any given software. It will download and compile the software as you &lt;code>make&lt;/code> a given folder. Still, there are enough packages to make hefty even in this minimal state.&lt;/p>
 &lt;p>At this point, feel free to switch off from root to your user account. We can do everything else with &lt;code>doas&lt;/code> if needed.&lt;/p>
-&lt;h2 id="shell-setup">Shell setup&lt;/h2>
-&lt;p>I like zshell (zsh) with ohmyzsh and the powerlevel10k theme. To add zsh, install the packages:&lt;/p>
+&lt;h2 id="shell-setup">Shell setup
+&lt;span>&lt;a href="#shell-setup">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>I like zshell (zsh) with ohmyzsh and the powerlevel10k theme. To add zsh, install the packages:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ pkg install zsh zsh-completions ohmyzsh
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and switch the root session to zsh by typing &lt;code>zsh&lt;/code>. Then change your normal user&amp;rsquo;s shell to use it by default:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
@@ -96,8 +167,9 @@ $ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zs
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>And finally, set the theme in your user&amp;rsquo;s &lt;code>.zshrc&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">ZSH_THEME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;powerlevel10k/powerlevel10k&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>The next time you log in as your non-root user, p10k will drop you into a configuration wizard.&lt;/p>
-&lt;h2 id="pretty-chrome---installing-the-de">Pretty Chrome - Installing the DE&lt;/h2>
-&lt;p>I like xfce. You can use whatever you prefer, of course, but you&amp;rsquo;ll have to look elsewhere at this point, because this guide is going to go forward with the xfce4 desktop environment. I am also still using &lt;code>xorg&lt;/code> as my display manager, wayland isn&amp;rsquo;t &lt;em>quite&lt;/em> ready for my workflow yet.&lt;/p>
+&lt;h2 id="pretty-chrome---installing-the-de">Pretty Chrome - Installing the DE
+&lt;span>&lt;a href="#pretty-chrome---installing-the-de">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>I like xfce. You can use whatever you prefer, of course, but you&amp;rsquo;ll have to look elsewhere at this point, because this guide is going to go forward with the xfce4 desktop environment. I am also still using &lt;code>xorg&lt;/code> as my display manager, wayland isn&amp;rsquo;t &lt;em>quite&lt;/em> ready for my workflow yet.&lt;/p>
 &lt;p>Start by installing the &lt;code>xfce&lt;/code> package (and optional goodies), plug the X-org server:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pkg install xfce xfce4-goodies xorg
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>At this point, things may be wildly different depending on the hardware you have. Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#x-config-video-cards">FreeBSD Handbook&lt;/a> for information best suited to your video hardware.&lt;/p>
@@ -108,22 +180,27 @@ $ doas make -DBATCH install clean
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">dbus_enable&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;YES&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Add the user(s) that you expect to be using a GUI to the group &lt;code>video&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pw groupmod video -M &amp;lt;user&amp;gt;
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work">Getting the Keyboard to work&lt;/h2>
-&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work">Getting the Keyboard to work
+&lt;span>&lt;a href="#getting-the-keyboard-to-work">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
 &lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code> /etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">sysctl kern.evdev.rcpt_mask&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and do a reboot.&lt;/p>
-&lt;h2 id="getting-to-the-desktop">Getting to the Desktop&lt;/h2>
-&lt;p>Log in as your user, and create a file in your home directory called &lt;code>.xinitrc&lt;/code>. This file tells the Xorg server what to try and launch when you call &lt;code>startx&lt;/code> (or use a Desktop Manager to log in).&lt;/p>
+&lt;h2 id="getting-to-the-desktop">Getting to the Desktop
+&lt;span>&lt;a href="#getting-to-the-desktop">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Log in as your user, and create a file in your home directory called &lt;code>.xinitrc&lt;/code>. This file tells the Xorg server what to try and launch when you call &lt;code>startx&lt;/code> (or use a Desktop Manager to log in).&lt;/p>
 &lt;p>For xfce, we add the following line:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">exec startxfce4
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Now for the fun part. Type &lt;code>startx&lt;/code>, sit back, and wait for things to load. If everything has gone right, you will now be in a default XFCE desktop. Click on the screen area to capture the mouse (&lt;code>ctrl&lt;/code>+&lt;code>alt&lt;/code>+&lt;code>left arrow&lt;/code> releases the mouse again). Try typing in a terminal.&lt;/p>
 &lt;p>At this point, you will be at a basic starting point to experiment with BSD, do some dev work, etc.&lt;/p>
-&lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;h3 id="extra-credit">Extra Credit&lt;/h3>
-&lt;p>If you want to see some more tips and tricks, and try really getting a nice desktop setup, I cannot recommend the &lt;a href="https://unixsheikh.com/tutorials/how-to-setup-freebsd-with-a-riced-desktop-part-1-basic-setup.html">unixsheikh.com how to setup FreeBSD with a riced desktop&lt;/a> series&lt;sup id="fnref:6">&lt;a href="#fn:6" class="footnote-ref" role="doc-noteref">6&lt;/a>&lt;/sup>. If you notice it looks similar to this guide, that isn&amp;rsquo;t a coincidence. I used this guide myself to install FreeBSD and eventually port my first desktop program from Linux.&lt;/p>
-&lt;h3 id="why-bsd-reason-0-the-ports-collection">Why BSD? Reason 0: The Ports Collection&lt;/h3>
-&lt;p>There are a ton of cool features of all the BSDs, each worth considering and exploring. One that we very briefly touched on is the Ports collection. If you followed these steps, you will have already downloaded the Ports tree. The step where I installed the nvidia drivers is a high-level walkthrough of installing a port in itself, but if you want the brief steps:&lt;/p>
+&lt;h2 id="conclusion">Conclusion
+&lt;span>&lt;a href="#conclusion">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;h3 id="extra-credit">Extra Credit
+&lt;span>&lt;a href="#extra-credit">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>If you want to see some more tips and tricks, and try really getting a nice desktop setup, I cannot recommend the &lt;a href="https://unixsheikh.com/tutorials/how-to-setup-freebsd-with-a-riced-desktop-part-1-basic-setup.html">unixsheikh.com how to setup FreeBSD with a riced desktop&lt;/a> series&lt;sup id="fnref:6">&lt;a href="#fn:6" class="footnote-ref" role="doc-noteref">6&lt;/a>&lt;/sup>. If you notice it looks similar to this guide, that isn&amp;rsquo;t a coincidence. I used this guide myself to install FreeBSD and eventually port my first desktop program from Linux.&lt;/p>
+&lt;h3 id="why-bsd-reason-0-the-ports-collection">Why BSD? Reason 0: The Ports Collection
+&lt;span>&lt;a href="#why-bsd-reason-0-the-ports-collection">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>There are a ton of cool features of all the BSDs, each worth considering and exploring. One that we very briefly touched on is the Ports collection. If you followed these steps, you will have already downloaded the Ports tree. The step where I installed the nvidia drivers is a high-level walkthrough of installing a port in itself, but if you want the brief steps:&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>Find the name of your desired app and its category. &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#ports-finding-applications">There are multiple ways to find a package&lt;/a>, but I like to use the &lt;code>pkg search -o&lt;/code> command:&lt;/p>
@@ -175,8 +252,9 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;/ol>
 &lt;/section></description></item><item><title>OYD Chapter 2: DIY Cloud Backup</title><link>https://www.quentb.com/posts/diy-cloud-backup/</link><pubDate>Tue, 19 Oct 2021 13:55:24 -0400</pubDate><guid>https://www.quentb.com/posts/diy-cloud-backup/</guid><description>&lt;p>&lt;em>This is part of my ongoing series on Owning Your Data. &lt;a href="https://www.quentb.com/posts/own-data-intro/">Check out the prologue here&lt;/a>!&lt;/em>&lt;/p>
 &lt;hr>
-&lt;h2 id="money-traps">Money Traps&lt;/h2>
-&lt;p>At the heart of the popular cloud solution allure is that they are &lt;em>free&lt;/em>. Well, free at first (we will get into that later).&lt;/p>
+&lt;h2 id="money-traps">Money Traps
+&lt;span>&lt;a href="#money-traps">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>At the heart of the popular cloud solution allure is that they are &lt;em>free&lt;/em>. Well, free at first (we will get into that later).&lt;/p>
 &lt;p>There is a now oft-quoted statement first popularized by security expert Bruch Schneier. In 2010, &lt;a href="https://www.information-age.com/facebook-is-deliberately-killing-privacy-says-schneier-1290603/">he quite presciently said at a security conference&lt;/a>, &amp;ldquo;Don’t make the mistake of thinking you’re Facebook’s customer, you’re not – you’re the product. Its customers are the advertisers.&amp;rdquo;&lt;/p>
 &lt;p>While I admit this has been overused and abused, it sticks because for a lot of free internet offerings, its right. Cloud is a bit of a conundrum for this model, though. While social media may have slipped the wool over the eyes of society and somehow convinced the majority of the public that its somehow okay, even normal to just give away all your info for free in a social context, people are at least suspicious of the technique when applied to their hard drive contents.&lt;/p>
 &lt;p>I mean, even if you don&amp;rsquo;t immediately think of some embarrassing document, are you 100% certain that there &lt;em>isn&amp;rsquo;t&lt;/em> a textfile buried 5 folders deep somewhere containing your &lt;a href="https://xkcd.com/1360/">middle school love poetry&lt;/a>?&lt;/p>
@@ -191,8 +269,9 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;li>iCloud (Apple), Microsoft and Google reserve the right to delete any of your data, with &lt;em>no notice&lt;/em>, and for &lt;em>no reason&lt;/em>.&lt;/li>
 &lt;li>All of these providers track your location and other &amp;ldquo;metadata&amp;rdquo;, and share it with third parties.&lt;/li>
 &lt;/ul>
-&lt;h2 id="meta-">Meta-&lt;/h2>
-&lt;p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &amp;ldquo;data about the data&amp;rdquo;: how big the file is, when it was created and last modified, the type of file, the &lt;em>name&lt;/em> of the file&amp;hellip; Basically, think about the data you see when looking in your &amp;ldquo;My Documents&amp;rdquo; folder &amp;ndash; everything except the file preview would be considered metadata. Here&amp;rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &amp;ldquo;third parties&amp;rdquo; seeing it?&lt;/p>
+&lt;h2 id="meta-">Meta-
+&lt;span>&lt;a href="#meta-">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &amp;ldquo;data about the data&amp;rdquo;: how big the file is, when it was created and last modified, the type of file, the &lt;em>name&lt;/em> of the file&amp;hellip; Basically, think about the data you see when looking in your &amp;ldquo;My Documents&amp;rdquo; folder &amp;ndash; everything except the file preview would be considered metadata. Here&amp;rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &amp;ldquo;third parties&amp;rdquo; seeing it?&lt;/p>
 &lt;p>&lt;img src="mydocumentsexample.png" alt="">&lt;/p>
 &lt;p>But that isn&amp;rsquo;t enough. Since, as far as I know, all major cloud providers are for-profit companies, they are compelled to increase both the amount of users, and the amount of value extracted from each user. That means in addition to the unsavory data brokering, cloud providers have taken a page out of the drug dealer&amp;rsquo;s playbook: offer a taste of free cloud storage as a loss-leader. Once you&amp;rsquo;ve gotten the handy synchronization set up, files gradually accumulate until the quota is hit sometime down the line, and then you get hit with the desktop pop-ups, emails, etc. warning you that &lt;em>you are in danger&lt;/em>, your precious files won&amp;rsquo;t be synced unless you pay us to upgrade!&lt;/p>
 &lt;p>And at that point, with 5+ GB of data synced and the cloud provider deeply ingrained into your workflow&amp;hellip; what the heck, throw them a few bucks. You&amp;rsquo;re all set now, with up to 2 Terabytes of data storage! Woohoo!&lt;/p>
@@ -200,8 +279,9 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;p>If you are technically inclined, I cannot reccomend &lt;a href="https://rclone.org/">rclone&lt;/a> enough. This command &lt;a href="https://github.com/mitrichius/hugo-theme-anubisline">https://github.com/mitrichius/hugo-theme-anubisline&lt;/a> program (with a &lt;a href="https://rclone.org/gui/">GUI&lt;/a> in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don&amp;rsquo;t have to trust your data or metadata to these hosts, because you can configure rclone to &lt;a href="https://rclone.org/crypt/">encrypt&lt;/a> the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.&lt;/p>
 &lt;p>In this case, you could even look at using a public cloud provider &amp;ndash; all they would see is a bunch of random binary blobs &amp;ndash; but I&amp;rsquo;d still caution against it because providers like Google have been known to flex their &amp;ldquo;we can delete your data at any time for any reason muscles&amp;rdquo; and nuke binary blobs (ostensibly for &amp;ldquo;anti-piracy&amp;rdquo; reasons, as they argue &amp;ldquo;if a customer is hiding their data from us, that &lt;em>must&lt;/em> mean its illegal, right?&amp;quot;).&lt;/p>
 &lt;hr>
-&lt;h2 id="how-to-do-it">How to Do it&lt;/h2>
-&lt;p>My personal setup for keeping all of my files across all my devices synced and backed up is this:&lt;/p>
+&lt;h2 id="how-to-do-it">How to Do it
+&lt;span>&lt;a href="#how-to-do-it">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>My personal setup for keeping all of my files across all my devices synced and backed up is this:&lt;/p>
 &lt;ol>
 &lt;li>Each device I have data I want saved is running an instance of Syncthing (see my &lt;a href="https://www.quentb.com/posts/personal-cloud/">last post&lt;/a> for more), usually the &amp;ldquo;My Documents&amp;rdquo;, &amp;ldquo;My Pictures&amp;rdquo;, etc folders (or Mac/Linux Equivalents)&lt;/li>
 &lt;li>One of the syncthing nodes in my replication network is on my home &amp;ldquo;server&amp;rdquo; (basically a low-end PC with extra hard drives). I have a very small script that I wrote that uploads an encrypted copy of all this syncthing data to &lt;a href="https://www.backblaze.com/">Backblaze&lt;/a> on a weekly basis.&lt;/li>
@@ -221,11 +301,14 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;/ol>
 &lt;p>This, I admit, is still pretty technical, but it is at least approachable for a Windows user. If you absolutely don&amp;rsquo;t want to deal with your own configuration, which I totally understand, then at least use a &lt;em>paid-up-front&lt;/em> provider, none of the freemium nonsense. Backblaze, who I use with my manual config, offers an &lt;a href="https://www.backblaze.com/cloud-backup.html">easy solution&lt;/a> with &lt;strong>unlimited&lt;/strong> storage for $7 a month (not a sponsor, btw). Its more than pocket change, but you can just use a GUI and forget about it. And they aren&amp;rsquo;t the only option. They primarily focus on small business customers, but &lt;a href="https://www.crashplan.com/en-us/pricing/">crashplan&lt;/a> will happily offer you backup services for $10 a month &amp;ndash; my work uses them and I&amp;rsquo;ve found it a pretty nice setup.&lt;/p>
 &lt;p>Otherwise, I have heard good things about &lt;a href="https://www.svsware.com/rebelbackup">Rebel Backup&lt;/a>, but I have not used it myself. It is essentially a user-friendly version of rclone crypt; it encrypts your backups before sending it to Dropbox or Google Drive. Since it sits on top of public cloud providers, my earlier caveat about spontaneous data deletion applies &amp;ndash; though it ameliorates it to a degree by allowing replication on multiple providers (i.e. a copy is sent to both Google Drive &lt;em>and&lt;/em> Dropbox). This product requires a $40 one-time purchase. If you use it long enough, that would potentially be a cheaper amortized cost than even my homebrew solution on Backblaze.&lt;/p>
-&lt;h2 id="closing-thoughts">Closing Thoughts&lt;/h2>
-&lt;h3 id="you-can-always-be-more-paranoid">You can always be more paranoid&lt;/h3>
-&lt;p>If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the &amp;ldquo;cloud&amp;rdquo;, its going to be on someone else&amp;rsquo;s computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren&amp;rsquo;t for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.&lt;/p>
-&lt;h3 id="the-411">The 411&lt;/h3>
-&lt;p>But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:&lt;/p>
+&lt;h2 id="closing-thoughts">Closing Thoughts
+&lt;span>&lt;a href="#closing-thoughts">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;h3 id="you-can-always-be-more-paranoid">You can always be more paranoid
+&lt;span>&lt;a href="#you-can-always-be-more-paranoid">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the &amp;ldquo;cloud&amp;rdquo;, its going to be on someone else&amp;rsquo;s computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren&amp;rsquo;t for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.&lt;/p>
+&lt;h3 id="the-411">The 411
+&lt;span>&lt;a href="#the-411">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:&lt;/p>
 &lt;ol>
 &lt;li>Use a tool like rclone to automatically encrypt and upload your data to a cloud provider.&lt;/li>
 &lt;li>If you don&amp;rsquo;t want to deal with that, use a &lt;em>paid&lt;/em> backup tool.&lt;/li>
@@ -240,8 +323,9 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 (relatively) easy to set up, has predictable costs, and produces lots of &lt;em>recurring&lt;/em> revenue.&lt;/p>
 &lt;p>In this first dive into personal data ownership, I&amp;rsquo;m going to walk through setting up and using an open-source
 alternative to offerings like Dropbox and iCloud: &lt;a href="https://syncthing.net/">Syncthing&lt;/a>.&lt;/p>
-&lt;h2 id="moving-stuff-around">Moving stuff around&lt;/h2>
-&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
+&lt;h2 id="moving-stuff-around">Moving stuff around
+&lt;span>&lt;a href="#moving-stuff-around">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
 actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
 &amp;ldquo;number cards&amp;rdquo; to automate complex weaving patterns in looms.&lt;/p>
 &lt;p>&lt;img src="loom.webp" alt="An automatic Loom">&lt;/p>
@@ -269,8 +353,9 @@ snooping (beyond some &lt;a href="https://www.apple.com/child-safety/pdf/CSAM_De
 of &amp;ldquo;checking without looking&amp;rdquo; for stuff like illegal material). But do we really have to just stop at mights and maybes?
 What if we could short-circuit this whole thing and make the magical transfers happen without the ugly in-between
 process?&lt;/p>
-&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud&lt;/h2>
-&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
+&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud
+&lt;span>&lt;a href="#my-first-try-nextcloud">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
 online productivity suite can offer (think Google Drive), the main name in the do-it-yourself space has got to be
 &lt;a href="https://nextcloud.com/">Nextcloud&lt;/a>.&lt;/p>
 &lt;p>I ran my own Nextcloud server on a home computer, and then a purpose-built NAS, for a few years. But I need to worry
@@ -294,8 +379,9 @@ private cloud.&lt;/p>
 &lt;p>Nextcloud does point you toward &lt;a href="https://nextcloud.com/signup/">preexisting free providers&lt;/a>, and I guess I&amp;rsquo;m a bit more
 comfortable knowing that if I really, &lt;em>really&lt;/em> wanted to I could look at their source code, but this seems like going
 back to Google Drive with a nice coat of paint.&lt;/p>
-&lt;h2 id="the-current-setup">The Current Setup&lt;/h2>
-&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
+&lt;h2 id="the-current-setup">The Current Setup
+&lt;span>&lt;a href="#the-current-setup">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
 However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
 I won&amp;rsquo;t mind. What I stand to gain is much better.&lt;/p>
 &lt;p>Syncthing seeks to replicate the original promise of a tool like Dropbox: you have a folder or folders that you want to
@@ -371,8 +457,9 @@ monolithic. I wish I could look back and see the last time I had used Google Chr
 couple years.&lt;/p>
 &lt;p>Something changed. If I as a user were a frog, I guess I finally decided the water is too hot. But now, stepping out of
 these massive ecosystems is proving to be much harder than it was diving in.&lt;/p>
-&lt;h2 id="winning-back-your-data">Winning Back your Data&lt;/h2>
-&lt;p>The modern privacy landscape is a &lt;em>wreck&lt;/em>. This is not exactly a controversial statement. In fact, I&amp;rsquo;d wager the general
+&lt;h2 id="winning-back-your-data">Winning Back your Data
+&lt;span>&lt;a href="#winning-back-your-data">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>The modern privacy landscape is a &lt;em>wreck&lt;/em>. This is not exactly a controversial statement. In fact, I&amp;rsquo;d wager the general
 response to that sentence is not disagreement, but a tired shrug. Yeah, Facebook, Google et. al. own our lives &amp;ndash; that
 is just the choice we made as a society in exchange for all the cool free stuff, including:&lt;/p>
 &lt;ul>
@@ -387,8 +474,9 @@ information from anywhere to anyone at the speed of light, kludging a quick solu
 capitalism, and then refusing to move on from the kludge.&lt;/p>
 &lt;p>I do think that the era of advertising-funded free services is approaching a fork in the road, where it will either
 effectively end for anything but the most trivial of services, or morph into something even darker.&lt;/p>
-&lt;h2 id="fighting-the-fatigue">Fighting the Fatigue&lt;/h2>
-&lt;p>Be it Climate Change, Polarization of Society, or Electronic Privacy, it is easy to get decision fatigue and give up.
+&lt;h2 id="fighting-the-fatigue">Fighting the Fatigue
+&lt;span>&lt;a href="#fighting-the-fatigue">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Be it Climate Change, Polarization of Society, or Electronic Privacy, it is easy to get decision fatigue and give up.
 Sure, there are many, many ways to opt out of the circus; lots of weird geeks on the internet have produced guides on
 how to do so that are simultaneously uncomfortably complex and yet full of unaddressed questions or assumed knowledge.&lt;/p>
 &lt;p>I don&amp;rsquo;t blame the average user for not wanting to wade into it.&lt;/p>
@@ -399,16 +487,18 @@ have felt increasingly uncomfortable about the stuff you have heard or seen from
 Google Maps on your phone and signed in, maybe you came across the &lt;a href="https://www.google.com/maps/timeline">Google Maps
 Timeline&lt;/a> and after erasing it as fast as you could, started looking for at least
 a way to get &lt;em>some&lt;/em> of your life and data in your own hands.&lt;/p>
-&lt;h3 id="a-series">A Series&lt;/h3>
-&lt;p>I feel a sense of obligation. I am a software engineer; I see the sausage get made and I can credit my livelihood in
+&lt;h3 id="a-series">A Series
+&lt;span>&lt;a href="#a-series">#&lt;/a>&lt;/span>
+&lt;/h3>&lt;p>I feel a sense of obligation. I am a software engineer; I see the sausage get made and I can credit my livelihood in
 part to the work and profit of this industry. What I can offer is not a complete &amp;ldquo;hermetic seal&amp;rdquo; solution, but rather
 steps that are easy to take, require minimum maintenance, and set you up to take additional steps away from the public,
 ad-supported cloud when or if you feel ready.&lt;/p>
 &lt;p>I will be tagging all the posts relating to this with the
 &amp;ldquo;&lt;a href="https://www.quentb.com/tags/own-data-series">own-data-series&lt;/a>&amp;rdquo; tag, so you can find it all in one place.&lt;/p>
 &lt;p>So long for now,&lt;/p>
-&lt;p>Quentin&lt;/p></description></item><item><title>Introductions</title><link>https://www.quentb.com/posts/introductions/</link><pubDate>Tue, 05 Oct 2021 21:57:27 -0400</pubDate><guid>https://www.quentb.com/posts/introductions/</guid><description>&lt;h2 id="a-new-new-new-new-blog">A new new new (new?) Blog&lt;/h2>
-&lt;p>Randall Munroe, among others, has noted the chronic problem of content producers who can&amp;rsquo;t commit.
+&lt;p>Quentin&lt;/p></description></item><item><title>Introductions</title><link>https://www.quentb.com/posts/introductions/</link><pubDate>Tue, 05 Oct 2021 21:57:27 -0400</pubDate><guid>https://www.quentb.com/posts/introductions/</guid><description>&lt;h2 id="a-new-new-new-new-blog">A new new new (new?) Blog
+&lt;span>&lt;a href="#a-new-new-new-new-blog">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Randall Munroe, among others, has noted the chronic problem of content producers who can&amp;rsquo;t commit.
 &lt;img src="https://imgs.xkcd.com/comics/superlative.png" alt="xkcd comic #621" title="Stay while I recount the crazy TF2 kill I managed
 yesterday, my friends.">&lt;/p>
 &lt;p>I&amp;rsquo;m not going to try and promise I&amp;rsquo;ll post a lot, or even that this blog won&amp;rsquo;t go stale, disappear, and maybe be
@@ -421,8 +511,9 @@ literally the entire world.&lt;/p>
 &lt;p>Here, in brief, is what I&amp;rsquo;d like to offer you. If you think that any of this sounds interesting, I invite you to
 bookmark this site, subscribe to the RSS feed (yes those still exist) or just set a calendar event a couple months out
 to &amp;ldquo;go see what Quentin wrote, if anything&amp;rdquo;.&lt;/p>
-&lt;h2 id="while-supplies-last">While Supplies Last&lt;/h2>
-&lt;p>On this blog, I will write about the utterly, painfully mundane. I may write about trying to color match the carpet in my
+&lt;h2 id="while-supplies-last">While Supplies Last
+&lt;span>&lt;a href="#while-supplies-last">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>On this blog, I will write about the utterly, painfully mundane. I may write about trying to color match the carpet in my
 apartment.&lt;/p>
 &lt;p>I will write about technology. Its in my nature to buzz around the newest gadgets like a moth around lamps.&lt;/p>
 &lt;p>I will probably write a few semi-serious reviews of stuff. This may be books, my newest headphones, my car, or the local
@@ -1770,8 +1861,9 @@ text-align: left
 &lt;/table></description></item><item><title>About Quentin</title><link>https://www.quentb.com/about/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>https://www.quentb.com/about/</guid><description>&lt;p>Hello there!&lt;/p>
 &lt;p>I&amp;rsquo;m a Software Engineer and writer. In my free time, I like to experiment with cooking, ponder life&amp;rsquo;s many mysteries, and hang out with my Rabbits.&lt;/p>
 &lt;p>(&lt;a href="https://www.quentb.com/resume">Check out my Resume&lt;/a>)&lt;/p>
-&lt;h2 id="see-also">See Also&lt;/h2>
-&lt;ul>
+&lt;h2 id="see-also">See Also
+&lt;span>&lt;a href="#see-also">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;ul>
 &lt;li>&lt;a href="https://dotbun.com">Dotbun&lt;/a> - A fun test of AWS serverless, CDNs, and modern web standards. 🐰&lt;/li>
 &lt;/ul></description></item><item><title>Moving out and Losing Keys</title><link>https://www.quentb.com/old_blog/losing-keys/</link><pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate><guid>https://www.quentb.com/old_blog/losing-keys/</guid><description>&lt;p>&lt;em>Nota bene: This is a post manually carried forward from an older iteration of my blog. It may not match the tone or
 topic of my more recent posts.&lt;/em>&lt;/p>
@@ -1838,8 +1930,9 @@ grand revelations from God delivered the good old fashioned, Old Testament way, 
 crazy as the inside.&lt;/p></description></item><item><title>Review: Architecture of Happiness</title><link>https://www.quentb.com/old_blog/arch-of-happiness-review/</link><pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate><guid>https://www.quentb.com/old_blog/arch-of-happiness-review/</guid><description>&lt;p>&lt;em>Nota bene: This is a post manually carried forward from an older iteration of my blog. It may not match the tone or
 topic of my more recent posts.&lt;/em>&lt;/p>
 &lt;hr>
-&lt;h4 id="remembering-who-we-are-a-review-of-the-architecture-of-happiness">Remembering Who We Are: A Review of The Architecture of Happiness&lt;/h4>
-&lt;p>In &lt;em>The Architecture of Happiness&lt;/em>, by Alain de Botton, the reader may find several different books intertwined: A cursory glance finds a historic overview of Architecture and its changing sensibilities, while a thorough reading reveals additional forays from the authors point of view as they walk with us through their personal discovery of what they find appealing or disconcerting about the buildings they encounter around the world. Both stories ring true, each contributing to a larger goal, a plea from the author:&lt;/p>
+&lt;h4 id="remembering-who-we-are-a-review-of-the-architecture-of-happiness">Remembering Who We Are: A Review of The Architecture of Happiness
+&lt;span>&lt;a href="#remembering-who-we-are-a-review-of-the-architecture-of-happiness">#&lt;/a>&lt;/span>
+&lt;/h4>&lt;p>In &lt;em>The Architecture of Happiness&lt;/em>, by Alain de Botton, the reader may find several different books intertwined: A cursory glance finds a historic overview of Architecture and its changing sensibilities, while a thorough reading reveals additional forays from the authors point of view as they walk with us through their personal discovery of what they find appealing or disconcerting about the buildings they encounter around the world. Both stories ring true, each contributing to a larger goal, a plea from the author:&lt;/p>
 &lt;blockquote>
 &lt;p>We owe it to the fields that our houses will not be inferiors of the virgin land they have replaced. We owe it to the worms and the trees that the buildings we cover them in will stand as promises of the highest and most intelligent kinds of happiness.&lt;/p>
 &lt;/blockquote>

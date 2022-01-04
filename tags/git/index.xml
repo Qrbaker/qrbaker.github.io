@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on Quentin Baker</title><link>https://www.quentb.com/tags/git/</link><description>Quentin Baker (git)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 02 Jan 2022 10:24:27 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Considering the Philosophy of Squashing</title><link>https://www.quentb.com/posts/git-squashing/</link><pubDate>Sun, 02 Jan 2022 10:24:27 -0400</pubDate><guid>https://www.quentb.com/posts/git-squashing/</guid><description>&lt;p>I have a sort of &amp;ldquo;git philosophy&amp;rdquo; discussion to pose. Recently, I had a massive headache doing an interactive
+rebase because I have a habit of periodically merging upstream master/dev/main/whatever branch commits into my
+working branch to keep the work of resolving merge conflicts to a minimum.&lt;br>
+Unfortunately, when you have the situation of:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\ \
+g----h----i----j----k----l
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i&lt;/code> &amp;ldquo;g&amp;rdquo; will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
+them as &amp;ldquo;picked&amp;rdquo; commits, and you only mark your commits (g/h/i/j/k/l) as &amp;ldquo;squash&amp;rdquo;. I really, really hate the
+idea of effectively changing/rewriting other developer&amp;rsquo;s commits; it can screw up stuff like git logs and git
+blames.&lt;/p>
+&lt;p>My workaround, of sorts, as been to:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>checkout a new branch from the upstream (&lt;code>git checkout -b merge-temp develop&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>do a &amp;ldquo;squash merge&amp;rdquo; to that branch from my working branch (&lt;code>git merge --squash feature/my-branch merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>reset my working branch to the resulting merge commit (&lt;code>git checkout feature/my-branch &amp;amp;&amp;amp; git reset --hard merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Delete the temp branch (&lt;code>git branch -D merge-temp&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>This basically does the following:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\ \
+g----h----i----j----k----l
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>becomes&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
+\
+g&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>commits g through l get &amp;ldquo;rolled up&amp;rdquo; into a new commit, g', which can be merged. As a nice side-effect, a
+&lt;code>git merge --squash&lt;/code> produces a very nice &amp;ldquo;squash summary&amp;rdquo; of each commit with its hash, author, and commit
+message in the squash commit message.&lt;/p>
+&lt;hr>
+&lt;p>Now, on doing some more reading about git best practices, this LWN article came to my attention:
+&lt;a href="https://lwn.net/Articles/328436/">https://lwn.net/Articles/328436/&lt;/a>. In it, it talks about how Linus Torvalds handles the Linux kernel merges:&lt;/p>
+&lt;blockquote>
+&lt;p>I want clean history, but that really means (a) clean and (b) history.
+People can (and probably should) rebase their &lt;em>private&lt;/em> trees (their own
+work). That&amp;rsquo;s a &lt;em>cleanup&lt;/em>. But never other peoples code. That&amp;rsquo;s a &amp;ldquo;destroy
+history&amp;rdquo;
+So the history part is fairly easy. There&amp;rsquo;s only one major rule, and one
+minor clarification:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>You must never EVER destroy other peoples history. You must not rebase
+commits other people did. Basically, if it doesn&amp;rsquo;t have your sign-off
+on it, it&amp;rsquo;s off limits: you can&amp;rsquo;t rebase it, because it&amp;rsquo;s not yours.&lt;/p>
+&lt;p>Notice that this really is about other peoples &lt;em>history&lt;/em>, not about
+other peoples &lt;em>code&lt;/em>. If they sent stuff to you as an emailed patch,
+and you applied it with &amp;ldquo;git am -s&amp;rdquo;, then it&amp;rsquo;s their code, but it&amp;rsquo;s
+&lt;em>your&lt;/em> history.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>It seems he feels that (a) people &lt;em>should&lt;/em> squash their local histories before committing upstream,
+and (b) you &lt;strong>should not&lt;/strong> periodically merge from upstream.
+That makes sense when you&amp;rsquo;re dealing with hundreds of commits from dozens of contributors, but what
+about us mere mortal devs, who work with maybe 7 developers
+on a project at a time?&lt;/p>
+&lt;p>I&amp;rsquo;d love to hear other, more experienced devs' thoughts.&lt;/p></description></item></channel></rss>

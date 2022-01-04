@@ -6,8 +6,9 @@
 (relatively) easy to set up, has predictable costs, and produces lots of &lt;em>recurring&lt;/em> revenue.&lt;/p>
 &lt;p>In this first dive into personal data ownership, I&amp;rsquo;m going to walk through setting up and using an open-source
 alternative to offerings like Dropbox and iCloud: &lt;a href="https://syncthing.net/">Syncthing&lt;/a>.&lt;/p>
-&lt;h2 id="moving-stuff-around">Moving stuff around&lt;/h2>
-&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
+&lt;h2 id="moving-stuff-around">Moving stuff around
+&lt;span>&lt;a href="#moving-stuff-around">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
 actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
 &amp;ldquo;number cards&amp;rdquo; to automate complex weaving patterns in looms.&lt;/p>
 &lt;p>&lt;img src="loom.webp" alt="An automatic Loom">&lt;/p>
@@ -35,8 +36,9 @@ snooping (beyond some &lt;a href="https://www.apple.com/child-safety/pdf/CSAM_De
 of &amp;ldquo;checking without looking&amp;rdquo; for stuff like illegal material). But do we really have to just stop at mights and maybes?
 What if we could short-circuit this whole thing and make the magical transfers happen without the ugly in-between
 process?&lt;/p>
-&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud&lt;/h2>
-&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
+&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud
+&lt;span>&lt;a href="#my-first-try-nextcloud">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
 online productivity suite can offer (think Google Drive), the main name in the do-it-yourself space has got to be
 &lt;a href="https://nextcloud.com/">Nextcloud&lt;/a>.&lt;/p>
 &lt;p>I ran my own Nextcloud server on a home computer, and then a purpose-built NAS, for a few years. But I need to worry
@@ -60,8 +62,9 @@ private cloud.&lt;/p>
 &lt;p>Nextcloud does point you toward &lt;a href="https://nextcloud.com/signup/">preexisting free providers&lt;/a>, and I guess I&amp;rsquo;m a bit more
 comfortable knowing that if I really, &lt;em>really&lt;/em> wanted to I could look at their source code, but this seems like going
 back to Google Drive with a nice coat of paint.&lt;/p>
-&lt;h2 id="the-current-setup">The Current Setup&lt;/h2>
-&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
+&lt;h2 id="the-current-setup">The Current Setup
+&lt;span>&lt;a href="#the-current-setup">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
 However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
 I won&amp;rsquo;t mind. What I stand to gain is much better.&lt;/p>
 &lt;p>Syncthing seeks to replicate the original promise of a tool like Dropbox: you have a folder or folders that you want to
