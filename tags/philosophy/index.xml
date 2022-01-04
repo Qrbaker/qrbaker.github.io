@@ -5,7 +5,7 @@ Unfortunately, when you have the situation of:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
 \ \
 g----h----i----j----k----l
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i&lt;/code> &amp;ldquo;g&amp;rdquo; will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i g&lt;/code> will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
 them as &amp;ldquo;picked&amp;rdquo; commits, and you only mark your commits (g/h/i/j/k/l) as &amp;ldquo;squash&amp;rdquo;. I really, really hate the
 idea of effectively changing/rewriting other developer&amp;rsquo;s commits; it can screw up stuff like git logs and git
 blames.&lt;/p>

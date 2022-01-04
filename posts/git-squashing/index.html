@@ -66,7 +66,7 @@ Unfortunately, when you have the situation of:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>a----b----c----d----e----f
                 \         \
         g----h----i----j----k----l
-</code></pre></div><p>doing something like <code>git rebase -i</code> &ldquo;g&rdquo; will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
+</code></pre></div><p>doing something like <code>git rebase -i g</code> will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
 them as &ldquo;picked&rdquo; commits, and you only mark your commits (g/h/i/j/k/l) as &ldquo;squash&rdquo;. I really, really hate the
 idea of effectively changing/rewriting other developer&rsquo;s commits; it can screw up stuff like git logs and git
 blames.</p>
