@@ -6,7 +6,7 @@ summary: 'Linear history at what cost? If we should clean up our local histories
 draft: false 
 ---
 
-*Editor's Note: I don't* like *having to squash or rebase commits into a linear history. I am just operating in an environment where this is a dictated requirement. The rest of the post continues with the assumption that this preference is non-negotiable.*
+*Editor's Note: I don't like having to squash or rebase commits into a linear history. I am just operating in an environment where this is a dictated requirement. The rest of the post continues with the assumption that this preference is non-negotiable.*
 
 ---
 
