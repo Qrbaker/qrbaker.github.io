@@ -12,7 +12,7 @@ juggernaut on the verge of becoming *the* internet browser; instead it was intro
 comic book](https://www.google.com/googlebooks/chrome/index.html), had bright blue colors and an icon that imparted a sense of futuristic alien tech, as if it had fallen from
 the sky into the office of a bunch of Google hackers, who gifted it to the world.
 
-![The original Google Chrome icon](old_chrome_icon_small.webp "Gotta Catch 'em All?") 
+![The original Google Chrome icon](old_chrome_icon_small.webp "Gotta Catch 'em All?")
 
 Around the same time, my sisters migrated off their MySpace accounts, following their friends to a hot new site that had
 finally opened the doors to non-college students called "Facebook".
@@ -23,7 +23,7 @@ that would fade fast.
 
 My close friend in high school got accepted into a crazy beta where Google was handing out [free
 laptops](https://en.wikipedia.org/wiki/Chromebook#Cr-48) and merely asking for feedback in return. He showed it running this
-exciting new Linux-based OS that Google was working on. 
+exciting new Linux-based OS that Google was working on.
 
 ---
 
@@ -51,7 +51,7 @@ information from anywhere to anyone at the speed of light, kludging a quick solu
 capitalism, and then refusing to move on from the kludge.
 
 I do think that the era of advertising-funded free services is approaching a fork in the road, where it will either
-effectively end for anything but the most trivial of services, or morph into something even darker. 
+effectively end for anything but the most trivial of services, or morph into something even darker.
 
 ## Fighting the Fatigue
 
@@ -59,7 +59,7 @@ Be it Climate Change, Polarization of Society, or Electronic Privacy, it is easy
 Sure, there are many, many ways to opt out of the circus; lots of weird geeks on the internet have produced guides on
 how to do so that are simultaneously uncomfortably complex and yet full of unaddressed questions or assumed knowledge.
 
-I don't blame the average user for not wanting to wade into it. 
+I don't blame the average user for not wanting to wade into it.
 
 If we want to change the direction things are headed, it requires more than individual action. We ultimately may need
 the State to step in and fix things, and that opens up a big can of worms that is out of scope for this essay.
@@ -83,4 +83,3 @@ I will be tagging all the posts relating to this with the
 So long for now,
 
 Quentin
-

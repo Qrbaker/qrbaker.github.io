@@ -52,8 +52,8 @@ only able to see your data, they are methodically combing through it at the behe
 some really bad cases, curious employees.
 
 There are a lot of really great tools to limit this. I would comfortably say that any major provider is *probably* not
-snooping (beyond some [creative ways](https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf)ᵖᵈᶠ 
-of "checking without looking" for stuff like illegal material). But do we really have to just stop at mights and maybes? 
+snooping (beyond some [creative ways](https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf)ᵖᵈᶠ
+of "checking without looking" for stuff like illegal material). But do we really have to just stop at mights and maybes?
 What if we could short-circuit this whole thing and make the magical transfers happen without the ugly in-between
 process?
 
@@ -65,7 +65,7 @@ online productivity suite can offer (think Google Drive), the main name in the d
 
 I ran my own Nextcloud server on a home computer, and then a purpose-built NAS, for a few years. But I need to worry
 about sharing files only once in a blue moon, and I was using a lot of resources to run this thing. It is also brittle;
-you cannot set-and-forget this sort of thing. 
+you cannot set-and-forget this sort of thing.
 
 I could manage it with only an hour here or there of work, but getting computers to do stuff is my day job. I sat down
 and reconsidered what I really *needed*, and got this:
@@ -109,7 +109,7 @@ support:
 * And Linux as always has a plethora of options. The most popular seems to be the cross-platform
   [syncthingtray](https://github.com/Martchus/syncthingtray)
 
-There are others as well, including for iPhone and Android, listed in the Syncthing documentation: https://docs.syncthing.net/users/contrib.html#contributions
+There are others as well, including for iPhone and Android, listed in the Syncthing documentation: <https://docs.syncthing.net/users/contrib.html#contributions>
 
 Using Syncthing is disarmingly straightforward. I was sure I missed a step setting it up, but nope! I just install a
 copy of Syncthing on the computers I want to distribute files among. Then, to get the party started you exchange each

@@ -58,3 +58,8 @@ params:
     name: Qrbaker
   - id: linkedin
     name: quentin-baker
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

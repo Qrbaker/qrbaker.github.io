@@ -9,8 +9,8 @@ draft: false
 
 ---
 
-
 ## Money Traps
+
 At the heart of the popular cloud solution allure is that they are *free*. Well, free at first (we will get into that later).
 
 There is a now oft-quoted statement first popularized by security expert Bruch Schneier. In 2010, [he quite presciently said at a security conference](https://www.information-age.com/facebook-is-deliberately-killing-privacy-says-schneier-1290603/), "Don’t make the mistake of thinking you’re Facebook’s customer, you’re not – you’re the product. Its customers are the advertisers."
@@ -23,13 +23,13 @@ You good with Google selling you ads based on that?
 
 Here are the privacy ratings of the Terms of Service for Google Drive, Dropbox, iCloud, and OneDrive (Microsoft) courtesy of the [ToS;DR Project](https://tosdr.org/en/about) (Click on the badges for the full breakdowns):
 
-[![](https://shields.tosdr.org/en_270.svg)](https://tosdr.org/en/service/270)
+[![Dropbox Badge](https://shields.tosdr.org/en_270.svg)](https://tosdr.org/en/service/270)
 
-[![](https://shields.tosdr.org/en_291.svg)](https://tosdr.org/en/service/291)
+[![iCloud Badge](https://shields.tosdr.org/en_291.svg)](https://tosdr.org/en/service/291)
 
-[![](https://shields.tosdr.org/en_217.svg)](https://tosdr.org/en/service/217)
+[![Google Badge](https://shields.tosdr.org/en_217.svg)](https://tosdr.org/en/service/217)
 
-[![](https://shields.tosdr.org/en_244.svg)](https://tosdr.org/en/service/244)
+[![OneDrive Badge](https://shields.tosdr.org/en_244.svg)](https://tosdr.org/en/service/244)
 
 Some of the highlights:
 
@@ -40,7 +40,7 @@ Some of the highlights:
 
 Metadata, by the way, is a really weird term that has a lot of baggage. In short, its "data about the data": how big the file is, when it was created and last modified, the type of file, the *name* of the file... Basically, think about the data you see when looking in your "My Documents" folder -- everything except the file preview would be considered metadata. Here's a fabricated example; do you feel like the owner of this data would be okay with arbitrary "third parties" seeing it?
 
-![](mydocumentsexample.png)
+![Example of someone's documents](mydocumentsexample.png)
 
 But that isn't enough. Since, as far as I know, all major cloud providers are for-profit companies, they are compelled to increase both the amount of users, and the amount of value extracted from each user. That means in addition to the unsavory data brokering, cloud providers have taken a page out of the drug dealer's playbook: offer a taste of free cloud storage as a loss-leader. Once you've gotten the handy synchronization set up, files gradually accumulate until the quota is hit sometime down the line, and then you get hit with the desktop pop-ups, emails, etc. warning you that *you are in danger*, your precious files won't be synced unless you pay us to upgrade!
 
@@ -48,11 +48,12 @@ And at that point, with 5+ GB of data synced and the cloud provider deeply ingra
 
 But, gosh, if we are all going to be sucked into paying for data storage, why are we okay with providers "double-dipping"? At that point, I would recommend looking at a provider that doesn't play the freemium, ad-supported games: find a provider that charges *up-front, right away*.
 
-If you are technically inclined, I cannot reccomend [rclone](https://rclone.org/) enough. This command https://github.com/mitrichius/hugo-theme-anubisline program (with a [GUI](https://rclone.org/gui/) in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don't have to trust your data or metadata to these hosts, because you can configure rclone to [encrypt](https://rclone.org/crypt/) the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it. 
+If you are technically inclined, I cannot recommend [rclone](https://rclone.org/) enough. This command <https://github.com/mitrichius/hugo-theme-anubisline> program (with a [GUI](https://rclone.org/gui/) in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don't have to trust your data or metadata to these hosts, because you can configure rclone to [encrypt](https://rclone.org/crypt/) the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.
 
 In this case, you could even look at using a public cloud provider -- all they would see is a bunch of random binary blobs -- but I'd still caution against it because providers like Google have been known to flex their "we can delete your data at any time for any reason muscles" and nuke binary blobs (ostensibly for "anti-piracy" reasons, as they argue "if a customer is hiding their data from us, that *must* mean its illegal, right?").
 
 ---
+
 ## How to Do it
 
 My personal setup for keeping all of my files across all my devices synced and backed up is this:
@@ -82,9 +83,11 @@ Otherwise, I have heard good things about [Rebel Backup](https://www.svsware.com
 ## Closing Thoughts
 
 ### You can always be more paranoid
+
 If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the "cloud", its going to be on someone else's computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren't for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.
 
 ### The 411
+
 But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:
 
 1. Use a tool like rclone to automatically encrypt and upload your data to a cloud provider.

@@ -27,10 +27,11 @@ bookmark this site, subscribe to the RSS feed (yes those still exist) or just se
 to "go see what Quentin wrote, if anything".
 
 ## While Supplies Last
-On this blog, I will write about the utterly, painfully mundane. I may write about trying to color match the carpet in my
-apartment. 
 
-I will write about technology. Its in my nature to buzz around the newest gadgets like a moth around lamps. 
+On this blog, I will write about the utterly, painfully mundane. I may write about trying to color match the carpet in my
+apartment.
+
+I will write about technology. Its in my nature to buzz around the newest gadgets like a moth around lamps.
 
 I will probably write a few semi-serious reviews of stuff. This may be books, my newest headphones, my car, or the local
 asphalt conditions. Practicing distilling an opinion into something presentable is a worthwhile endeavor.
@@ -40,7 +41,6 @@ infinitives are fine, and in my opinion you are almost certainly over-using adve
 
 I will vent. Its like writing a diary, but with the added excitement of cutting-edge global networks taking the hassle
 out of the old-school "sneaking into my room while I'm distracted, finding the journal, and trying to giggle silently".
-
 
 All the best,
 
