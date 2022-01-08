@@ -60,5 +60,7 @@ Here's a breakdown of why I think Web3 maps on to the dotcom bubble:
 2. most high-profile examples in the space aren't doing anything special outside of `old thing` + `BLOCKCHAIN` so they can
 3. make a [shitload of money](https://www.youtube.com/watch?v=km0_vOE_2XE).
 
+I think that the idea of a Blockchain -- a distributed merkel tree, with inherent incentives to make untrusted parties work together according to a set of rules, is a fascinating idea and it will probably go into some very powerful, dynamic-shifting companies, frameworks, even _movements_. But first, it may need to have its own dotcom bubble to burn off the chaff.
+
 [^1]: Of *course* it was on substack. (And yes, those grapes probably *are* sour!)
 [^2]: Disclosure: I own a modest amount (<$200) of CHWY stock.
