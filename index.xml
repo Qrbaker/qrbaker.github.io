@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quentin Baker</title><link>https://www.quentb.com/</link><description>Quentin Baker</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 02 Jan 2022 10:24:27 -0400</lastBuildDate><atom:link href="https://www.quentb.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Considering the Philosophy of Squashing</title><link>https://www.quentb.com/posts/git-squashing/</link><pubDate>Sun, 02 Jan 2022 10:24:27 -0400</pubDate><guid>https://www.quentb.com/posts/git-squashing/</guid><description>&lt;p>&lt;em>Editor&amp;rsquo;s Note: I don&amp;rsquo;t like having to squash or rebase commits into a linear history. I am just operating in an environment where this is a dictated requirement. The rest of the post continues with the assumption that this preference is non-negotiable.&lt;/em>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quentin Baker</title><link>https://www.quentb.com/</link><description>Quentin Baker</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 08 Jan 2022 01:47:11 -0500</lastBuildDate><atom:link href="https://www.quentb.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Web3 is not the Early Internet</title><link>https://www.quentb.com/posts/nft-dot-com/</link><pubDate>Sat, 08 Jan 2022 01:47:11 -0500</pubDate><guid>https://www.quentb.com/posts/nft-dot-com/</guid><description>&lt;p>&lt;img src="ape.png" alt="A Sock Puppet Superimposed on a Cartoon Ape">
+&lt;sup>&lt;em>(Ape #727 owned by darylmorey on OpenSea. Sockpuppet picture by Rion, CC BY 3.0 &lt;a href="https://creativecommons.org/licenses/by/3.0">https://creativecommons.org/licenses/by/3.0&lt;/a>, via Wikimedia Commons)&lt;/em>&lt;/sup>&lt;/p>
+&lt;h2 id="am-i-out-of-touch">Am I out of Touch?
+&lt;span>&lt;a href="#am-i-out-of-touch">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Recently a &lt;a href="https://networked.substack.com/p/web3-i-have-my-daots">short essay&lt;/a> by Jay Pinho on the &amp;ldquo;networked&amp;rdquo; substack&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> caught my attention.&lt;/p>
+&lt;p>The post isn&amp;rsquo;t too long and you should give it a read. It raised a point that made me sit back and think, and it was this simple question:&lt;/p>
+&lt;ul>
+&lt;li>What if we (&amp;lsquo;we&amp;rsquo; being Web3 skeptics) are like the skeptics of the Internet in the 90s?&lt;/li>
+&lt;/ul>
+&lt;p>The post started with a really funny-in-hindsight excerpt from an interview Bill Gates gave on the David Letterman show, where Bill is trying to explain the cool things the internet can provide (listen to a baseball game whenever you want), and David is in turn throwing out these counterpoints (radio and tape recorders) that make the internet seem crazy overbuilt to solve problems already solved.&lt;/p>
+&lt;p>The point being, of course: &amp;ldquo;No one wants to sound like David Letterman.&amp;rdquo;&lt;/p>
+&lt;p>To Pinho&amp;rsquo;s credit, he continues on from there to carefully point out several problems with Web3 and ultimately delivers a sound rebuke of the current state of it, but he still leaves his David Letterman cold open sort of lingering in the air.&lt;/p>
+&lt;p>He brushes up really, really close to a historic counter-punch to the fear of being an out-of-touch naysayer, but doesn&amp;rsquo;t quite complete it.&lt;/p>
+&lt;h2 id="petscom">Pets.com
+&lt;span>&lt;a href="#petscom">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Pets.com">From Wikipedia, the free encyclopedia&lt;/a>:&lt;/p>
+&lt;blockquote>
+&lt;p>Pets.com was a dot-com enterprise headquartered in San Francisco that sold pet supplies to retail customers. A high-profile marketing campaign gave it a widely recognized public presence, including an appearance in the 1999 Macy&amp;rsquo;s Thanksgiving Day Parade and an advertisement in the 2000 Super Bowl. Its popular sock puppet advertising mascot was interviewed by People magazine and appeared on Good Morning America.&lt;/p>
+&lt;/blockquote>
+&lt;p>The pets.com idea was simple: take the pet store, combine it with this newfangled internet, add a little techno-wizardry, and Presto! Everyone involved gets filthy, stinking rich.&lt;/p>
+&lt;p>Pets.com was an apparent darling from its conception in November 1998. Amazon purchased a majority stake in the company, which went on to get 10s of millions in venture funding. It went public February 2000, raising almost 100 million (not a lot now, but a big deal then) and was listed on the Nasdaq under the ticker IPET.&lt;/p>
+&lt;p>Everyone was talking about the company. Pets.com began a media blitz, recruiting &lt;a href="https://twitter.com/ParisHilton/status/1366588422643585027">celebrities&lt;/a>, running a Super Bowl ad, and popularizing its quirky, &lt;a href="https://www.newyorker.com/culture/infinite-scroll/why-bored-ape-avatars-are-taking-over-twitter">animalesque mascot&lt;/a>.&lt;/p>
+&lt;p>Oh, I should mention that I removed a sentence from the Wikipedia summary. Here it is, unedited:&lt;/p>
+&lt;blockquote>
+&lt;p>Pets.com was a dot-com enterprise headquartered in San Francisco that sold pet supplies to retail customers. &lt;strong>It began operations in November 1998 and liquidated in November 2000.&lt;/strong> A high-profile marketing campaign gave it a widely recognized public presence, including an appearance in the 1999 Macy&amp;rsquo;s Thanksgiving Day Parade and an advertisement in the 2000 Super Bowl. Its popular sock puppet advertising mascot was interviewed by People magazine and appeared on Good Morning America.&lt;/p>
+&lt;/blockquote>
+&lt;p>Pets.com lasted 2 years, ultimately burning money via mismanagement and getting killed outright when the dot-com bubble burst.&lt;/p>
+&lt;h2 id="chewycom">Chewy.com
+&lt;span>&lt;a href="#chewycom">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>Now, the pets.com idea itself wasn&amp;rsquo;t entirely smoke-and-mirrors. It had a good core. And eventually, once tech matured a bit more, things settled down, and people came into the space with a longer-term, nuanced understanding of the internet, a spiritual successor arose in the form of &lt;a href="https://chewy.com">Chewy.com&lt;/a>.&lt;/p>
+&lt;p>Incidentally, when they went public in 2019; they ended up raising 10x what pets.com managed 19 years previously. Today, they&amp;rsquo;re worth over 7 billion, and seem to be here to stay.&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>&lt;/p>
+&lt;hr>
+&lt;h2 id="my-point-being">My Point Being&amp;hellip;
+&lt;span>&lt;a href="#my-point-being">#&lt;/a>&lt;/span>
+&lt;/h2>&lt;p>It isn&amp;rsquo;t a perfect analogy, but I&amp;rsquo;d respond to anyone trying to push the &amp;ldquo;&lt;a href="https://youtu.be/gipL_CEw-fk">David Letterman against the Internet&lt;/a>&amp;rdquo; defense of Web3 with the &amp;ldquo;&lt;a href="https://www.youtube.com/watch?v=sICSyC9u5iI">sock puppet dotcom-dog&lt;/a>&amp;rdquo; attack.&lt;/p>
+&lt;p>Here&amp;rsquo;s a breakdown of why I think Web3 maps on to the dotcom bubble:&lt;/p>
+&lt;ol>
+&lt;li>Its based on a novel technology breakthrough that &lt;em>is&lt;/em> important and &lt;em>will&lt;/em> stick around, but&lt;/li>
+&lt;li>most high-profile examples in the space aren&amp;rsquo;t doing anything special outside of &lt;code>old thing&lt;/code> + &lt;code>BLOCKCHAIN&lt;/code> so they can&lt;/li>
+&lt;li>make a &lt;a href="https://www.youtube.com/watch?v=km0_vOE_2XE">shitload of money&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>Of &lt;em>course&lt;/em> it was on substack. (And yes, those grapes probably &lt;em>are&lt;/em> sour!)&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>Disclosure: I own a modest amount (&amp;lt;$200) of CHWY stock.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Considering the Philosophy of Squashing</title><link>https://www.quentb.com/posts/git-squashing/</link><pubDate>Sun, 02 Jan 2022 10:24:27 -0400</pubDate><guid>https://www.quentb.com/posts/git-squashing/</guid><description>&lt;p>&lt;em>Editor&amp;rsquo;s Note: I don&amp;rsquo;t like having to squash or rebase commits into a linear history. I am just operating in an environment where this is a dictated requirement. The rest of the post continues with the assumption that this preference is non-negotiable.&lt;/em>&lt;/p>
 &lt;hr>
 &lt;p>I have a sort of &amp;ldquo;git philosophy&amp;rdquo; discussion to pose. Recently, I had a massive headache doing an interactive
 rebase because I have a habit of periodically merging upstream master/dev/main/whatever branch commits into my
@@ -76,7 +127,7 @@ on a project at a time?&lt;/p>
 &lt;hr>
 &lt;h2 id="getting-started">Getting Started
 &lt;span>&lt;a href="#getting-started">#&lt;/a>&lt;/span>
-&lt;/h2>&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its tempation! The .vhd file is setup with a hilariously small size, and resizing paritions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;/h2>&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its temptation! The .vhd file is setup with a hilariously small size, and resizing partitions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
 &lt;h3 id="hyper-v-setup">Hyper-V Setup
 &lt;span>&lt;a href="#hyper-v-setup">#&lt;/a>&lt;/span>
 &lt;/h3>&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
@@ -158,14 +209,14 @@ permit nopass jane cmd pkg
 &lt;h2 id="shell-setup">Shell setup
 &lt;span>&lt;a href="#shell-setup">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>I like zshell (zsh) with ohmyzsh and the powerlevel10k theme. To add zsh, install the packages:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ pkg install zsh zsh-completions ohmyzsh
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">pkg install zsh zsh-completions ohmyzsh
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and switch the root session to zsh by typing &lt;code>zsh&lt;/code>. Then change your normal user&amp;rsquo;s shell to use it by default:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Create a new zsh config file for ohmyzsh:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cp /usr/local/share/ohmyzsh/templates/zshrc.zsh-template /home/&amp;lt;user&amp;gt;/.zshrc
-$ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zshrc
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">cp /usr/local/share/ohmyzsh/templates/zshrc.zsh-template /home/&amp;lt;user&amp;gt;/.zshrc
+chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zshrc
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Now you can clone your theme of choice (mine is p10k):&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ git clone --depth&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span style="color:#e6db74">${&lt;/span>ZSH_CUSTOM&lt;span style="color:#66d9ef">:-&lt;/span>$HOME/.oh-my-zsh/custom&lt;span style="color:#e6db74">}&lt;/span>/themes/powerlevel10k
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">git clone --depth&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span style="color:#e6db74">${&lt;/span>ZSH_CUSTOM&lt;span style="color:#66d9ef">:-&lt;/span>$HOME/.oh-my-zsh/custom&lt;span style="color:#e6db74">}&lt;/span>/themes/powerlevel10k
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>And finally, set the theme in your user&amp;rsquo;s &lt;code>.zshrc&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">ZSH_THEME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;powerlevel10k/powerlevel10k&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>The next time you log in as your non-root user, p10k will drop you into a configuration wizard.&lt;/p>
@@ -173,19 +224,19 @@ $ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zs
 &lt;span>&lt;a href="#pretty-chrome---installing-the-de">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>I like xfce. You can use whatever you prefer, of course, but you&amp;rsquo;ll have to look elsewhere at this point, because this guide is going to go forward with the xfce4 desktop environment. I am also still using &lt;code>xorg&lt;/code> as my display manager, wayland isn&amp;rsquo;t &lt;em>quite&lt;/em> ready for my workflow yet.&lt;/p>
 &lt;p>Start by installing the &lt;code>xfce&lt;/code> package (and optional goodies), plug the X-org server:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pkg install xfce xfce4-goodies xorg
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">doas pkg install xfce xfce4-goodies xorg
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>At this point, things may be wildly different depending on the hardware you have. Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#x-config-video-cards">FreeBSD Handbook&lt;/a> for information best suited to your video hardware.&lt;/p>
 &lt;p>I have an nVidia card (I know, boo), so I install the nvidia driver from Ports&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cd /usr/ports/x11/nvidia-driver
-$ doas make -DBATCH install clean
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">cd /usr/ports/x11/nvidia-driver
+doas make -DBATCH install clean
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Its also recommended to enable &lt;code>dbus&lt;/code> at this point, by adding the following lines to &lt;code>/etc/rc.conf&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">dbus_enable&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;YES&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Add the user(s) that you expect to be using a GUI to the group &lt;code>video&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pw groupmod video -M &amp;lt;user&amp;gt;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">doas pw groupmod video -M &amp;lt;user&amp;gt;
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work">Getting the Keyboard to work
 &lt;span>&lt;a href="#getting-the-keyboard-to-work">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
-&lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code> /etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
+&lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code>/etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">sysctl kern.evdev.rcpt_mask&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and do a reboot.&lt;/p>
 &lt;h2 id="getting-to-the-desktop">Getting to the Desktop
@@ -225,16 +276,16 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;hr>
 &lt;p>At the end of the day, use the tools that best suit you. BSD is worth a look, though!&lt;/p>
 &lt;p>Join me for part 2 (coming soon), where I show you the best way to work with Graphical interfaces in BSD on Hyper-V (Hint: its RDP).
-&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;br>&lt;/p>
 &lt;p>-Quentin &lt;br>
 &lt;br>
 &lt;br>
-&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;br>&lt;/p>
 &lt;section class="footnotes" role="doc-endnotes">
 &lt;hr>
 &lt;ol>
 &lt;li id="fn:1" role="doc-endnote">
-&lt;p>Okay its not too terrible; the official Hyper-V docs explain how to do it in &lt;a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-freebsd-virtual-machines-on-hyper-v#BKMK_notes">the notes&lt;/a>. They &lt;em>say&lt;/em> its fixed in FreeBSD 11.0+ but I was having issues unless I did a &lt;code>gpart recover&lt;/code> in FreeBSD 13.0, so ehhh&amp;hellip; &lt;!-- raw HTML omitted -->Anyways, its not really any faster to use the pre-made image when you factor in expanding the &lt;code>.vhd&lt;/code> in Hyper-V, then booting into single-user, resizing the partition, and getting the FS inflated. Additionally, the pre-made image uses UFS instead of the newer and generally better ZFS.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;p>Okay its not too terrible; the official Hyper-V docs explain how to do it in &lt;a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-freebsd-virtual-machines-on-hyper-v#BKMK_notes">the notes&lt;/a>. They &lt;em>say&lt;/em> its fixed in FreeBSD 11.0+ but I was having issues unless I did a &lt;code>gpart recover&lt;/code> in FreeBSD 13.0, so ehhh&amp;hellip; &lt;br>Anyways, its not really any faster to use the pre-made image when you factor in expanding the &lt;code>.vhd&lt;/code> in Hyper-V, then booting into single-user, resizing the partition, and getting the FS inflated. Additionally, the pre-made image uses UFS instead of the newer and generally better ZFS.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;li id="fn:2" role="doc-endnote">
 &lt;p>&lt;a href="https://flak.tedunangst.com/post/doas">https://flak.tedunangst.com/post/doas&lt;/a> is a great writeup on the creation of this tool by its author.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
@@ -262,10 +313,10 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;p>I mean, even if you don&amp;rsquo;t immediately think of some embarrassing document, are you 100% certain that there &lt;em>isn&amp;rsquo;t&lt;/em> a textfile buried 5 folders deep somewhere containing your &lt;a href="https://xkcd.com/1360/">middle school love poetry&lt;/a>?&lt;/p>
 &lt;p>You good with Google selling you ads based on that?&lt;/p>
 &lt;p>Here are the privacy ratings of the Terms of Service for Google Drive, Dropbox, iCloud, and OneDrive (Microsoft) courtesy of the &lt;a href="https://tosdr.org/en/about">ToS;DR Project&lt;/a> (Click on the badges for the full breakdowns):&lt;/p>
-&lt;p>&lt;a href="https://tosdr.org/en/service/270">&lt;img src="https://shields.tosdr.org/en_270.svg" alt="">&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tosdr.org/en/service/291">&lt;img src="https://shields.tosdr.org/en_291.svg" alt="">&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tosdr.org/en/service/217">&lt;img src="https://shields.tosdr.org/en_217.svg" alt="">&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tosdr.org/en/service/244">&lt;img src="https://shields.tosdr.org/en_244.svg" alt="">&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://tosdr.org/en/service/270">&lt;img src="https://shields.tosdr.org/en_270.svg" alt="Dropbox Badge">&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://tosdr.org/en/service/291">&lt;img src="https://shields.tosdr.org/en_291.svg" alt="iCloud Badge">&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://tosdr.org/en/service/217">&lt;img src="https://shields.tosdr.org/en_217.svg" alt="Google Badge">&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://tosdr.org/en/service/244">&lt;img src="https://shields.tosdr.org/en_244.svg" alt="OneDrive Badge">&lt;/a>&lt;/p>
 &lt;p>Some of the highlights:&lt;/p>
 &lt;ul>
 &lt;li>iCloud (Apple), Microsoft and Google reserve the right to delete any of your data, with &lt;em>no notice&lt;/em>, and for &lt;em>no reason&lt;/em>.&lt;/li>
@@ -274,11 +325,11 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;h2 id="meta-">Meta-
 &lt;span>&lt;a href="#meta-">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &amp;ldquo;data about the data&amp;rdquo;: how big the file is, when it was created and last modified, the type of file, the &lt;em>name&lt;/em> of the file&amp;hellip; Basically, think about the data you see when looking in your &amp;ldquo;My Documents&amp;rdquo; folder &amp;ndash; everything except the file preview would be considered metadata. Here&amp;rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &amp;ldquo;third parties&amp;rdquo; seeing it?&lt;/p>
-&lt;p>&lt;img src="mydocumentsexample.png" alt="">&lt;/p>
+&lt;p>&lt;img src="mydocumentsexample.png" alt="Example of someone&amp;rsquo;s documents">&lt;/p>
 &lt;p>But that isn&amp;rsquo;t enough. Since, as far as I know, all major cloud providers are for-profit companies, they are compelled to increase both the amount of users, and the amount of value extracted from each user. That means in addition to the unsavory data brokering, cloud providers have taken a page out of the drug dealer&amp;rsquo;s playbook: offer a taste of free cloud storage as a loss-leader. Once you&amp;rsquo;ve gotten the handy synchronization set up, files gradually accumulate until the quota is hit sometime down the line, and then you get hit with the desktop pop-ups, emails, etc. warning you that &lt;em>you are in danger&lt;/em>, your precious files won&amp;rsquo;t be synced unless you pay us to upgrade!&lt;/p>
 &lt;p>And at that point, with 5+ GB of data synced and the cloud provider deeply ingrained into your workflow&amp;hellip; what the heck, throw them a few bucks. You&amp;rsquo;re all set now, with up to 2 Terabytes of data storage! Woohoo!&lt;/p>
 &lt;p>But, gosh, if we are all going to be sucked into paying for data storage, why are we okay with providers &amp;ldquo;double-dipping&amp;rdquo;? At that point, I would recommend looking at a provider that doesn&amp;rsquo;t play the freemium, ad-supported games: find a provider that charges &lt;em>up-front, right away&lt;/em>.&lt;/p>
-&lt;p>If you are technically inclined, I cannot reccomend &lt;a href="https://rclone.org/">rclone&lt;/a> enough. This command &lt;a href="https://github.com/mitrichius/hugo-theme-anubisline">https://github.com/mitrichius/hugo-theme-anubisline&lt;/a> program (with a &lt;a href="https://rclone.org/gui/">GUI&lt;/a> in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don&amp;rsquo;t have to trust your data or metadata to these hosts, because you can configure rclone to &lt;a href="https://rclone.org/crypt/">encrypt&lt;/a> the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.&lt;/p>
+&lt;p>If you are technically inclined, I cannot recommend &lt;a href="https://rclone.org/">rclone&lt;/a> enough. This command &lt;a href="https://github.com/mitrichius/hugo-theme-anubisline">https://github.com/mitrichius/hugo-theme-anubisline&lt;/a> program (with a &lt;a href="https://rclone.org/gui/">GUI&lt;/a> in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don&amp;rsquo;t have to trust your data or metadata to these hosts, because you can configure rclone to &lt;a href="https://rclone.org/crypt/">encrypt&lt;/a> the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.&lt;/p>
 &lt;p>In this case, you could even look at using a public cloud provider &amp;ndash; all they would see is a bunch of random binary blobs &amp;ndash; but I&amp;rsquo;d still caution against it because providers like Google have been known to flex their &amp;ldquo;we can delete your data at any time for any reason muscles&amp;rdquo; and nuke binary blobs (ostensibly for &amp;ldquo;anti-piracy&amp;rdquo; reasons, as they argue &amp;ldquo;if a customer is hiding their data from us, that &lt;em>must&lt;/em> mean its illegal, right?&amp;quot;).&lt;/p>
 &lt;hr>
 &lt;h2 id="how-to-do-it">How to Do it

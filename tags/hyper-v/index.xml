@@ -10,7 +10,7 @@
 &lt;hr>
 &lt;h2 id="getting-started">Getting Started
 &lt;span>&lt;a href="#getting-started">#&lt;/a>&lt;/span>
-&lt;/h2>&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its tempation! The .vhd file is setup with a hilariously small size, and resizing paritions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;/h2>&lt;p>&lt;a href="https://www.freebsd.org/where/">Download&lt;/a> the install &lt;strong>ISO&lt;/strong>. Yes, there is a pre-made virtual machine image, but beware its temptation! The .vhd file is setup with a hilariously small size, and resizing partitions in FreeBSD on Hyper-V is a bit of a pain.&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
 &lt;h3 id="hyper-v-setup">Hyper-V Setup
 &lt;span>&lt;a href="#hyper-v-setup">#&lt;/a>&lt;/span>
 &lt;/h3>&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
@@ -92,14 +92,14 @@ permit nopass jane cmd pkg
 &lt;h2 id="shell-setup">Shell setup
 &lt;span>&lt;a href="#shell-setup">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>I like zshell (zsh) with ohmyzsh and the powerlevel10k theme. To add zsh, install the packages:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ pkg install zsh zsh-completions ohmyzsh
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">pkg install zsh zsh-completions ohmyzsh
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and switch the root session to zsh by typing &lt;code>zsh&lt;/code>. Then change your normal user&amp;rsquo;s shell to use it by default:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">chpass -s /usr/local/bin/zsh &amp;lt;user&amp;gt;
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Create a new zsh config file for ohmyzsh:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cp /usr/local/share/ohmyzsh/templates/zshrc.zsh-template /home/&amp;lt;user&amp;gt;/.zshrc
-$ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zshrc
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">cp /usr/local/share/ohmyzsh/templates/zshrc.zsh-template /home/&amp;lt;user&amp;gt;/.zshrc
+chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zshrc
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Now you can clone your theme of choice (mine is p10k):&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ git clone --depth&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span style="color:#e6db74">${&lt;/span>ZSH_CUSTOM&lt;span style="color:#66d9ef">:-&lt;/span>$HOME/.oh-my-zsh/custom&lt;span style="color:#e6db74">}&lt;/span>/themes/powerlevel10k
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">git clone --depth&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span style="color:#e6db74">${&lt;/span>ZSH_CUSTOM&lt;span style="color:#66d9ef">:-&lt;/span>$HOME/.oh-my-zsh/custom&lt;span style="color:#e6db74">}&lt;/span>/themes/powerlevel10k
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>And finally, set the theme in your user&amp;rsquo;s &lt;code>.zshrc&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">ZSH_THEME&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;powerlevel10k/powerlevel10k&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>The next time you log in as your non-root user, p10k will drop you into a configuration wizard.&lt;/p>
@@ -107,19 +107,19 @@ $ chown &amp;lt;user&amp;gt;:&amp;lt;user&amp;gt; /home/&amp;lt;user&amp;gt;/.zs
 &lt;span>&lt;a href="#pretty-chrome---installing-the-de">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>I like xfce. You can use whatever you prefer, of course, but you&amp;rsquo;ll have to look elsewhere at this point, because this guide is going to go forward with the xfce4 desktop environment. I am also still using &lt;code>xorg&lt;/code> as my display manager, wayland isn&amp;rsquo;t &lt;em>quite&lt;/em> ready for my workflow yet.&lt;/p>
 &lt;p>Start by installing the &lt;code>xfce&lt;/code> package (and optional goodies), plug the X-org server:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pkg install xfce xfce4-goodies xorg
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">doas pkg install xfce xfce4-goodies xorg
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>At this point, things may be wildly different depending on the hardware you have. Refer to the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/#x-config-video-cards">FreeBSD Handbook&lt;/a> for information best suited to your video hardware.&lt;/p>
 &lt;p>I have an nVidia card (I know, boo), so I install the nvidia driver from Ports&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ cd /usr/ports/x11/nvidia-driver
-$ doas make -DBATCH install clean
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">cd /usr/ports/x11/nvidia-driver
+doas make -DBATCH install clean
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Its also recommended to enable &lt;code>dbus&lt;/code> at this point, by adding the following lines to &lt;code>/etc/rc.conf&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">dbus_enable&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;YES&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Add the user(s) that you expect to be using a GUI to the group &lt;code>video&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">$ doas pw groupmod video -M &amp;lt;user&amp;gt;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">doas pw groupmod video -M &amp;lt;user&amp;gt;
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work">Getting the Keyboard to work
 &lt;span>&lt;a href="#getting-the-keyboard-to-work">#&lt;/a>&lt;/span>
 &lt;/h2>&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
-&lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code> /etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
+&lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code>/etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-zsh" data-lang="zsh">sysctl kern.evdev.rcpt_mask&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and do a reboot.&lt;/p>
 &lt;h2 id="getting-to-the-desktop">Getting to the Desktop
@@ -159,16 +159,16 @@ x11/xfce4-docklike-plugin Modern, minimalist taskbar &lt;span style="color:#66d9
 &lt;hr>
 &lt;p>At the end of the day, use the tools that best suit you. BSD is worth a look, though!&lt;/p>
 &lt;p>Join me for part 2 (coming soon), where I show you the best way to work with Graphical interfaces in BSD on Hyper-V (Hint: its RDP).
-&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;br>&lt;/p>
 &lt;p>-Quentin &lt;br>
 &lt;br>
 &lt;br>
-&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;br>&lt;/p>
 &lt;section class="footnotes" role="doc-endnotes">
 &lt;hr>
 &lt;ol>
 &lt;li id="fn:1" role="doc-endnote">
-&lt;p>Okay its not too terrible; the official Hyper-V docs explain how to do it in &lt;a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-freebsd-virtual-machines-on-hyper-v#BKMK_notes">the notes&lt;/a>. They &lt;em>say&lt;/em> its fixed in FreeBSD 11.0+ but I was having issues unless I did a &lt;code>gpart recover&lt;/code> in FreeBSD 13.0, so ehhh&amp;hellip; &lt;!-- raw HTML omitted -->Anyways, its not really any faster to use the pre-made image when you factor in expanding the &lt;code>.vhd&lt;/code> in Hyper-V, then booting into single-user, resizing the partition, and getting the FS inflated. Additionally, the pre-made image uses UFS instead of the newer and generally better ZFS.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;p>Okay its not too terrible; the official Hyper-V docs explain how to do it in &lt;a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-freebsd-virtual-machines-on-hyper-v#BKMK_notes">the notes&lt;/a>. They &lt;em>say&lt;/em> its fixed in FreeBSD 11.0+ but I was having issues unless I did a &lt;code>gpart recover&lt;/code> in FreeBSD 13.0, so ehhh&amp;hellip; &lt;br>Anyways, its not really any faster to use the pre-made image when you factor in expanding the &lt;code>.vhd&lt;/code> in Hyper-V, then booting into single-user, resizing the partition, and getting the FS inflated. Additionally, the pre-made image uses UFS instead of the newer and generally better ZFS.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;li id="fn:2" role="doc-endnote">
 &lt;p>&lt;a href="https://flak.tedunangst.com/post/doas">https://flak.tedunangst.com/post/doas&lt;/a> is a great writeup on the creation of this tool by its author.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
