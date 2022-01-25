@@ -8,4 +8,4 @@ Just a quick shout-out to a fantastic write-up on making your own "cloud". This 
 
 This is much more business-oriented, but has plenty of pearls to be found in the text. Fair warning: it includes lots of jargon.
 
-## https://80daystartup.com/day-11/you-dont-need-the-cloud/
+* https://80daystartup.com/day-11/you-dont-need-the-cloud/
