@@ -1625,6 +1625,22 @@ width: 419.2pt;
 border-top-color: var(--font-color);
 border-bottom-style: solid
 }
+.c17-full {
+border-right-style: solid;
+padding: 5pt 5pt 5pt 5pt;
+border-bottom-color: var(--font-color);
+border-top-width: 0;
+border-right-width: 0;
+border-left-color: var(--font-color);
+vertical-align: top;
+border-right-color: var(--font-color);
+border-left-width: 0;
+border-top-style: solid;
+border-left-style: solid;
+border-bottom-width: 0;
+border-top-color: var(--font-color);
+border-bottom-style: solid
+}
 .c0 {
 border-right-style: solid;
 padding: 5pt 5pt 5pt 5pt;
@@ -1933,10 +1949,13 @@ text-align: left
 &lt;body class="c6">
 &lt;p class="c1">&lt;span class="c2">Quentin R. Baker&lt;/span>&lt;/p>
 &lt;hr>
-&lt;h4 class="c24" id="h.ru2b19i0zsc1" style="margin-bottom: 0;">&lt;span class="c23 c29 c19">Professional Profile&lt;/span>&lt;/h4>
-&lt;p class="c4">&lt;span class="c16 c18">Enthusiastic young software engineer with a strong record of app development, software and developer support, firmware development and maintenance, and technical writing.&lt;/span>&lt;/p>
+&lt;h4 class="c24" id="h.ru2b19i0zsc1" style="margin-bottom: 0;">&lt;span class="c23 c29 c19">Professional Profile&lt;/span>
+&lt;/h4>
+&lt;p class="c4">&lt;span class="c16 c18">Enthusiastic young software engineer with a strong record of app development,
+software and developer support, firmware development and maintenance, and technical writing.&lt;/span>&lt;/p>
 &lt;p class="c4" style="padding-top: 12pt; padding-bottom: 2pt;">&lt;span class="c23 c19 c29">Core Competencies&lt;/span>&lt;/p>
-&lt;p class="c4">&lt;span class="c3">AWS Development, Administration, and Networking - Objective C and Swift for iOS - Chef automation - Linux System Administration - C Firmware Development&lt;/span>&lt;/p>
+&lt;p class="c4">&lt;span class="c3">AWS Development, Administration, and Networking - Objective C and Swift for iOS -
+Chef automation - Linux System Administration - C Firmware Development - .NET Core&lt;/span>&lt;/p>
 &lt;p class="c4 c7">&lt;span class="c3">&lt;/span>&lt;/p>
 &lt;p class="c4">&lt;span class="c19 c22">Work Experience&lt;/span>&lt;/p>
 &lt;a id="t.7e2ce6dbf029c6e1a1c244767096081b25f68c78">&lt;/a>
@@ -1956,11 +1975,25 @@ text-align: left
 &lt;p class="c4 c7">&lt;span class="c3">&lt;/span>&lt;/p>
 &lt;p class="c4">&lt;span class="c3">My Experience includes:&lt;/span>&lt;/p>
 &lt;ul class="c21 lst-kix_mjj1y3t20fet-0 start">
-&lt;li class="c9 li-bullet-0">&lt;span class="c8">Engineering Multiple IoT iPhone Apps. &lt;/span>&lt;span class="c16 c18">Work both internally and directly with customers to improve existing apps as well as produce new apps that deliver smart appliance functionality to end users. Experience on native code both in Obj. C and Swift, and with React Native, for appliances ranging from garage door openers to dishwashers.&lt;/span>&lt;/li>
-&lt;li class="c9 li-bullet-0">&lt;span class="c8">Producing Cloud-connected Firmware. &lt;/span>&lt;span class="c3">Using the ESP32 platform, deliver firmware that can both reliably and consistently function according to customer expectations and desires; with first-class cloud connectivity to AWS and/or Azure, enabling detailed custom metrics and firmware updates via MQTT.&lt;/span>&lt;/li>
-&lt;li class="c9 li-bullet-0">&lt;span class="c8">Maintaining and Creating Cloud Infrastructure. &lt;/span>&lt;span class="c3">As an AWS Certified Developer, I am one of the go-to individuals for creating, maintaining, or troubleshooting AWS cloud services across the board, including EC2, S3, IoT Core, and All things AIM.&lt;/span>&lt;/li>
-&lt;li class="c9 li-bullet-0">&lt;span class="c8">Supporting other Engineers. &lt;/span>&lt;span class="c3">Manage internal and customer server deployments on AWS and physical, update server software and manage lifecycle of deployed software and hardware using Chef, triage incidents with DataDog when on-call, and remove technical or infrastructure blockers for other teams.&lt;/span>&lt;/li>
-&lt;li class="c9 li-bullet-0">&lt;span class="c8">Writing Documentation and Blogs.&lt;/span>&lt;span class="c16 c18">&amp;nbsp;At least twice per quarter produce technically-oriented blog posts for the spindance.com website of at least 1,500 words in length. Expand existing internal documentation and create needed missing documentation on Confluence for I.T. Procedures, deployments, and common software setups.&lt;/span>&lt;/li>
+&lt;li class="c9 li-bullet-0">&lt;span class="c8">Maintaining and Upgrading In-house Systems. &lt;/span>&lt;span
+class="c16 c18">Serve as the primary person in charge of maintenance and updating the
+company's infrastructure-as-code. Currently leading the migration process from Chef to a new stack
+deployed with Terraform and Ansible technologies.&lt;/span>&lt;/li>
+&lt;li class="c9 li-bullet-0">&lt;span class="c8">Developing Enterprise-Scale APIs. &lt;/span>&lt;span class="c3">Leveraging
+the Azure platform and modern .NET technology, I work with a hybrid team across three businesses to
+develop and deploy a back-end API that delivers equipment telematics on a global scale.&lt;/span>&lt;/li>
+&lt;li class="c9 li-bullet-0">&lt;span class="c8">Producing Cloud-connected Firmware. &lt;/span>&lt;span class="c3">Using
+the ESP32 platform, deliver firmware that can both reliably and consistently
+function according to customer expectations and desires; enabling detailed custom metrics and firmware
+updates via MQTT.&lt;/span>&lt;/li>
+&lt;li class="c9 li-bullet-0">&lt;span class="c8">Maintaining and Creating Cloud Infrastructure. &lt;/span>&lt;span
+class="c3">As an AWS Certified Developer, I am one of the go-to individuals for creating,
+maintaining, or troubleshooting AWS cloud services across the board, including EC2, S3, IoT Core, and
+all things AIM.&lt;/span>&lt;/li>
+&lt;li class="c9 li-bullet-0">&lt;span class="c8">Supporting other Engineers. &lt;/span>&lt;span class="c16 c18">Manage
+internal
+and customer server deployments, triage incidents with DataDog when on-call, and remove technical or
+infrastructure blockers for other teams.&lt;/span>&lt;/li>
 &lt;/ul>
 &lt;h3 class="c36" id="h.1rqt5mh3nl9">&lt;span class="c15">Education&lt;/span>&lt;/h3>
 &lt;a id="t.8333808b04c263a6ade4d26f99e98a46567c1641">&lt;/a>
@@ -1969,7 +2002,8 @@ text-align: left
 &lt;tbody>
 &lt;tr class="c12">
 &lt;td class="c5" colspan="1" rowspan="1">
-&lt;p class="c4">&lt;span class="c3">Calvin University (Formerly Calvin College) - Computer Science, B.S.&lt;/span>&lt;/p>
+&lt;p class="c4">&lt;span class="c3">Calvin University (Formerly Calvin College) - Computer Science,
+B.S.&lt;/span>&lt;/p>
 &lt;/td>
 &lt;td class="c0" colspan="1" rowspan="1">
 &lt;p class="c26">&lt;span class="c3">&amp;nbsp;May 2019&lt;/span>&lt;/p>
@@ -1986,7 +2020,8 @@ text-align: left
 &lt;tr class="c30">
 &lt;td class="c17" colspan="1" rowspan="1">
 &lt;ul class="c21 lst-kix_fl2935zfox0a-0 start">
-&lt;li class="c4 c11 li-bullet-0">&lt;span class="c16">AWS Certified Cloud Practitioner&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span>&lt;/li>
+&lt;li class="c4 c11 li-bullet-0">&lt;span class="c16">AWS Certified Cloud
+Practitioner&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span>&lt;/li>
 &lt;/ul>
 &lt;/td>
 &lt;td class="c32" colspan="1" rowspan="1">
@@ -2004,6 +2039,26 @@ text-align: left
 &lt;/td>
 &lt;/tr>
 &lt;/tbody>
+&lt;/table>
+&lt;h3 class="c34" id="h.l8i2rbckizp4">&lt;span class="c15">Open Source Contributions&lt;/span>&lt;/h3>
+&lt;a id="t.172fb0e89910cff562baca42693256de70e91c01">&lt;/a>
+&lt;a id="t.2">&lt;/a>
+&lt;table class="c13">
+&lt;tbody>
+&lt;tr class="c30">
+&lt;td class="c17-full" colspan="1" rowspan="1">
+&lt;ul class="c21 lst-kix_fl2935zfox0a-0 start">
+&lt;li class="c4 c11 li-bullet-0">&lt;a class="c16" href="https://www.google.com/url?q=https://github.com/TrueBrain/TrueWiki">TrueWiki&lt;/a>&lt;/span>&lt;span class="c4 c15 c36">&amp;nbsp;- Lightweight, Git-based Wiki software&lt;/span>&lt;/li>
+&lt;/ul>
+&lt;/td>
+&lt;/tr>
+&lt;tr class="c12">
+&lt;td class="c17-full" colspan="1" rowspan="1">
+&lt;ul class="c21 lst-kix_fl2935zfox0a-0 start">
+&lt;li class="c4 c11 li-bullet-0">&lt;a class="c16" href="https://craftycontrol.com">Crafty Commander&lt;/a>&lt;/span>&lt;span class="c15">&amp;nbsp;- Open Source Minecraft Server management&lt;/span>&lt;/li>
+&lt;/ul>
+&lt;/td>
+&lt;/tr>
 &lt;/table></description></item><item><title>About Quentin</title><link>https://www.quentb.com/about/</link><pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate><guid>https://www.quentb.com/about/</guid><description>&lt;p>Hello there!&lt;/p>
 &lt;p>I&amp;rsquo;m a Software Engineer and writer. In my free time, I like to experiment with cooking, ponder life&amp;rsquo;s many mysteries, and hang out with my Rabbits.&lt;/p>
 &lt;p>(&lt;a href="https://www.quentb.com/resume">Check out my Resume&lt;/a>)&lt;/p>
