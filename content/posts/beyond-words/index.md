@@ -8,11 +8,11 @@ draft: false
 
 ## Or: Diving Beneath Language and Pulling it Back Up
 
-I feel a strong sense of meaning and fulfillment when I can communicate an Idea I genuinely believe in to an audience. Probably the strongest moment of that was my high school graduation, speaking to an audience of 500 classmates and thousands of friends and family in an arena. More recently, I have been showered with wordly blessings. I have a great job doing interesting things and with wonderful people.
+I feel a strong sense of meaning and fulfillment when I can communicate an Idea I genuinely believe in to an audience. Probably the strongest moment of that was my high school graduation, speaking to an audience of 500 classmates and thousands of friends and family in an arena. More recently, I have been showered with worldly blessings. I have a great job doing interesting things and with wonderful people.
 
 And on April 5, 2022, I became acutely aware that I am going to die someday, and none of it mattered at all to me any more.
 
-I tried my usual ways of getting absolution, I wrote Bible verses (Galations) on my whiteboard and read Max Lucado books. I feel into a deep nihilism, and the Bible quote turned to Neitschze.
+I tried my usual ways of getting absolution, I wrote Bible verses (Galatians) on my whiteboard and read Max Lucado books. I feel into a deep nihilism, and the Bible quote turned to Nietzsche.
 
 In early June, I erased my whiteboard and simply wrote a question mark. And for some reason I drew a heart around it, and that's what has remained since.
 
@@ -22,7 +22,7 @@ I had my college roommates over for a Saturday evening, we played games and dran
 
 And we kept talking until nearly midnight, 4 hours of back and forth.
 
-His central question mirrored mine: by all likelihood, we are destined to lead medicore lives. He was stating it as a fact. And he was afraid that he would become *okay with it.* I wish I could have given him some of the weird, beyond-words ideas that had been percolating in my head for months at this point, but I could only halfheartedly ramble on and on, trying to explain but failing.
+His central question mirrored mine: by all likelihood, we are destined to lead mediocre lives. He was stating it as a fact. And he was afraid that he would become *okay with it.* I wish I could have given him some of the weird, beyond-words ideas that had been percolating in my head for months at this point, but I could only halfheartedly ramble on and on, trying to explain but failing.
 
 I want to communicate things that I have found to be deeply true, but the ideas and feelings and concepts I'm beginning to ponder are refusing to yield to language, because at some level they are too big. Rationality has failed me. It began its death in 2016, I think, and I buried it this June. I wouldn't say I've run to *ir*rationality (or at least, I've tricked myself into thinking I haven't)... rather, some sort of trans-rationality. I'm walking what Robert Persig calls "the high country of the mind", and I'm getting a headache because I haven't acclimated to it.
 
@@ -46,7 +46,7 @@ I wrote in my journal earlier in the walk, thinking about wind and air.
 
 On one level: *duh*. But Seriously, try and look **at** wind, or air, on a clear warm day. Not the shimmer of heat, or the movement of leaves, or clouds--look at the AIR ITSELF.
 
-God feels like that to me right now. She's everywhere, They permeate existence and are as nessessary to us as the air we breath. But you cannot directly look at Him. Maybe, in the same way that if air was opaque we would not be able to see anything else, God has hidden from us on a material level because it would overpower our senses otherwise.
+God feels like that to me right now. She's everywhere, They permeate existence and are as necessary to us as the air we breath. But you cannot directly look at Him. Maybe, in the same way that if air was opaque we would not be able to see anything else, God has hidden from us on a material level because it would overpower our senses otherwise.
 
 This is what I'm starting to believe about meaning -- in the grand sense. Trying to take in a grand universal understanding of meaning would be like trying to hug a semi truck barreling down on you. The way I see it, we can think just enough to be dangerous to ourselves. Life has no meaning in so far as there is no meaning that is understandable to the fucking 2 HP putt-putt engine we have to traverse a highway called metaphysics.
 
