@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>own-data-series on Quentin Baker</title><link>https://www.quentb.com/tags/own-data-series/</link><description>Quentin Baker (own-data-series)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 19 Oct 2021 13:55:24 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/own-data-series/index.xml" rel="self" type="application/rss+xml"/><item><title>OYD Chapter 2: DIY Cloud Backup</title><link>https://www.quentb.com/posts/diy-cloud-backup/</link><pubDate>Tue, 19 Oct 2021 13:55:24 -0400</pubDate><guid>https://www.quentb.com/posts/diy-cloud-backup/</guid><description>&lt;p>&lt;em>This is part of my ongoing series on Owning Your Data. &lt;a href="https://www.quentb.com/posts/own-data-intro/">Check out the prologue here&lt;/a>!&lt;/em>&lt;/p>
 &lt;hr>
-&lt;h2 id="money-traps">Money Traps
-&lt;span>&lt;a href="#money-traps">#&lt;/a>&lt;/span>
+&lt;h2 id="money-traps" >Money Traps
+&lt;span>
+&lt;a href="#money-traps">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>At the heart of the popular cloud solution allure is that they are &lt;em>free&lt;/em>. Well, free at first (we will get into that later).&lt;/p>
 &lt;p>There is a now oft-quoted statement first popularized by security expert Bruch Schneier. In 2010, &lt;a href="https://www.information-age.com/facebook-is-deliberately-killing-privacy-says-schneier-1290603/">he quite presciently said at a security conference&lt;/a>, &amp;ldquo;Don’t make the mistake of thinking you’re Facebook’s customer, you’re not – you’re the product. Its customers are the advertisers.&amp;rdquo;&lt;/p>
 &lt;p>While I admit this has been overused and abused, it sticks because for a lot of free internet offerings, its right. Cloud is a bit of a conundrum for this model, though. While social media may have slipped the wool over the eyes of society and somehow convinced the majority of the public that its somehow okay, even normal to just give away all your info for free in a social context, people are at least suspicious of the technique when applied to their hard drive contents.&lt;/p>
@@ -17,8 +21,12 @@
 &lt;li>iCloud (Apple), Microsoft and Google reserve the right to delete any of your data, with &lt;em>no notice&lt;/em>, and for &lt;em>no reason&lt;/em>.&lt;/li>
 &lt;li>All of these providers track your location and other &amp;ldquo;metadata&amp;rdquo;, and share it with third parties.&lt;/li>
 &lt;/ul>
-&lt;h2 id="meta-">Meta-
-&lt;span>&lt;a href="#meta-">#&lt;/a>&lt;/span>
+&lt;h2 id="meta-" >Meta-
+&lt;span>
+&lt;a href="#meta-">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>Metadata, by the way, is a really weird term that has a lot of baggage. In short, its &amp;ldquo;data about the data&amp;rdquo;: how big the file is, when it was created and last modified, the type of file, the &lt;em>name&lt;/em> of the file&amp;hellip; Basically, think about the data you see when looking in your &amp;ldquo;My Documents&amp;rdquo; folder &amp;ndash; everything except the file preview would be considered metadata. Here&amp;rsquo;s a fabricated example; do you feel like the owner of this data would be okay with arbitrary &amp;ldquo;third parties&amp;rdquo; seeing it?&lt;/p>
 &lt;p>&lt;img src="mydocumentsexample.png" alt="Example of someone&amp;amp;rsquo;s documents">&lt;/p>
 &lt;p>But that isn&amp;rsquo;t enough. Since, as far as I know, all major cloud providers are for-profit companies, they are compelled to increase both the amount of users, and the amount of value extracted from each user. That means in addition to the unsavory data brokering, cloud providers have taken a page out of the drug dealer&amp;rsquo;s playbook: offer a taste of free cloud storage as a loss-leader. Once you&amp;rsquo;ve gotten the handy synchronization set up, files gradually accumulate until the quota is hit sometime down the line, and then you get hit with the desktop pop-ups, emails, etc. warning you that &lt;em>you are in danger&lt;/em>, your precious files won&amp;rsquo;t be synced unless you pay us to upgrade!&lt;/p>
@@ -27,8 +35,12 @@
 &lt;p>If you are technically inclined, I cannot recommend &lt;a href="https://rclone.org/">rclone&lt;/a> enough. This command &lt;a href="https://github.com/mitrichius/hugo-theme-anubisline">https://github.com/mitrichius/hugo-theme-anubisline&lt;/a> program (with a &lt;a href="https://rclone.org/gui/">GUI&lt;/a> in the works!) can map to pretty much any cloud provider as a front end. That means that if you want triple-redundant storage between your personal devices, an enterprise-class data host like AWS, and a consumer cloud product like Google Drive, you can. Even better: you don&amp;rsquo;t have to trust your data or metadata to these hosts, because you can configure rclone to &lt;a href="https://rclone.org/crypt/">encrypt&lt;/a> the data before upload; it will be transparently decrypted by rclone on retrieval if or when you ever need it.&lt;/p>
 &lt;p>In this case, you could even look at using a public cloud provider &amp;ndash; all they would see is a bunch of random binary blobs &amp;ndash; but I&amp;rsquo;d still caution against it because providers like Google have been known to flex their &amp;ldquo;we can delete your data at any time for any reason muscles&amp;rdquo; and nuke binary blobs (ostensibly for &amp;ldquo;anti-piracy&amp;rdquo; reasons, as they argue &amp;ldquo;if a customer is hiding their data from us, that &lt;em>must&lt;/em> mean its illegal, right?&amp;rdquo;).&lt;/p>
 &lt;hr>
-&lt;h2 id="how-to-do-it">How to Do it
-&lt;span>&lt;a href="#how-to-do-it">#&lt;/a>&lt;/span>
+&lt;h2 id="how-to-do-it" >How to Do it
+&lt;span>
+&lt;a href="#how-to-do-it">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>My personal setup for keeping all of my files across all my devices synced and backed up is this:&lt;/p>
 &lt;ol>
 &lt;li>Each device I have data I want saved is running an instance of Syncthing (see my &lt;a href="https://www.quentb.com/posts/personal-cloud/">last post&lt;/a> for more), usually the &amp;ldquo;My Documents&amp;rdquo;, &amp;ldquo;My Pictures&amp;rdquo;, etc folders (or Mac/Linux Equivalents)&lt;/li>
@@ -49,13 +61,25 @@
 &lt;/ol>
 &lt;p>This, I admit, is still pretty technical, but it is at least approachable for a Windows user. If you absolutely don&amp;rsquo;t want to deal with your own configuration, which I totally understand, then at least use a &lt;em>paid-up-front&lt;/em> provider, none of the freemium nonsense. Backblaze, who I use with my manual config, offers an &lt;a href="https://www.backblaze.com/cloud-backup.html">easy solution&lt;/a> with &lt;strong>unlimited&lt;/strong> storage for $7 a month (not a sponsor, btw). Its more than pocket change, but you can just use a GUI and forget about it. And they aren&amp;rsquo;t the only option. They primarily focus on small business customers, but &lt;a href="https://www.crashplan.com/en-us/pricing/">crashplan&lt;/a> will happily offer you backup services for $10 a month &amp;ndash; my work uses them and I&amp;rsquo;ve found it a pretty nice setup.&lt;/p>
 &lt;p>Otherwise, I have heard good things about &lt;a href="https://www.svsware.com/rebelbackup">Rebel Backup&lt;/a>, but I have not used it myself. It is essentially a user-friendly version of rclone crypt; it encrypts your backups before sending it to Dropbox or Google Drive. Since it sits on top of public cloud providers, my earlier caveat about spontaneous data deletion applies &amp;ndash; though it ameliorates it to a degree by allowing replication on multiple providers (i.e. a copy is sent to both Google Drive &lt;em>and&lt;/em> Dropbox). This product requires a $40 one-time purchase. If you use it long enough, that would potentially be a cheaper amortized cost than even my homebrew solution on Backblaze.&lt;/p>
-&lt;h2 id="closing-thoughts">Closing Thoughts
-&lt;span>&lt;a href="#closing-thoughts">#&lt;/a>&lt;/span>
-&lt;/h2>&lt;h3 id="you-can-always-be-more-paranoid">You can always be more paranoid
-&lt;span>&lt;a href="#you-can-always-be-more-paranoid">#&lt;/a>&lt;/span>
+&lt;h2 id="closing-thoughts" >Closing Thoughts
+&lt;span>
+&lt;a href="#closing-thoughts">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
+&lt;/h2>&lt;h3 id="you-can-always-be-more-paranoid" >You can always be more paranoid
+&lt;span>
+&lt;a href="#you-can-always-be-more-paranoid">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h3>&lt;p>If you look at the privacy policy of paid providers, you may see some scary boilerplate. I must at this point argue for a bit of realpolitik and concede that as long as you are putting data in the &amp;ldquo;cloud&amp;rdquo;, its going to be on someone else&amp;rsquo;s computer and they will have data about you (your payment info, the IP you are uploading from). If this is an absolute no-no, then these posts aren&amp;rsquo;t for you and you should look at offsite data storage solutions, where you physically hand a briefcase of HDDs to a company that stores them somewhere secure (its not unheard of for these places to use caves or disused mines). One of my first jobs as an IT technician included me going to the security team, picking up a locked hard-sided briefcase, and delivering it to a storage provider; with chain-of-custody paperwork and everything.&lt;/p>
-&lt;h3 id="the-411">The 411
-&lt;span>&lt;a href="#the-411">#&lt;/a>&lt;/span>
+&lt;h3 id="the-411" >The 411
+&lt;span>
+&lt;a href="#the-411">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h3>&lt;p>But that is a bit off-topic. My high-level suggestions, in order of what you should consider, are:&lt;/p>
 &lt;ol>
 &lt;li>Use a tool like rclone to automatically encrypt and upload your data to a cloud provider.&lt;/li>
@@ -71,8 +95,12 @@
 (relatively) easy to set up, has predictable costs, and produces lots of &lt;em>recurring&lt;/em> revenue.&lt;/p>
 &lt;p>In this first dive into personal data ownership, I&amp;rsquo;m going to walk through setting up and using an open-source
 alternative to offerings like Dropbox and iCloud: &lt;a href="https://syncthing.net/">Syncthing&lt;/a>.&lt;/p>
-&lt;h2 id="moving-stuff-around">Moving stuff around
-&lt;span>&lt;a href="#moving-stuff-around">#&lt;/a>&lt;/span>
+&lt;h2 id="moving-stuff-around" >Moving stuff around
+&lt;span>
+&lt;a href="#moving-stuff-around">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>In the beginning was the punch card. This primitive source of &amp;ldquo;non-volatile&amp;rdquo; storage (just don&amp;rsquo;t light it on fire)
 actually predates the popular concept of a computer by over 100 years: in 1801, the textile industry began using punched
 &amp;ldquo;number cards&amp;rdquo; to automate complex weaving patterns in looms.&lt;/p>
@@ -101,8 +129,12 @@ snooping (beyond some &lt;a href="https://www.apple.com/child-safety/pdf/CSAM_De
 of &amp;ldquo;checking without looking&amp;rdquo; for stuff like illegal material). But do we really have to just stop at mights and maybes?
 What if we could short-circuit this whole thing and make the magical transfers happen without the ugly in-between
 process?&lt;/p>
-&lt;h2 id="my-first-try-nextcloud">My first try: Nextcloud
-&lt;span>&lt;a href="#my-first-try-nextcloud">#&lt;/a>&lt;/span>
+&lt;h2 id="my-first-try-nextcloud" >My first try: Nextcloud
+&lt;span>
+&lt;a href="#my-first-try-nextcloud">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>If you really want the whole 9 yards of collaborative document management, editing, sharing, etc., that a fully-featured
 online productivity suite can offer (think Google Drive), the main name in the do-it-yourself space has got to be
 &lt;a href="https://nextcloud.com/">Nextcloud&lt;/a>.&lt;/p>
@@ -127,8 +159,12 @@ private cloud.&lt;/p>
 &lt;p>Nextcloud does point you toward &lt;a href="https://nextcloud.com/signup/">preexisting free providers&lt;/a>, and I guess I&amp;rsquo;m a bit more
 comfortable knowing that if I really, &lt;em>really&lt;/em> wanted to I could look at their source code, but this seems like going
 back to Google Drive with a nice coat of paint.&lt;/p>
-&lt;h2 id="the-current-setup">The Current Setup
-&lt;span>&lt;a href="#the-current-setup">#&lt;/a>&lt;/span>
+&lt;h2 id="the-current-setup" >The Current Setup
+&lt;span>
+&lt;a href="#the-current-setup">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>Luckily, I found &lt;a href="https://syncthing.net">Syncthing&lt;/a>. On the surface, this tool offers a much smaller set of features.
 However, when I considered how much I used all the other bells and whistles outside of file sync on Nextcloud, I expect
 I won&amp;rsquo;t mind. What I stand to gain is much better.&lt;/p>
@@ -205,8 +241,12 @@ monolithic. I wish I could look back and see the last time I had used Google Chr
 couple years.&lt;/p>
 &lt;p>Something changed. If I as a user were a frog, I guess I finally decided the water is too hot. But now, stepping out of
 these massive ecosystems is proving to be much harder than it was diving in.&lt;/p>
-&lt;h2 id="winning-back-your-data">Winning Back your Data
-&lt;span>&lt;a href="#winning-back-your-data">#&lt;/a>&lt;/span>
+&lt;h2 id="winning-back-your-data" >Winning Back your Data
+&lt;span>
+&lt;a href="#winning-back-your-data">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>The modern privacy landscape is a &lt;em>wreck&lt;/em>. This is not exactly a controversial statement. In fact, I&amp;rsquo;d wager the general
 response to that sentence is not disagreement, but a tired shrug. Yeah, Facebook, Google et. al. own our lives &amp;ndash; that
 is just the choice we made as a society in exchange for all the cool free stuff, including:&lt;/p>
@@ -222,8 +262,12 @@ information from anywhere to anyone at the speed of light, kludging a quick solu
 capitalism, and then refusing to move on from the kludge.&lt;/p>
 &lt;p>I do think that the era of advertising-funded free services is approaching a fork in the road, where it will either
 effectively end for anything but the most trivial of services, or morph into something even darker.&lt;/p>
-&lt;h2 id="fighting-the-fatigue">Fighting the Fatigue
-&lt;span>&lt;a href="#fighting-the-fatigue">#&lt;/a>&lt;/span>
+&lt;h2 id="fighting-the-fatigue" >Fighting the Fatigue
+&lt;span>
+&lt;a href="#fighting-the-fatigue">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h2>&lt;p>Be it Climate Change, Polarization of Society, or Electronic Privacy, it is easy to get decision fatigue and give up.
 Sure, there are many, many ways to opt out of the circus; lots of weird geeks on the internet have produced guides on
 how to do so that are simultaneously uncomfortably complex and yet full of unaddressed questions or assumed knowledge.&lt;/p>
@@ -235,8 +279,12 @@ have felt increasingly uncomfortable about the stuff you have heard or seen from
 Google Maps on your phone and signed in, maybe you came across the &lt;a href="https://www.google.com/maps/timeline">Google Maps
 Timeline&lt;/a> and after erasing it as fast as you could, started looking for at least
 a way to get &lt;em>some&lt;/em> of your life and data in your own hands.&lt;/p>
-&lt;h3 id="a-series">A Series
-&lt;span>&lt;a href="#a-series">#&lt;/a>&lt;/span>
+&lt;h3 id="a-series" >A Series
+&lt;span>
+&lt;a href="#a-series">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
 &lt;/h3>&lt;p>I feel a sense of obligation. I am a software engineer; I see the sausage get made and I can credit my livelihood in
 part to the work and profit of this industry. What I can offer is not a complete &amp;ldquo;hermetic seal&amp;rdquo; solution, but rather
 steps that are easy to take, require minimum maintenance, and set you up to take additional steps away from the public,
