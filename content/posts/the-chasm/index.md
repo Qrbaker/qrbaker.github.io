@@ -3,7 +3,7 @@ title: "The Chasm"
 date: 2022-04-08T21:48:39-0400
 tags: [christianity, existential]
 summary: 'A Personal story about my spiritual journey. CONTENT WARNING: Addresses topics that may trigger existential fears and/or crises.'
-draft: true
+draft: false
 ---
 
 I was reading a curious story on Wednesday. It was the story and final recollections of a man suffering from advanced ALS. He ultimately made the personal decision to die via medical assistance. ALS is a terrifying way to go, and I felt moved as I read it.
