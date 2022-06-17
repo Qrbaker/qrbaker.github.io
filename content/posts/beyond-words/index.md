@@ -2,7 +2,7 @@
 title: "Floating Above Language and Bringing it Back Down"
 date: 2022-6-16T20:20:15-0400
 tags: [christianity, existential]
-summary: 'A Personal story about my spiritual journey. CONTENT WARNING: Addresses topics that may trigger existential fears and/or crises.'
+summary: "Continued Self-reflections on stuff I can't stop thinking about"
 draft: true
 ---
 
