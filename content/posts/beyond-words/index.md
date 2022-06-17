@@ -8,7 +8,11 @@ draft: false
 
 ## Or: Diving Beneath Language and Pulling it Back Up
 
-I feel a strong sense of meaning and fulfillment when I can communicate an Idea I genuinely believe in to an audience. Probably the strongest moment of that was my high school graduation, speaking to an audience of 500 classmates and thousands of friends and family in an arena. More recently, I have been showered with worldly blessings. I have a great job doing interesting things and with wonderful people.
+I feel a strong sense of meaning and fulfillment when I can communicate an Idea I genuinely believe in to an audience. Probably the strongest moment of that was my high school graduation, speaking to an audience of 500 classmates and thousands of friends and family in an arena. 
+
+![I cleaned up pretty good in 2015](Ivepeakedlol.jpg)
+
+More recently, I have been showered with worldly blessings. I have a great job doing interesting things and with wonderful people.
 
 And on April 5, 2022, I became acutely aware that I am going to die someday, and none of it mattered at all to me any more.
 
