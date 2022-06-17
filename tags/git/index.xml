@@ -4,10 +4,10 @@
 rebase because I have a habit of periodically merging upstream master/dev/main/whatever branch commits into my
 working branch to keep the work of resolving merge conflicts to a minimum.&lt;br>
 Unfortunately, when you have the situation of:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
-\ \
-g----h----i----j----k----l
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i g&lt;/code> will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>a----b----c----d----e----f
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> \ \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g----h----i----j----k----l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>doing something like &lt;code>git rebase -i g&lt;/code> will try and rewrite these pulls (a/b/c and d/e/f), even if you leave
 them as &amp;ldquo;picked&amp;rdquo; commits, and you only mark your commits (g/h/i/j/k/l) as &amp;ldquo;squash&amp;rdquo;. I really, really hate the
 idea of effectively changing/rewriting other developer&amp;rsquo;s commits; it can screw up stuff like git logs and git
 blames.&lt;/p>
@@ -27,14 +27,14 @@ blames.&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;p>This basically does the following:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
-\ \
-g----h----i----j----k----l
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>becomes&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">a----b----c----d----e----f
-\
-g&amp;#39;
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>commits g through l get &amp;ldquo;rolled up&amp;rdquo; into a new commit, g', which can be merged. As a nice side-effect, a
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>a----b----c----d----e----f
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> \ \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g----h----i----j----k----l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>becomes&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>a----b----c----d----e----f
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> g&amp;#39;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>commits g through l get &amp;ldquo;rolled up&amp;rdquo; into a new commit, g&amp;rsquo;, which can be merged. As a nice side-effect, a
 &lt;code>git merge --squash&lt;/code> produces a very nice &amp;ldquo;squash summary&amp;rdquo; of each commit with its hash, author, and commit
 message in the squash commit message.&lt;/p>
 &lt;hr>
@@ -64,4 +64,4 @@ and (b) you &lt;strong>should not&lt;/strong> periodically merge from upstream.
 That makes sense when you&amp;rsquo;re dealing with hundreds of commits from dozens of contributors, but what
 about us mere mortal devs, who work with maybe 7 developers
 on a project at a time?&lt;/p>
-&lt;p>I&amp;rsquo;d love to hear other, more experienced devs' thoughts.&lt;/p></description></item></channel></rss>
+&lt;p>I&amp;rsquo;d love to hear other, more experienced devs&amp;rsquo; thoughts.&lt;/p></description></item></channel></rss>
