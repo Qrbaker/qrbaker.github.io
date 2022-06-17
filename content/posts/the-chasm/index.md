@@ -2,7 +2,7 @@
 title: "The Chasm"
 date: 2022-04-08T21:48:39-0400
 tags: [christianity, existential]
-summary: 'A Personal story about my spiritual journey. CONTENT WARNING: Addresses topics that may trigger existential fears and/or crises.'
+summary: 'A Personal story about my spiritual journey. N.B: Addresses topics very different from previous posts, you may want to skip this one.'
 draft: false
 ---
 
