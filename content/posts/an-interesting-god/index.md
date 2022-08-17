@@ -38,6 +38,8 @@ Well, the mental health crises was actually a pretty good kick in the shorts for
 
 I think my life in general is more varied, too. I visit more places, I live in a more interesting place, and I am purposefully taking the "leap" of reaching out and connecting with groups of people with shared interests. This included a very interesting day in Detroit, bowling with a group of Furries.
 
+![Me, standing next to a person in a wolf fursuit at a bowling alley](furbowl.webp)
+
 ---
 
 I have been listening to a lot of different stuff, too. I recently was listening to a religious podcast, and the guest talked about the importance of cultivating a sense of Christ's "interestingness". I am praying for a few things (including the very basic prayer of 'Lord Christ, teach me *what* to pray for') but I think I will add to my list this, "Lord, help me to find the Christ *interesting* again."
