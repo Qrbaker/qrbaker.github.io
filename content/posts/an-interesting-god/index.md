@@ -1,7 +1,10 @@
 ---
 title: "An Interesting God"
 date: 2022-08-16T14:31:47-04:00
-draft: true
+draft: false
+tags: [christianity, mental health, rant]
+summary: "A small life update and musings."
+draft: false
 ---
 
 I have continued my journey, and I wanted to give a bit of an update.
