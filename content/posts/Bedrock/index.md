@@ -46,7 +46,7 @@ It does not define itself by what it isn't, what it excludes. Because this kind 
 
 Truly this is the kind of love and beauty that could make a suffering St Paul rejoice in the Lord, Even while in chains, Even while knowing that his life was forfeit to the Roman emperor.
 
-He wasn't rejoicing in spite of his pains. He was rejoicing because for some reason at that moment God gave him a window to see the beauty of it all. and the beauty of it all included all of him all of his situation all of his failings all of the fallen world all of the confused and angry and power-hungry.
+He wasn't rejoicing in spite of his pains. He was rejoicing because for some reason at that moment God gave him a window to see the beauty of it all. And the beauty of it all included all of him all of his situation; all of his failings all of the fallen world all of the confused and angry and power-hungry.
 
 It is the sort of emotional experience that cannot be described in a single word, I believe it is the same core experience that would cause one of the profits of the Lord to declare that Justice rolls like a river down over the nations.
 
