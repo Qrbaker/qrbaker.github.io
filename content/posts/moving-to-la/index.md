@@ -17,7 +17,7 @@ summary: Some pictures and my thoughts after a week in Los Angeles.
 
 <style>img { border-radius: 10px }</style>
 
-![Downtown Los Angeles, viewed from a metro station](Photo00007.jpg)  
+![Downtown Los Angeles, viewed from a metro station](dtla_clear.jp2)  
 
 Yeah... I'm in a bit of a honeymoon phase with Los Angeles. Its a really cool place!
 
