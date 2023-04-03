@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unix on Quentin Baker</title><link>https://www.quentb.com/tags/unix/</link><description>Quentin Baker (Unix)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 12 Nov 2021 20:22:14 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/unix/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting FreeBSD + xfce4 up and running on Hyper-V</title><link>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</link><pubDate>Fri, 12 Nov 2021 20:22:14 -0400</pubDate><guid>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</guid><description>&lt;p>&lt;img src="freebsd_3.gif" alt="A FreeBSD Banner">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unix on Quentin Baker</title><link>https://www.quentb.com/tags/unix/</link><description>Quentin Baker (Unix)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 12 Nov 2021 20:22:14 -0400</lastBuildDate><atom:link href="https://www.quentb.com/tags/unix/index.xml" rel="self" type="application/rss+xml"/><item><title>[Updated] Getting FreeBSD + xfce4 up and running on Hyper-V</title><link>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</link><pubDate>Fri, 12 Nov 2021 20:22:14 -0400</pubDate><guid>https://www.quentb.com/posts/freebsd-hyperv-tutorial/</guid><description>&lt;h2 id="april-2023-update" >(April 2023) Update!
+&lt;span>
+&lt;a href="#april-2023-update">
+&lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
+&lt;/a>
+&lt;/span>
+&lt;/h2>&lt;p>When I first wrote this tutorial at the end of 2021, Hyper-V generation &lt;strong>2&lt;/strong> VMs did not correctly
+capture mouse and keyboard input from BSD guest VMs. I just got notice that this bug was
+&lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">closed&lt;/a>!&lt;/p>
+&lt;p>I haven&amp;rsquo;t been using Hyper-V as VM manager recently, so I haven&amp;rsquo;t confirmed, but if you want to
+give it a shot, you can try these instructions with a Gen 2 VM and see how it goes. Feel free to
+email me (my first name at this website domain) if you get it working and I&amp;rsquo;ll post your
+experience.&lt;/p>
+&lt;p>Original content continues below&amp;hellip;&lt;/p>
+&lt;p>&lt;img src="freebsd_3.gif" alt="A FreeBSD Banner">
 &lt;img src="hyperv.png" alt="Windows Hyper-V">&lt;/p>
 &lt;p>This document began as a checklist for myself, as I tried and failed repeatedly to get a desktop environment working in FreeBSD inside Hyper-V on Windows. I used to use VMWare Player for hosting BSD, but it is locked down and an extra program to run. A Microsoft employee and personal friend pointed me to Hyper-V Manager, a tool built-in to Windows 10+11 Pro/Enterprise that allows for the easy creation and management of VMs. Did I mention its built-in?&lt;/p>
 &lt;p>FreeBSD has had Hyper-V virtualization support for some time, and is mostly out-of-the-box&amp;hellip; if you are sticking to a virtual terminal. Command line is fine for most users running BSD on Hyper-V, I&amp;rsquo;m sure, but I need a desktop environment to maintain a few BSD desktop packages.&lt;/p>
@@ -21,7 +35,9 @@
 &lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
 &lt;/a>
 &lt;/span>
-&lt;/h3>&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs&lt;/a>.&lt;/p>
+&lt;/h3>&lt;p>Create a new &lt;strong>Generation 1&lt;/strong> VM. &lt;del>&lt;a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175">At the time of this writing, FreeBSD does not have a mouse
+driver for Gen 2 VMs&lt;/a>.&lt;/del> (04-2023 Note:
+This bug has been marked as fixed, but I haven&amp;rsquo;t tested it.)&lt;/p>
 &lt;p>Once you&amp;rsquo;ve set up your VM and pointed it to your ISO, go ahead and follow the standard install prompts. If you want a well-written walkthrough of this process, &lt;a href="https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-start">the FreeBSD Handbook has you covered&lt;/a>. In fact, I &lt;strong>highly recommend&lt;/strong> keeping the handbook open in a browser whenever you&amp;rsquo;re trying something new-ish. I like the &lt;a href="https://docs.freebsd.org/en/books/handbook/book/">version with the whole text on one page&lt;/a>: It makes it easy to &lt;code>ctrl&lt;/code>+&lt;code>F&lt;/code> for a term I need clarification on. Fair warning though, it takes a second to load.&lt;/p>
 &lt;p>Anyway, once set up, log in as root (or as your user and then use &lt;code>su&lt;/code>). Going forward, I will denote commands executed as root with a hash symbol (#) and user commands with a dollar sign ($).&lt;/p>
 &lt;h2 id="building-the-base" >Building the Base
@@ -148,13 +164,14 @@ So instead I install neovim, and symlink the &lt;code>nvim&lt;/code> binary file
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-zsh" data-lang="zsh">&lt;span style="display:flex;">&lt;span>dbus_enable&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;YES&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Add the user(s) that you expect to be using a GUI to the group &lt;code>video&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-zsh" data-lang="zsh">&lt;span style="display:flex;">&lt;span>doas pw groupmod video -M &amp;lt;user&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-the-keyboard-to-work" >Getting the Keyboard to work
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="keyboard" >Getting the Keyboard to work
 &lt;span>
-&lt;a href="#getting-the-keyboard-to-work">
+&lt;a href="#keyboard">
 &lt;svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg">&lt;path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>&lt;/svg>
 &lt;/a>
 &lt;/span>
-&lt;/h2>&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
+&lt;/h2>&lt;p>*(2023 Note: This is for Gen 1 VMs. If you try a Gen 2 VM, this may not be needed).&lt;/p>
+&lt;p>Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices &amp;ndash; even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.&lt;/p>
 &lt;p>Since PS/2 is a pretty old technology and mostly deprecated, recent versions of FreeBSD no longer check for it by default. To re-enable this, add the following line to &lt;code>/etc/sysctl.conf&lt;/code>&lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-zsh" data-lang="zsh">&lt;span style="display:flex;">&lt;span>sysctl kern.evdev.rcpt_mask&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Go ahead and do a reboot.&lt;/p>
@@ -209,8 +226,7 @@ So instead I install neovim, and symlink the &lt;code>nvim&lt;/code> binary file
 &lt;p>That&amp;rsquo;s pretty much it. This is a super powerful tool that allows extreme customizability with ease, because you are with these three simple steps actually downloading and compiling from source!&lt;/p>
 &lt;p>The BSD Ports system has been replicated in a couple other places, most notably in Gentoo Linux.&lt;/p>
 &lt;hr>
-&lt;p>At the end of the day, use the tools that best suit you. BSD is worth a look, though!&lt;/p>
-&lt;p>Join me for part 2 (coming soon), where I show you the best way to work with Graphical interfaces in BSD on Hyper-V (Hint: its RDP).
+&lt;p>At the end of the day, use the tools that best suit you. BSD is worth a look, though!
 &lt;br>&lt;/p>
 &lt;p>-Quentin &lt;br>
 &lt;br>
