@@ -6,10 +6,10 @@ summary: More Thoughts about LA now that I've been here a bit.
 ---
 <style>img { border-radius: 10px; width: 60% }</style>
 
-> This is the world we live in (Oh, oh, oh)
-> And these are the hands we're given (Oh, oh, oh)
-> Use them and let's start trying (Oh, oh, oh)
-> To make it a place worth living in
+> This is the world we live in (Oh, oh, oh)  
+> And these are the hands we're given (Oh, oh, oh)  
+> Use them and let's start trying (Oh, oh, oh)  
+> To make it a place worth living in  
 
 - Genesis, *Land of Confusion*
 
@@ -188,7 +188,8 @@ in the future are by their nature nebulous and invisible today, still under the 
 
 ---
 
-> “I wish it need not have happened in my time," said Frodo.
+> “I wish it need not have happened in my time," said Frodo. 
+>  
 > "So do I," said Gandalf, "and so do all who live to see such times. But that is not for them to decide. All we have to decide is what to do with the time that is given us.”
 
 - J.R.R Tolkien, *The Fellowship of the Ring*
