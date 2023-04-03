@@ -1,11 +1,23 @@
 ---
-title: 'Getting FreeBSD + xfce4 up and running on Hyper-V'
+title: '[Updated] Getting FreeBSD + xfce4 up and running on Hyper-V'
 date: 2021-11-12T20:22:14-04:00
 tags: [tutorial, BSD, Unix, OS, VM, Hyper-V, xfce]
 summary: 'A tutorial that walks through installing and setting up the xfce desktop environment on FreeBSD, running as a VM in Hyper-V.'
 draft: false 
 ---
 
+## (April 2023) Update!
+
+When I first wrote this tutorial at the end of 2021, Hyper-V generation **2** VMs did not correctly
+capture mouse and keyboard input from BSD guest VMs. I just got notice that this bug was
+[closed](https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175)!
+
+I haven't been using Hyper-V as VM manager recently, so I haven't confirmed, but if you want to
+give it a shot, you can try these instructions with a Gen 2 VM and see how it goes. Feel free to
+email me (my first name at this website domain) if you get it working and I'll post your
+experience.
+
+Original content continues below...
 
 ![A FreeBSD Banner](freebsd_3.gif)
 ![Windows Hyper-V](hyperv.png)
@@ -34,7 +46,9 @@ Anyway, to the good stuff!
 
 ### Hyper-V Setup
 
-Create  a new **Generation 1** VM. [At the time of this writing, FreeBSD does not have a mouse driver for Gen 2 VMs](https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175).
+Create  a new **Generation 1** VM. ~~[At the time of this writing, FreeBSD does not have a mouse
+driver for Gen 2 VMs](https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=210175).~~ (04-2023 Note:
+This bug has been marked as fixed, but I haven't tested it.)
 
 Once you've set up your VM and pointed it to your ISO, go ahead and follow the standard install prompts. If you want a well-written walkthrough of this process, [the FreeBSD Handbook has you covered](https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-start). In fact, I **highly recommend** keeping the handbook open in a browser whenever you're trying something new-ish. I like the [version with the whole text on one page](https://docs.freebsd.org/en/books/handbook/book/): It makes it easy to `ctrl`+`F` for a term I need clarification on. Fair warning though, it takes a second to load.
 
@@ -231,7 +245,9 @@ Add the user(s) that you expect to be using a GUI to the group `video`
 doas pw groupmod video -M <user>
 ```
 
-## Getting the Keyboard to work
+## Getting the Keyboard to work {#keyboard}
+
+*(2023 Note: This is for Gen 1 VMs. If you try a Gen 2 VM, this may not be needed).
 
 Hyper-V is an interesting creature - for Gen 1 VMs, the mouse and keyboard are emulated not as USB devices, but as the older PS/2-style devices -- even if your actual device is USB, FreeBSD will see a PS/2 device because that is what Hyper-V presents it.
 
@@ -292,8 +308,6 @@ The BSD Ports system has been replicated in a couple other places, most notably 
 ---
 
 At the end of the day, use the tools that best suit you. BSD is worth a look, though!
-
-Join me for part 2 (coming soon), where I show you the best way to work with Graphical interfaces in BSD on Hyper-V (Hint: its RDP).
 <br>
 
 -Quentin \
